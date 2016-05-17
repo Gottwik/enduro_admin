@@ -1,0 +1,24 @@
+{
+  "name": "enduro_admin",
+  "description": "",
+  "main": "assets/vendor/enduro/index.js",
+  "authors": [
+    "KISKA"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "requirejs": "^2.2.0",
+    "angular-route": "^1.5.5",
+    "angular-cookies": "^1.5.5"
+  }
+}
