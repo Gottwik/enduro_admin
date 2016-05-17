@@ -33,9 +33,17 @@ enduro_admin_app.config(['$routeProvider',
 enduro_admin_app.run(['$rootScope', '$location', 'user_service', function($rootScope, $location, user_service) {
 
 	$rootScope.$on('$locationChangeSuccess', function() {
-		if(!user_service.is_logged_in()) {
-			$location.path('/login')
-		}
+		user_service.is_logged_in()
+			.then(function(data) {
+				console.log(data.data)
+				if(data.data.success) {
+					$location.path('/dashboard')
+				} else {
+					$location.path('/login')
+				}
+			}, function(){
+				$location.path('/login')
+			})
 	})
 
 }])
