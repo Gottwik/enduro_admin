@@ -20,25 +20,23 @@ enduro_admin_app.config(['$routeProvider',
     	.when('/login', {
 	    	templateUrl: '/assets/js/views/login.html'
 	    })
-	    .when('/dashboard', {
-	    	templateUrl: '/assets/js/views/dashboard.html'
+	    .when('/', {
+	    	templateUrl: '/assets/js/views/admin_main.html',
 	    })
-	    .when('/pages/:page_name', {
-	    	templateUrl: '/assets/js/views/admin.html'
+	    .when('/pages/:page_path*', {
+	    	templateUrl: '/assets/js/views/admin_main.html',
 	    })
-	    .otherwise({ redirectTo: '/login' })
+	    .otherwise({ redirectTo: '/' })
   }]);
 
 
 enduro_admin_app.run(['$rootScope', '$location', 'user_service', function($rootScope, $location, user_service) {
 
+
 	$rootScope.$on('$locationChangeSuccess', function() {
 		user_service.is_logged_in()
 			.then(function(data) {
-				console.log(data.data)
-				if(data.data.success) {
-					$location.path('/dashboard')
-				} else {
+				if(!data.data.success) {
 					$location.path('/login')
 				}
 			}, function(){

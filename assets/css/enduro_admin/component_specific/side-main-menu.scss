@@ -1,0 +1,18 @@
+.side-main-menu {
+	@include transparent-background();
+	float: left;
+	width: $side-menu-width;
+	height: 100%;
+	padding: 20px;
+}
+
+.side-main-menu-item,
+.side-main-menu-group-label {
+	font-weight: 700;
+	margin-top: 10px;
+}
+
+.side-main-menu-group {
+	margin-bottom: 10px;
+	padding-left: 10px;
+}

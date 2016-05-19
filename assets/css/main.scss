@@ -1,6 +1,12 @@
-p {
-	text-align: center;
-	font-size: 100px;
-	line-height: 30px;
-	color: #c188cf;
-}
+@import '../vendor/bootstrap/scss/bootstrap';
+
+// Globbed variables
+@import 'variables/*';
+
+// Mixins
+@import 'mixins/*';
+
+// Mixins
+@import 'enduro_admin/*';
+
+@import '../vendor/kiskabricks_wedgecss/wedge';

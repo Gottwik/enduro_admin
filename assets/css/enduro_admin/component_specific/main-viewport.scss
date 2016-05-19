@@ -1,0 +1,11 @@
+.main-viewport {
+	width: 100%;
+	height: calc(100% - #{$top-bar-height});
+}
+
+.page-viewport {
+	float: left;
+	width: calc(100% - #{$side-menu-width});
+	height: 100%;
+	padding: 20px;
+}

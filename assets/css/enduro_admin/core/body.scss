@@ -1,0 +1,8 @@
+body {
+	@include no-smooth-font();
+	@include font-size(sm);
+	font-family: 'Cantarell', sans-serif;
+	background-image: url(/assets/img/blur-bg.jpg);
+	height: 100%;
+	color: $white;
+}
