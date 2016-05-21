@@ -1,5 +1,5 @@
 .object-container {
-	border-left: solid 3px rgba($black, .2);
-	margin-left: 10px;
-	padding-left: 10px;
+	@include container-background();
+	@include latte-shadow();
+	padding: 25px;
 }

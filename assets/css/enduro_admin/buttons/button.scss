@@ -1,7 +1,8 @@
 button,
 .btn {
-	background-color: $white;
-	color: $black;
+	background-color: $primary-color;
+	color: $white;
+	@include font-size(md);
 	border: 0;
 	padding: 10px 30px 5px;
 	border-radius: 2px;
@@ -9,11 +10,12 @@ button,
 	display: inline-block;
 	cursor: pointer;
 	user-select: none;
+	margin-bottom: 10px;
 
 	&:hover,
 	&:focus {
 		outline: none;
-		border-bottom: solid 5px $primary-color;
+		border-bottom: solid 5px darken($primary-color, 15%);
 		box-shadow: none;
 	}
 

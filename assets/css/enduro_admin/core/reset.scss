@@ -1,6 +1,15 @@
-html {
+html,
+body {
 	margin: 0;
+}
+
+html {
 	height: 100%;
+}
+
+
+body {
+	min-height: 100%;
 }
 
 ul {

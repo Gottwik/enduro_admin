@@ -1,11 +1,18 @@
 // * ———————————————————————————————————————————————————————— * //
-// * 	Font sizes
+// * 	Text input
 // * ———————————————————————————————————————————————————————— * //
 
-$font-sizes: (
-	xl: 60px,
-	lg: 30px,
-	md: 20px,
-	sm: 14px,
-	xs: 12px,
-) !default;
+
+.form-control {
+	label {
+		position: relative;
+		margin-bottom: 15px;
+		margin-top: 15px;
+
+		span {
+			position: absolute;
+			top: -22px;
+		}
+
+	}
+}

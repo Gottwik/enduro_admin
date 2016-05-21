@@ -1,7 +1,9 @@
 <div>
 	<div ng-controller="cms_main_ctrl">
 		<div class="wedge"></div>
-		<h3>{{object_name}}</h3>
+		<div ng-if="no-label">
+			<h3>{{object_name}}</h3>
+		</div>
 		<div class="object-container">
 			<div ng-if="isObject(context)">
 				<div ng-repeat="(key, value) in context track by $index">

@@ -1,8 +1,6 @@
 .side-main-menu {
 	@include container-background();
-	float: left;
 	width: $side-menu-width;
-	height: 100%;
 	padding: 20px;
 }
 
@@ -15,4 +13,11 @@
 .side-main-menu-group {
 	margin-bottom: 10px;
 	padding-left: 10px;
+}
+
+.menu-branding {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	text-align: center;
 }

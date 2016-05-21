@@ -1,6 +1,8 @@
 .main-viewport {
 	width: 100%;
-	height: calc(100% - #{$top-bar-height});
+	min-height: calc(100% - #{$top-bar-height});
+	display: flex;
+	position: absolute;
 }
 
 .page-viewport {

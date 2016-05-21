@@ -1,6 +1,10 @@
 .card {
-	@include container-background();
 	border: 0;
+}
+
+.card-body {
+	@include container-background();
+	@include shadow();
+	@include rounded-corners();
 	padding: 50px 50px 40px;
-	border-radius: 2px;
 }

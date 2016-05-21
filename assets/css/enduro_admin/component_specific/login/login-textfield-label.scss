@@ -1,21 +1,43 @@
 .login-textfield-label {
+	@include font-size(md);
 	position: relative;
 	width: 100%;
-	@include font-size(md);
+	margin-bottom: 20px;
 
 	span {
-		@include font-size(sm);
 		position: absolute;
-		top: 10px;
-		margin-left: 18px;
-		transition: top .3s ease, margin-left .3s ease, color .3s ease;
-		color: $black;
+		top: 6px;
+		margin-left: 10px;
+		transition: top .3s ease, margin-left $standard-transition, color $standard-transition, font-size $standard-transition;
 		pointer-events: none;
+	}
+
+	input,
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="tel"] {
+		color: $black;
+		width: 100%;
+		padding: 10px 10px 5px;
+		border: 0;
+		border-radius: 2px;
+		border-bottom: 1px $primary-color solid;
+		margin-bottom: 10px;
+		background: none;
+		transition: border-bottom $quick-transition;
+		height: 40px;
+		box-sizing: border-box;
+
+		&:focus {
+			border-bottom: 5px $primary-color solid;
+		}
 	}
 
 	input:valid ~ span,
 	input:focus ~ span {
-		top: -25px;
+		@include font-size(sm);
+		top: -12px;
 		margin-left: 0;
 	}
 }

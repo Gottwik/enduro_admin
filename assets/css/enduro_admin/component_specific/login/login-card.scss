@@ -1,9 +1,13 @@
 .login-logo {
-	margin-left: 1px;
-	fill: rgba($white, .9);
+	position: absolute;
+	top: -150px;
+	left: -142px;
 }
 
 .login-card {
 	width: 500px;
-	margin: 50px auto 0;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
 }

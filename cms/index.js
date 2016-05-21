@@ -1,33 +1,34 @@
 {
+	$page_name: 'Homepage',
 	greeting: 'man',
 	superlative: '22222',
 	panel: {
 		title: 'Panel title',
 		subtitle: 'subtitle'
 	},
-	Productlist: [
+	product_list: [
 		{
-			productname: 'Calvin',
+			product_name: 'Calvin',
 			price: 45
 		},
 		{
-			productname: 'Hobbes',
+			product_name: 'Hobbes',
 			price: 123
 		},
 		{
-			productname: 'Calvin',
+			product_name: 'Calvin',
 			price: 45
 		},
 		{
-			productname: 'Hobbes',
+			product_name: 'Hobbes',
 			price: 123
 		},
 		{
-			productname: 'Calvin',
+			product_name: 'Calvin',
 			price: 45
 		},
 		{
-			productname: 'Hobbes',
+			product_name: 'Hobbes',
 			price: 123
 		},
 	]

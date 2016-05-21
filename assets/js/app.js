@@ -34,6 +34,7 @@ enduro_admin_app.run(['$rootScope', '$location', 'user_service', function($rootS
 
 
 	$rootScope.$on('$locationChangeSuccess', function() {
+		console.log($location)
 		user_service.is_logged_in()
 			.then(function(data) {
 				if(!data.data.success) {

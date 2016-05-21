@@ -1,0 +1,7 @@
+@mixin shadow() {
+	box-shadow: 2px 2px 10px rgba($black, .2), 2px 2px 50px rgba($black, .2);
+}
+
+@mixin latte-shadow() {
+	box-shadow: 0 0 3px rgba($black, .08), 2px 2px 10px rgba($black, .05);
+}

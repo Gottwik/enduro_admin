@@ -4,7 +4,7 @@
 	<div class="row" ng-directive="matchheight">
 		<div ng-repeat="(key, value) in context track by $index" class="col-md-3">
 			<div class="card">
-				<div ng-include="'/admin/assets/js/controls/main-container.html'"></div>
+				<div ng-include="'/admin/assets/js/controls/main-container.html'" ng-init="no-label=false"></div>
 			</div>
 		</div>
 		<div class="col-md-3">
