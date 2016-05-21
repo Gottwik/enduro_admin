@@ -1,0 +1,34 @@
+// Override bootstrap variables here
+$grid-breakpoints: (
+	xs: 0,
+	sm: 544px,
+	md: 768px,
+	lg: 992px,
+	xl: 1280px
+) !default;
+
+$grid-gutter-width: 20px;
+
+
+// Core variables and mixins
+@import '../vendor/bootstrap/scss/variables';
+
+// Reset and dependencies
+@import '../vendor/bootstrap/scss/normalize';
+@import '../vendor/bootstrap/scss/mixins';
+@import '../vendor/bootstrap/scss/print';
+
+// Core CSS
+@import '../vendor/bootstrap/scss/reboot';
+@import '../vendor/bootstrap/scss/responsive-embed';
+@import '../vendor/bootstrap/scss/grid';
+
+// Utility classes
+@import '../vendor/bootstrap/scss/utilities';
+@import '../vendor/bootstrap/scss/utilities-responsive';
+
+// Modal
+@import '../vendor/bootstrap/scss/modal';
+
+// Images
+@import '../vendor/bootstrap/scss/images';

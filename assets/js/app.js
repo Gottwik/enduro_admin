@@ -10,24 +10,24 @@ enduro_admin_app
 		}
 	})
 	.constant('path_config', {
-		get_views_path: '/assets/js/views/'
+		get_views_path: '/admin/assets/js/views/'
 	})
 
 
 enduro_admin_app.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider
-    	.when('/login', {
-	    	templateUrl: '/assets/js/views/login.html'
-	    })
-	    .when('/', {
-	    	templateUrl: '/assets/js/views/admin_main.html',
-	    })
-	    .when('/pages/:page_path*', {
-	    	templateUrl: '/assets/js/views/admin_main.html',
-	    })
-	    .otherwise({ redirectTo: '/' })
-  }]);
+	function($routeProvider) {
+	$routeProvider
+		.when('/login', {
+			templateUrl: '/admin/assets/js/views/login.html'
+		})
+		.when('/', {
+			templateUrl: '/admin/assets/js/views/admin_main.html',
+		})
+		.when('/pages/:page_path*', {
+			templateUrl: '/admin/assets/js/views/admin_main.html',
+		})
+		.otherwise({ redirectTo: '/' })
+	}]);
 
 
 enduro_admin_app.run(['$rootScope', '$location', 'user_service', function($rootScope, $location, user_service) {

@@ -1,3 +1,4 @@
 {
-	"render_templates": false
+	"render_templates": false,
+	"static_path_prefix": "/admin"
 }

@@ -1,0 +1,31 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	Text center
+// * ———————————————————————————————————————————————————————— * //
+
+// Check if grid breakpoints is defined(might be by bootstrap)
+// if not, define it again
+$grid-breakpoints: (
+	xs: 0,
+	sm: 544px,
+	md: 768px,
+	lg: 992px,
+	xl: 1280px
+) !default;
+
+.pull-right {
+	float: right;
+}
+
+@each $breakpoint, $size in $grid-breakpoints {
+	@include media-breakpoint-down(#{$breakpoint}) {
+		.pull-right-#{$breakpoint}-down {
+			float: right;
+		}
+	}
+
+	@include media-breakpoint-up(#{$breakpoint}) {
+		.pull-right-#{$breakpoint}-up {
+			float: right;
+		}
+	}
+}

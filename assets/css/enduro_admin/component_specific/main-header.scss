@@ -1,17 +1,15 @@
 .main-top-bar {
-	@include transparent-background();
+	@include container-background();
 	height: $top-bar-height;
 }
 
 .enduro-branding {
 	@include font-size(md);
 	padding: 9px 20px;
-	color: $white;
 	display: inline-block;
 }
 
 .enduro-userbox {
 	float: right;
 	padding: 12px 20px;
-	color: $white;
 }

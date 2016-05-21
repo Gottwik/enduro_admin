@@ -1,0 +1,21 @@
+.login-textfield-label {
+	position: relative;
+	width: 100%;
+	@include font-size(md);
+
+	span {
+		@include font-size(sm);
+		position: absolute;
+		top: 10px;
+		margin-left: 18px;
+		transition: top .3s ease, margin-left .3s ease, color .3s ease;
+		color: $black;
+		pointer-events: none;
+	}
+
+	input:valid ~ span,
+	input:focus ~ span {
+		top: -25px;
+		margin-left: 0;
+	}
+}

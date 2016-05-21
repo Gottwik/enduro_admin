@@ -7,3 +7,7 @@ ul {
 	list-style: none;
 	padding-left: 0;
 }
+
+*:focus {
+	outline: 0;
+}

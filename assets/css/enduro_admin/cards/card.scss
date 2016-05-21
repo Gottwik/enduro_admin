@@ -1,0 +1,6 @@
+.card {
+	@include container-background();
+	border: 0;
+	padding: 50px 50px 40px;
+	border-radius: 2px;
+}

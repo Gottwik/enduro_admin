@@ -1,0 +1,5 @@
+$standard-transition-speed: .3s;
+$standard-transition-easing: ease;
+
+$standard-transition: $standard-transition-speed $standard-transition-easing;
+$quick-transition: $standard-transition-speed / 2 $standard-transition-easing;

@@ -1,5 +1,5 @@
 .side-main-menu {
-	@include transparent-background();
+	@include container-background();
 	float: left;
 	width: $side-menu-width;
 	height: 100%;
