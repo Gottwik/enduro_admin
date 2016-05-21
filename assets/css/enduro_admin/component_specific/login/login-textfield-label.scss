@@ -36,7 +36,7 @@
 
 	input:valid ~ span,
 	input:focus ~ span {
-		@include font-size(sm);
+		@include font-size(xs);
 		top: -12px;
 		margin-left: 0;
 	}

@@ -8,11 +8,45 @@
 		position: relative;
 		margin-bottom: 15px;
 		margin-top: 15px;
+		width: 100%;
 
-		span {
+		&:after {
+			content: '';
+			bottom: 10px;
+			left: 0;
 			position: absolute;
-			top: -22px;
+			border: solid 5px transparent;
+			border-left-color: $primary-color;
+			border-bottom-color: $primary-color;
 		}
 
+		span {
+			@include font-size(xs);
+			position: absolute;
+			top: -20px;
+			margin-left: 1px;
+			font-weight: 500;
+		}
+	}
+
+	input,
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="tel"] {
+		color: $black;
+		width: 100%;
+		padding: 11px 15px 10px;
+		border-radius: 3px;
+		border: solid 1px rgba($primary-color, .4);
+		margin-bottom: 10px;
+		background: rgba($white, .5);
+		transition: border-bottom $quick-transition;
+		box-sizing: border-box;
+
+		&:focus {
+			border-bottom: 1px $primary-color solid;
+			box-shadow: 0 0 6px rgba($primary-color, .5);
+		}
 	}
 }

@@ -1,7 +1,8 @@
-.object-container:not(.no-frame) {
+.array-plus-button {
 	@include container-background();
 	@include latte-shadow();
 	border: 1px solid rgba(#333, .15);
 	padding: 25px 25px 10px;
 	margin-bottom: 10px;
+	height: 100%;
 }

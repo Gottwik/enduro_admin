@@ -4,10 +4,3 @@
 	display: flex;
 	position: absolute;
 }
-
-.page-viewport {
-	float: left;
-	width: calc(100% - #{$side-menu-width});
-	height: 100%;
-	padding: 20px;
-}

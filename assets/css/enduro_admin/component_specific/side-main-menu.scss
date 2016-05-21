@@ -1,23 +1,26 @@
 .side-main-menu {
 	@include container-background();
+	@include shadow();
 	width: $side-menu-width;
 	padding: 20px;
-}
+	z-index: 5;
 
-.side-main-menu-item,
-.side-main-menu-group-label {
-	font-weight: 700;
-	margin-top: 10px;
-}
+	.menu-branding {
+		position: fixed;
+		bottom: 20px;
+		left: 20px;
+		text-align: center;
+	}
 
-.side-main-menu-group {
-	margin-bottom: 10px;
-	padding-left: 10px;
-}
+	.side-main-menu-item,
+	.side-main-menu-group-label {
+		font-weight: 700;
+		margin-top: 10px;
+	}
 
-.menu-branding {
-	position: fixed;
-	bottom: 20px;
-	left: 20px;
-	text-align: center;
+	.side-main-menu-group {
+		margin-bottom: 10px;
+		padding-left: 10px;
+	}
+
 }

@@ -1,0 +1,5 @@
+.header-bar {
+	@include container-background();
+	@include shadow();
+	height: $top-bar-height;
+}

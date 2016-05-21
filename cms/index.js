@@ -1,6 +1,6 @@
 {
 	$page_name: 'Homepage',
-	greeting: 'man',
+	greeting: 'dude',
 	superlative: '22222',
 	panel: {
 		title: 'Panel title',
@@ -31,5 +31,21 @@
 			product_name: 'Hobbes',
 			price: 123
 		},
+		{
+			product_name: 'Calvin',
+			price: 45
+		},
+		{
+			product_name: 'Calvin',
+			price: 45
+		},
+		{
+			product_name: 'Calvin',
+			price: 45
+		},
+		{
+			product_name: 'Calvin',
+			price: 45
+		}
 	]
 }

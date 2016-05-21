@@ -62,5 +62,38 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 			})
 	}
 
-	return content_service;
+	return content_service
 }]);
+
+enduro_admin_app.factory('format_service', function user_service() {
+	var format_service = {}
+
+	format_service.deslug = function(input) {
+		if(!input || !input[0]) {
+			return input
+		}
+		input = input[0].toUpperCase() + input.substring(1)
+
+		input = input.replace('\_', ' ')
+
+		return input
+	}
+
+	return format_service
+});
+
+enduro_admin_app.factory('terminator_service', function user_service() {
+	var terminator_service = {}
+
+	terminator_service.cleanup = function(input) {
+		var cleaned = {}
+		for(item in input) {
+			if(item[0] != '$') {
+				cleaned[item] = input[item]
+			}
+		}
+		return cleaned;
+	}
+
+	return terminator_service
+});
