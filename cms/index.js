@@ -2,7 +2,8 @@
 	$page_name: 'Homepage',
 	greeting: 'dude',
 	$greeting_de: 'schnitzel',
-	superlative: '22222',
+	$image_type: 'img',
+	image: 'http://vignette3.wikia.nocookie.net/candh/images/7/70/Calvin%26HobbesDartWarGames.jpg/revision/latest?cb=20140223090538',
 	// panel: {
 	// 	title: 'Panel title',
 	// 	subtitle: 'subtitle'

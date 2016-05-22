@@ -1,0 +1,13 @@
+@mixin input-accent($bottom-nudge: 0) {
+	position: relative;
+
+	&:after {
+		content: '';
+		bottom: $bottom-nudge;
+		left: 0;
+		position: absolute;
+		border: solid 5px transparent;
+		border-left-color: $primary-color;
+		border-bottom-color: $primary-color;
+	}
+}

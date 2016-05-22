@@ -5,20 +5,11 @@
 
 .form-control {
 	label {
+		@include input-accent(10px);
 		position: relative;
 		margin-bottom: 15px;
 		margin-top: 15px;
 		width: 100%;
-
-		&:after {
-			content: '';
-			bottom: 10px;
-			left: 0;
-			position: absolute;
-			border: solid 5px transparent;
-			border-left-color: $primary-color;
-			border-bottom-color: $primary-color;
-		}
 
 		> span {
 			@include font-size(xs);
