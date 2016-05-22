@@ -5,4 +5,5 @@
 .panel-body {
 	@include container-background();
 	padding: 30px;
+	position: relative;
 }

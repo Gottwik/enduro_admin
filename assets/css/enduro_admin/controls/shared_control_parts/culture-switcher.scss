@@ -1,0 +1,43 @@
+.culture-switcher {
+	font-size: 0px;
+	position: absolute;
+	top: -20px;
+	right: 0;
+	color: $white;
+	height: 20px;
+	background-color: $primary-color;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	text-transform: lowercase;
+
+	li {
+		display: inline-block;
+		letter-spacing: 0;
+	}
+
+	span {
+		@include font-size(sm);
+		position: relative;
+		top: -3px;
+		padding: 1px 5px;
+		border-radius: 4px;
+
+		&.active,
+		&:hover {
+			padding: 4px 8px 6px;
+		}
+
+		&:hover {
+			cursor: pointer;
+			background-color: darken($primary-color, 20%);
+			margin-left: -2px;
+			margin-right: -4px;
+		}
+
+		&.active {
+			background-color: darken($primary-color, 15%);
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
