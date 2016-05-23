@@ -13,9 +13,14 @@
 		border: solid 1px rgba($primary-color, .4);
 		margin-bottom: 10px;
 		float: left;
+		min-height: 73px;
+		min-width: 73px;
+		//background-color: $light-background-color;
 
 		img {
+			min-height: 50px;
 			max-height: 200px;
+			max-width: 100%;
 		}
 	}
 
@@ -32,7 +37,6 @@
 		text-align: center;
 		padding-top: 5px;
 		padding-left: 1px;
-		box-shadow: 0 0 3px rgba($black, .4), 1px 1px 12px rgba($black, .3);
 		cursor: pointer;
 		transition: background-color $quick-transition;
 

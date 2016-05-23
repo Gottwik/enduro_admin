@@ -4,6 +4,7 @@
 
 .panel-body {
 	@include container-background();
+	@include shadow();
 	padding: 30px;
 	position: relative;
 }

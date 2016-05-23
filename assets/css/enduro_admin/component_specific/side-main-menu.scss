@@ -3,11 +3,14 @@
 	@include shadow();
 	width: $side-menu-width;
 	padding: 20px;
+	padding-top: 120px;
 	z-index: 5;
+	position: fixed;
+	height: 100%;
 
 	.menu-branding {
 		position: fixed;
-		bottom: 20px;
+		top: 20px;
 		left: 20px;
 		text-align: center;
 	}

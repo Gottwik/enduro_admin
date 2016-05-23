@@ -1,8 +1,8 @@
 button,
 .btn {
+	@include font-size(sm);
 	background-color: $primary-color;
 	color: $white;
-	@include font-size(sm);
 	border: 0;
 	padding: 10px 30px 5px;
 	border-radius: 2px;

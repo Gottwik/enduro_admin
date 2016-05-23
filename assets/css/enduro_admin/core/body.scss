@@ -16,4 +16,8 @@ body {
 	z-index: -2;
 	top: 0;
 	overflow: hidden;
+
+	&.light {
+		//opacity: 0.6;
+	}
 }
