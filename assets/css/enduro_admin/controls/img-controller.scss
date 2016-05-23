@@ -28,11 +28,11 @@
 		border-radius: 40px;
 		position: absolute;
 		right: 15px;
-		bottom: 5px;
+		bottom: 15px;
 		text-align: center;
 		padding-top: 5px;
 		padding-left: 1px;
-		box-shadow: 0 0 3px rgba($black, 0.4), 1px 1px 12px rgba($black, 0.3);
+		box-shadow: 0 0 3px rgba($black, .4), 1px 1px 12px rgba($black, .3);
 		cursor: pointer;
 		transition: background-color $quick-transition;
 
