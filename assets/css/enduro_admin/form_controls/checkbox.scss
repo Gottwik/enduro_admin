@@ -1,0 +1,19 @@
+.form-control.checkbox {
+	label {
+
+		margin: 0;
+
+		&:after {
+			display: none;
+		}
+
+		> span {
+			position: static;
+		}
+
+		input {
+			width: auto;
+			display: inline-block;
+		}
+	}
+}
