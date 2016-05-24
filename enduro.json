@@ -1,3 +1,7 @@
 {
-	"static_path_prefix": "/admin"
+	"static_path_prefix": "/admin",
+	"s3": {
+		"bucket": "enduro.static",
+		"region": "eu-west-1"
+	}
 }
