@@ -2,4 +2,11 @@
 	@include container-background();
 	@include shadow();
 	height: $top-bar-height;
+	position: fixed;
+	width: calc(100% - #{$side-menu-width});
+	top: 0;
+	left: $side-menu-width;
+	z-index: 2;
+	text-align: right;
+	padding: 10px;
 }

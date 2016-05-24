@@ -2,11 +2,14 @@
 	@include container-background();
 	@include shadow();
 	width: $side-menu-width;
-	padding: 20px;
 	padding-top: 120px;
 	z-index: 5;
 	position: fixed;
 	height: 100%;
+
+	.side-menu-items {
+		padding: 20px;
+	}
 
 	.menu-branding {
 		position: fixed;

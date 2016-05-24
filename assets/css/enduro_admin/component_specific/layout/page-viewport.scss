@@ -1,6 +1,6 @@
 .page-viewport {
 	float: left;
-	width: calc(100% - #{$side-menu-width});
-	margin-left: $side-menu-width;
+	width: 100%;
 	height: 100%;
+	margin-top: $top-bar-height;
 }

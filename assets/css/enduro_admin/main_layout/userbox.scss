@@ -1,0 +1,18 @@
+.userbox {
+	@include container-background(.6);
+	@include shadow();
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+	.userbox-bar {
+		a {
+			@include button-hover();
+			padding: 10px 0;
+			display: block;
+			float: left;
+			width: 25%;
+			text-align: center;
+		}
+	}
+}

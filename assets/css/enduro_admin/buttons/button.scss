@@ -1,28 +1,34 @@
+button {
+	border: 0;
+}
+
 button,
 .btn {
 	@include font-size(sm);
+	@include button-hover();
 	background-color: $primary-color;
 	color: $white;
-	border: 0;
 	padding: 10px 30px 5px;
 	border-radius: 2px;
-	border-bottom: 5px transparent solid;
 	display: inline-block;
-	cursor: pointer;
 	user-select: none;
 	margin-bottom: 10px;
 
-	&:hover,
-	&:focus {
-		outline: none;
-		border-bottom: solid 5px darken($primary-color, 15%);
-		box-shadow: none;
+	i {
+		margin-right: 10px;
+		margin-left: -10px;
 	}
 
-	&:active {
-		outline: none;
-		border-bottom: solid 5px darken($primary-color, 30%);
-		box-shadow: none;
+
+	&.small {
+		@include font-size(xs);
+		padding: 4px 15px 0;
+
+		i {
+			margin-left: -7px;
+			margin-right: 7px;
+			position: relative;
+		}
 	}
 
 }

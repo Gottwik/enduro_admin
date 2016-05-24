@@ -4,7 +4,7 @@
 			{
 				$image_type: 'image',
 				image: 'http://vignette3.wikia.nocookie.net/candh/images/7/70/Calvin%26HobbesDartWarGames.jpg/revision/latest?cb=20140223090538',
-				text: 'Feel the shock',
+				text: 'Feel the breezee',
 				$text_de: 'feel the schnitzel',
 				$text_fr: 'feel the shock'
 			},

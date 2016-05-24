@@ -1,0 +1,17 @@
+@mixin button-hover() {
+	cursor: pointer;
+	border-bottom: 5px transparent solid;
+
+	&:hover,
+	&:focus {
+		outline: none;
+		border-bottom: solid 5px darken($primary-color, 15%);
+		box-shadow: none;
+	}
+
+	&:active {
+		outline: none;
+		border-bottom: solid 5px darken($primary-color, 30%);
+		box-shadow: none;
+	}
+}

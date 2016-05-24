@@ -1,3 +1,5 @@
 .inner-page-viewport {
 	padding: 40px;
+	width: calc(100% - #{$side-menu-width});
+	margin-left: $side-menu-width;
 }
