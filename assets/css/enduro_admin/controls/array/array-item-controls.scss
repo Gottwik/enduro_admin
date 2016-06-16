@@ -1,0 +1,17 @@
+.array-item-controls {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	background-color: $primary-color;
+	border-bottom-left-radius: 4px;
+
+	i {
+		color: $white;
+		padding: 3px 6px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: darken($primary-color, 20%);
+		}
+	}
+}
