@@ -1,4 +1,4 @@
 {
-	greeting: 'ttt',
+	greeting: 'mmm',
 	superlative: 'nice'
 }

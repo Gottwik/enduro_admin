@@ -15,11 +15,10 @@ $modal-width: 800px;
 	top: 0;
 	left: 50%;
 	margin-left: - $modal-width / 2;
-	width: 100%;
 	background-color: $white;
 	z-index: 50;
 	width: $modal-width;
 	margin-top: 100px;
 	padding: 50px 50px 40px;
-	box-shadow: 0px 0px 30px rgba($black, .1);
+	box-shadow: 0 0 30px rgba($black, .1);
 }

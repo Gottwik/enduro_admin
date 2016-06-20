@@ -1,0 +1,20 @@
+.form-control {
+	input[type="range"] {
+		width: 50%;
+		background: inherit;
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	.range-input {
+		span {
+			top: -10px;
+		}
+
+		&:after {
+			display: none;
+		}
+	}
+}
