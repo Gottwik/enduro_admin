@@ -10,3 +10,6 @@ $primary-text-color: $grey;
 $primary-background-color: #f7f7f7;
 $light-background-color: lighten($grey, 72%);
 $primary-color-hover: darken($primary-color, 20%);
+$white-hover-color: lighten($primary-color, 50%);
+
+$infobox-alert-color: #f5b6b6;

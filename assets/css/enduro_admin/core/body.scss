@@ -1,5 +1,6 @@
 body {
 	@include font-size(sm);
+	@include no-smooth-font();
 	font-family: 'Lato', sans-serif;
 	height: 100%;
 	color: $primary-text-color;

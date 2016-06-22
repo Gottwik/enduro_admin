@@ -49,3 +49,13 @@
 		}
 	}
 }
+
+.img-progress {
+	position: absolute;
+	width: 0%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba($black, 0.5);
+	pointer-events: none;
+}

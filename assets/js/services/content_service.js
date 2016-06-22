@@ -35,9 +35,6 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 
 	content_service.save_content = function(page_path, content) {
 		return $http.get(url_config.get_base_url() + 'save_cms', {params: {sid: $cookies.get('sid'), content: content, filename: page_path}})
-			.then(function(res) {
-				return res.data
-			})
 	}
 
 	content_service.get_globalized_options = function(globalizer_string) {
@@ -56,6 +53,10 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 
 	content_service.add_page = function(new_pagename, generator) {
 		return $http.get(url_config.get_base_url() + 'add_page', {params: {sid: $cookies.get('sid'), new_pagename: new_pagename, generator: generator}})
+	}
+
+	content_service.get_juicebox_enabled = function(new_pagename, generator) {
+		return $http.get(url_config.get_base_url() + 'check_juicebox_enabled', {params: {sid: $cookies.get('sid'), new_pagename: new_pagename, generator: generator}})
 	}
 
 	return content_service

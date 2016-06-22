@@ -1,4 +1,6 @@
 {
+	"project_name": "enduro admin",
+	"project_slg": "ea",
 	"static_path_prefix": "/admin",
 	"s3": {
 		"bucket": "enduro.static",
