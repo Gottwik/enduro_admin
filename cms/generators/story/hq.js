@@ -14,7 +14,7 @@
 				background_video: '/assets/img/videos/hq.mp4',
 				$veil_info: 'Select opacity of the veil.',
 				$veil_type: 'slider',
-				veil: '7',
+				veil: '43',
 				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
 				$veilcolor_type: 'colorpicker',
 				veilcolor: '#000000',
@@ -27,6 +27,12 @@
 			context: {
 				module_name: 'Intro',
 				social: true,
+				$veil_info: 'Select opacity of the veil.',
+				$veil_type: 'slider',
+				veil: 0,
+				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
+				$veilcolor_type: 'colorpicker',
+				veilcolor: '#000',
 				columns: [
 					{
 						title: 'We would [fail]{fail} had we just followed a trend and simply made a custom bike.',
@@ -49,6 +55,12 @@
 			module_type: 'simpleton',
 			context: {
 				module_name: 'Custom',
+				$veil_info: 'Select opacity of the veil.',
+				$veil_type: 'slider',
+				veil: 0,
+				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
+				$veilcolor_type: 'colorpicker',
+				veilcolor: '#000',
 				columns: [
 					{
 						title: 'We would fail had we just followed a trend and simply made a custom bike.'
@@ -90,6 +102,12 @@
 			module_type: 'simpleton',
 			context: {
 				module_name: 'Classic',
+				$veil_info: 'Select opacity of the veil.',
+				$veil_type: 'slider',
+				veil: 0,
+				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
+				$veilcolor_type: 'colorpicker',
+				veilcolor: '#000',
 				columns: [
 					{
 						title: 'We started with a classic and created a new definition of pioneer.',
@@ -132,6 +150,12 @@
 			module_type: 'simpleton',
 			context: {
 				module_name: 'Success',
+				$veil_info: 'Select opacity of the veil.',
+				$veil_type: 'slider',
+				veil: 0,
+				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
+				$veilcolor_type: 'colorpicker',
+				veilcolor: '#000',
 				columns: [
 					{
 						size: 6,
@@ -171,6 +195,12 @@
 			module_type: 'simpleton',
 			context: {
 				module_name: 'Husquarna now',
+				$veil_info: 'Select opacity of the veil.',
+				$veil_type: 'slider',
+				veil: 0,
+				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
+				$veilcolor_type: 'colorpicker',
+				veilcolor: '#000',
 				columns: [
 					{
 						title: 'Now, we’re making sure Husqvarna Motorcycles is equipped a legend of the street by reinventing the ways the bike is brought to the rider.'
@@ -206,9 +236,12 @@
 				$background_img_type: 'image',
 				background_img: '/assets/img/jumbos/road.jpg',
 				background_video: '/assets/img/videos/hq.mp4',
-				veil: true,
-				veil_strength: 9,
-				veil_shade: 'grey',
+				$veil_info: 'Select opacity of the veil.',
+				$veil_type: 'slider',
+				veil: '47',
+				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
+				$veilcolor_type: 'colorpicker',
+				veilcolor: '#000',
 				dark: true,
 				columns: [
 					{

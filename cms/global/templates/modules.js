@@ -26,13 +26,23 @@
 			module_type: 'simpleton',
 			$context_noframe: true,
 			context: {
-				$columns_min: 1,
-				$columns_max: 2,
+				$background_img_type: 'image',
+				background_img: '/assets/img/jumbos/road.jpg',
+				background_video: '/assets/img/videos/hq.mp4',
+				$veil_info: 'Select opacity of the veil.',
+				$veil_type: 'slider',
+				veil: 9,
+				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
+				$veilcolor_type: 'colorpicker',
+				veilcolor: '#000',
+				dark: true,
 				columns: [
 					{
-						title: '',
+						header: 'Be a pioneer',
+						title: 'You know what we’ve done with others. It’s your turn now. Punch it.',
 						$text_type: 'textarea',
-						text: ''
+						text: '',
+						purelink: 'Send us an email'
 					}
 				]
 			}

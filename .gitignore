@@ -4,3 +4,4 @@
 /node_modules
 /assets/css/sprites
 /enduro_secret.json
+/juicebox/**/*

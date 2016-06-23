@@ -15,12 +15,12 @@
 				background_video: '',
 				$veil_info: 'Select opacity of the veil.',
 				$veil_type: 'slider',
-				veil: '3',
+				veil: '42',
 				$veilcolor_info: 'Choose a color for the veil. Defaults to black.',
 				$veilcolor_type: 'colorpicker',
 				veilcolor: '#000000',
 				$jumbotext_type: 'textarea',
-				jumbotext: ''
+				jumbotext: 'this is awesome'
 			}
 		},
 		{
