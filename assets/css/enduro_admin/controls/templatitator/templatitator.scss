@@ -4,6 +4,7 @@
 	border: 1px solid $primary-color;
 	cursor: pointer;
 	margin-top: -10px;
+	margin-bottom: 20px;
 	transition: background-color $standard-transition;
 
 	&:hover {
@@ -17,11 +18,11 @@
 	i {
 		display: inline-block;
 		float: left;
-		font-size: 30px;
+		font-size: 20px;
 		color: $primary-color;
 		margin-right: 10px;
 		position: relative;
-		top: -2px;
+		top: 3px;
 		transition: color $standard-transition;
 	}
 

@@ -1,3 +1,0 @@
-{
-	company_name: 'something'
-}
