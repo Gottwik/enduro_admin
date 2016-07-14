@@ -2,3 +2,8 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+@mixin smooth-font() {
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}

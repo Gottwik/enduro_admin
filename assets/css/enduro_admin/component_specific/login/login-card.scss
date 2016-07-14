@@ -1,13 +1,11 @@
-.login-logo {
-	position: absolute;
-	top: -150px;
-	left: -142px;
-}
-
 .login-card {
 	width: 500px;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
+
+	.card-body {
+		border: 1px solid rgba($black, 0);
+	}
 }

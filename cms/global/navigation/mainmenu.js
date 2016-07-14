@@ -29,6 +29,7 @@
 					brand: 'Gasteiner',
 					label: 'A story about small choices',
 					link: 'Gasteiner',
+					$background_color_info: 'whatup',
 					$background_color_type: 'colorpicker',
 					background_color: '#8cb8b9',
 					$background_image_type: 'image',

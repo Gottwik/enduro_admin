@@ -1,15 +1,14 @@
 <div class="blur-background"></div>
 <div class="card login-card" ng-controller="login_controller">
-	<img class="login-logo" src="/admin/assets/img/logo.png">
+	<div class="login-logo">
+		{{>enduro_logo}}
+	</div>
 	<div class="card-body">
-		<div class="infobox" ng-class="{'hidden': juicebox_enabled}">
-			<i class="fa fa-exclamation-triangle"></i>
-			<span><b>Juicebox is not enabled</b> - Whatever you do here won't survive container restart or scaling</span>
-		</div>
 
 		<div>
 			<h2>Login please:</h2>
 			<div class="wedge-2x"></div>
+			<p class="lost-password-assistance">Looks like you are having issues logging in.</p>
 		</div>
 
 		<form ng-submit="submit()">
@@ -31,5 +30,8 @@
 			</div>
 			<div class="clearfix"></div>
 		</form>
+
+		{{>no-juicebox-warning}}
+
 	</div>
 </div>

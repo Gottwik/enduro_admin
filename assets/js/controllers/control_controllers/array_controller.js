@@ -13,4 +13,9 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', fun
 	$scope.deleteitem = function(key) {
 		$scope.context.splice(key, 1);
 	}
+
+	$scope.duplicate = function(key) {
+		console.log('asd')
+		$scope.context.push(angular.copy($scope.context[key]))
+	}
 }])

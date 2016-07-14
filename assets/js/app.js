@@ -21,7 +21,7 @@ enduro_admin_app.config(['$routeProvider',
 	function($routeProvider) {
 	$routeProvider
 		.when('/login', {
-			templateUrl: '/admin/assets/js/views/login.html',
+			templateUrl: '/admin/login.html',
 			controller: 'pagesplit_controller'
 		})
 		.when('/', {

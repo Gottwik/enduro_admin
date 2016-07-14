@@ -1,0 +1,12 @@
+.login-failed {
+
+	.card-body {
+		border: 1px solid $alert-color;
+	}
+
+	&.wiggle {
+		.card-body {
+			animation: wiggle .12s 3;
+		}
+	}
+}

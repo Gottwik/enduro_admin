@@ -6,7 +6,7 @@ enduro_admin_app.factory('user_service', ['$http', 'url_config', '$cookies', '$q
 				$cookies.put('sid', res.data.sid);
 				return res.data
 			}, function() {
-				console.log('error logging in')
+				return console.log('error logging in')
 			});
 	}
 
