@@ -1,6 +1,6 @@
 # Enduro
 
-[![npm version](https://badge.fury.io/js/enduro.svg)](https://badge.fury.io/js/enduro_admin)
+[![npm version](https://badge.fury.io/js/enduro_admin.svg)](https://badge.fury.io/js/enduro_admin)
 
 This is a admin interface for [enduro.js](https://github.com/kiskadigitalmedia/Enduro).
 
