@@ -10,10 +10,10 @@
 }
 
 .tooltipster-sidetip .tooltipster-content {
-	@include font-size(sm);
+	@include font-size(xs);
 	@include smooth-font();
 	color: $white;
-	padding: 6px 10px;
+	padding: 3px 6px;
 }
 
 .control-tooltip {
@@ -22,6 +22,6 @@
 	&:before {
 		position: relative;
 		top: 1px;
-		@include font-size(sm);
+		@include font-size(xs);
 	}
 }

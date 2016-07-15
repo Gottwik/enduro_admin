@@ -10,3 +10,11 @@
 .array-move-control {
 	cursor: move !important;
 }
+
+.dragging {
+	z-index: 999;
+
+	.object-container {
+		border: 1px dashed rgba($grey, .6) !important;
+	}
+}

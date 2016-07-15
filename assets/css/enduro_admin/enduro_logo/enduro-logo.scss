@@ -1,0 +1,14 @@
+
+#enduro-logo {
+	overflow: visible;
+
+	#lettering path {
+		fill: $base-logo-color;
+	}
+
+	#polygon {
+		fill: $base-logo-color;
+		transform-origin: center;
+		transition: all $standard-transition;
+	}
+}

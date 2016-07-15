@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	array controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('array_controller', ['$scope', 'format_service', function($scope, format_service) {
 
 	$scope.object_name = format_service.deslug($scope.key)
@@ -17,5 +20,9 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', fun
 	$scope.duplicate = function(key) {
 		console.log('asd')
 		$scope.context.push(angular.copy($scope.context[key]))
+	}
+
+	$scope.reorder = function() {
+		console.log('reorder')
 	}
 }])
