@@ -29,8 +29,9 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http'
 	function login_failed() {
 
 		$scope.failed_attempts++
+		console.log($scope.failed_attempts)
 
-		if($scope.failed_attempts > 10) {
+		if($scope.failed_attempts > 4) {
 			provide_lost_password_assistance()
 		}
 
@@ -47,7 +48,7 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http'
 	}
 
 	function provide_lost_password_assistance() {
-
+		$('.lost-password-assistance').show()
 	}
 
 }])

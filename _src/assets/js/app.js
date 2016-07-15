@@ -25,11 +25,11 @@ enduro_admin_app.config(['$routeProvider',
 			controller: 'pagesplit_controller'
 		})
 		.when('/', {
-			templateUrl: '/admin/assets/js/views/main_layout.html',
+			templateUrl: '/admin/layout/main_layout.html',
 			controller: 'pagesplit_controller'
 		})
 		.when('/cms/:page_path*', {
-			templateUrl: '/admin/assets/js/views/main_layout.html',
+			templateUrl: '/admin/layout/main_layout.html',
 			controller: 'pagesplit_controller'
 		})
 		.otherwise({ redirectTo: '/' })

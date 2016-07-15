@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "git://github.com/jquery/jquery.git#~2.1.4",
     "angular": "^1.5.5",
     "requirejs": "^2.2.0",
     "angular-route": "^1.5.5",
