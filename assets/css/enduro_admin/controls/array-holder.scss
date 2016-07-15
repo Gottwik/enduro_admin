@@ -7,6 +7,10 @@
 	padding-top: 30px;
 }
 
+.js-array-item:not(.dragging) {
+	transition: left $standard-transition, top $standard-transition;
+}
+
 .array-move-control {
 	cursor: move !important;
 }

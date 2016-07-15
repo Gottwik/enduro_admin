@@ -6,7 +6,7 @@
 
 	<div class="row">
 
-		<div ng-repeat="(key, value) in context track by $index" class="js-array-item col-md-{{terminated_context.size || 4}}" en-draggable>
+		<div ng-repeat="(key, value) in context" class="js-array-item col-md-{{terminated_context.size || 4}}" en-draggable>
 			<div class="card">
 
 				<div class="tiny-controls">
@@ -30,6 +30,7 @@
 			</div>
 			<div class="half-wedge"></div>
 		</div>
+
 
 		<div ng-if="!templatitator">
 			<div class="js-array-item col-md-4">

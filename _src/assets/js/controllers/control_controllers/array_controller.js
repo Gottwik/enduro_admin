@@ -18,11 +18,18 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', fun
 	}
 
 	$scope.duplicate = function(key) {
-		console.log('asd')
 		$scope.context.push(angular.copy($scope.context[key]))
 	}
 
-	$scope.reorder = function() {
-		console.log('reorder')
+	$scope.reorder = function(shift_from, shift_to) {
+
+		var save_from = $scope.context[shift_from]
+		for(var i = shift_from; i != shift_to; shift_from < shift_to ? i++ : i--) {
+			$scope.context[i] = $scope.context[i + (shift_from < shift_to ? 1 : -1)]
+		}
+		$scope.context[shift_to] = save_from
+
+		$scope.$apply()
 	}
+
 }])
