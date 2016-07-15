@@ -1,9 +1,10 @@
 .userbox {
 	@include container-background(.6);
 	@include shadow();
-	position: absolute;
+	position: fixed;
 	bottom: 0;
-	width: 100%;
+	width: $side-menu-width;
+	height: $userbox-height;
 
 	.userbox-bar {
 		a {

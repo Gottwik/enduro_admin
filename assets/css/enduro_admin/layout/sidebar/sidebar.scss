@@ -6,15 +6,19 @@
 	position: fixed;
 	height: 100%;
 
-	.side-menu-items {
+	.sidebar-items {
 		padding: 10px;
+		height: calc(100% - #{$sidebar-branding-height + $userbox-height});
+		overflow-y: auto;
 	}
 
 	.sidebar-branding {
-		padding: 10px;
-		text-align: center;
+		padding: 5px 10px;
+		height: $sidebar-branding-height;
+
 		svg {
-			height: 50px;
+			height: 100%;
+			max-width: 100%;
 		}
 	}
 
