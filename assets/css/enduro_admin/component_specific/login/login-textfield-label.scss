@@ -10,6 +10,7 @@
 		margin-left: 10px;
 		transition: top .3s ease, margin-left $standard-transition, color $standard-transition, font-size $standard-transition;
 		pointer-events: none;
+		left: 0;
 	}
 
 	input,
