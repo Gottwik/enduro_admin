@@ -19,7 +19,7 @@ enduro_admin_app
 			});
 
 			function mousemove(event) {
-				siblings = element.parent().find('[en-draggable]').toArray()
+				siblings = element.parent().find('> [en-draggable]').toArray()
 
 				y = event.pageY - startY;
 				x = event.pageX - startX;
