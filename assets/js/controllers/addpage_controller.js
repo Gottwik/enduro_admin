@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	addpage controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('addpage_controller', ['$scope', 'menu_cache', '$rootScope', 'content_service', 'format_service', '$location', function($scope, menu_cache, $rootScope, content_service, format_service, $location) {
 
 	$scope.addpage = function() {
@@ -13,21 +16,29 @@ enduro_admin_app.controller('addpage_controller', ['$scope', 'menu_cache', '$roo
 			}, function(err) {
 				console.log('adding page failed', err)
 			})
-
 	}
 
-	function add_page_to_cmslist(context, path, new_pagename) {
+	function add_page_to_cmslist(cmslist, path, new_pagename) {
 		if(path.length == 1) {
-			var newpage = angular.copy(context[path[0]][path[0]])
+			// try to get template which shares the name of the folder
+			var newpage = angular.copy(cmslist[path[0]][path[0]])
+			if(!newpage) {
+				newpage = {}
+				newpage.fullpath = cmslist.fullpath
+			}
+
 			newpage.name = format_service.deslug(new_pagename)
 			newpage.fullpath = newpage.fullpath.split('/').slice(0,-1).join('/') + '/' + format_service.slug(new_pagename)
-			context[path[0]][new_pagename] = newpage
+			newpage.hidden = false
+			cmslist[path[0]][new_pagename] = newpage
 
 			$location.path('cms/' + newpage.fullpath)
 
+			$rootScope.cmslist = cmslist
+
 
 		} else {
-			add_page_to_cmslist(context[path[0]], path.splice(1), new_pagename)
+			add_page_to_cmslist(cmslist[path[0]], path.splice(1), new_pagename)
 		}
 	}
 

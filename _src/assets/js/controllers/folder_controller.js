@@ -9,7 +9,7 @@ enduro_admin_app.controller('folder_controller', ['$scope', 'menu_cache', '$root
 
 	$scope.add_page = function() {
 		$rootScope.adding_generator = $scope.page
-		$rootScope.modal = '/admin/assets/js/views/modals/create_new_page.html'
+		$rootScope.modal = '/admin/modals/add_page_modal.html'
 	}
 
 }])

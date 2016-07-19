@@ -254,7 +254,12 @@ __templating_engine.registerHelper("partial", function (name, context, options) 
 // *	will return this-link
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper('slug', function (input) {
+__templating_engine.registerHelper('slug', function (text) {
+
+	if(!text) {
+		return ''
+	}
+
 	return text.toString().toLowerCase()
 		.replace(/\s+/g, '-')			// Replace spaces with -
 		.replace(/[^\w\-]+/g, '')		// Remove all non-word chars

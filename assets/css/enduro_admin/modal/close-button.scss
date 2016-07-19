@@ -1,0 +1,34 @@
+.close-button {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+
+	&:before,
+	&:after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 1px;
+		background-color: $black;
+		position: absolute;
+		top: calc(50% - 1px);
+		transition: transform $standard-transition;
+	}
+
+	&:before {
+		transform: rotate(45deg);
+	}
+
+	&:after {
+		transform: rotate(-45deg);
+	}
+
+	&:hover {
+		&:after {
+			transform: rotate(135deg);
+		}
+	}
+}

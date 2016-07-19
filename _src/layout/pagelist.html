@@ -1,4 +1,4 @@
-<div ng-repeat="page in cmslist">
+<div ng-repeat="page in cmslist track by $index">
 
 	<div ng-if="page.page && !page.hidden" ng-controller="menupage_controller">
 		<div class="menupage" ng-class="{'active': cmslist.active}" ng-click="pageclick()"><a href="#cms{{page.fullpath}}"><i class="fa fa-file-o" ng-class="{'fa-file': cmslist.active}"></i>{{page.name}}</a></div>
