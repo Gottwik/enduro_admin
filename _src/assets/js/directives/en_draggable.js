@@ -42,7 +42,6 @@ enduro_admin_app
 
 			// mousemove event
 			function mousemove(event) {
-
 				// stores array items by directive attribute
 				siblings = element.parent().find('> [en-draggable]').toArray()
 

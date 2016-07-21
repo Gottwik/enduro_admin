@@ -6,7 +6,7 @@
 enduro_admin_app
 .directive('enModal', ['$document', '$rootScope', function($document, $rootScope) {
 	return {
-        replace: true,
+		replace: true,
 		link: function(scope, element, attr) {
 
 			// click on the modal overlay

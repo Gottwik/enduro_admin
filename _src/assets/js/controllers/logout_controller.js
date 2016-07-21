@@ -14,5 +14,4 @@ enduro_admin_app.controller('logout_controller', ['$scope', 'user_service', '$lo
 			})
 	}
 
-
 }])

@@ -4,27 +4,25 @@
 // *	enables list items to be reordered by dragging
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app
-.directive('enModal', ['$document', '$rootScope', function($document, $rootScope) {
+.directive('enMatchheight', ['$document', function($document) {
 	return {
-		replace: true,
 		link: function(scope, element, attr) {
-
-			// click on the modal overlay
-			element.click(function(event) {
-				if(event.target == element[0]) {
-					close_self()
-					scope.$apply()
+			scope.$watch(
+				function () {
+					return $(element).html()
+				},
+				function () {
+					var maxheight = element.children().toArray()
+						.map(function(element, index) {
+							return $(element).outerHeight()
+						})
+						.reduce(function(prev, next) {
+							return Math.max(prev, next)
+						})
+					console.log(maxheight)
+					element.children().css('height', maxheight)
 				}
-			})
-
-			scope.close = function() {
-				close_self()
-			}
-
-			function close_self() {
-				// closes the modal
-				$rootScope.modal = ''
-			}
+			)
 		}
 	};
 }]);
