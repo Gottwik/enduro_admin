@@ -2,6 +2,7 @@
 	$products_max: 10,
 	products: [
 		{
+			$label_size: 6,
 			label: '1',
 			child: [
 				{

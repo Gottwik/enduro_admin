@@ -25,6 +25,11 @@ enduro_admin_app.controller('terminator_controller', ['$scope', 'format_service'
 			$scope.terminatedkey = '$' + $scope.key + '_' + $scope.current_culture
 		}
 
+		// field size
+		if($scope.terminated_context.size) {
+			$scope.size = 'specified-width col-md-' + $scope.terminated_context.size
+		}
+
 		// globalizer detection
 		if(typeof $scope.value === 'string' && $scope.value.substring(0, 2) == '@@') {
 			$scope.globalizer = $scope.value.substring(2)
@@ -36,6 +41,6 @@ enduro_admin_app.controller('terminator_controller', ['$scope', 'format_service'
 			$scope.templatitator = false
 		}
 
-    });
+    })
 
 }])

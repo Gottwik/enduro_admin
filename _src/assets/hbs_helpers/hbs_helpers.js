@@ -3,9 +3,13 @@ define([],function(){ return function(__templating_engine){
 // * ———————————————————————————————————————————————————————— * //
 // *    Add helper
 // *	Adds two numbers together
-// *	Usage:
 // *
-// *	{{add @index 2}}
+// *	Usage:
+// *		{{add @index 2}} // outputs @index + 2
+// *
+// *	also takes more arguments
+// *		{{add 1 2 3}} outputs 6
+// *
 // *
 // * ———————————————————————————————————————————————————————— * //
 __templating_engine.registerHelper("add", function () {
@@ -23,20 +27,31 @@ __templating_engine.registerHelper("add", function () {
 // *	render variable name if variable is true
 // *	Usage:
 // *
-// *	{{class 'gradient'}}
+// *		{{class 'gradient'}} // will render 'gradient' if class context.gradient is truthy
+// *
+// *	also takes multiple arguments
+// *
+// *		{{class 'gradient' 'dark' 'border'}}
 // *
 // *	Note: converts underscores to dashes
+// *
+// *		{{class 'gradient_bottom'}} // will render gradient-bottom
+// *
 // * ———————————————————————————————————————————————————————— * //
 __templating_engine.registerHelper('class', function() {
 	var context = this
 
+
+	// if no argument is provided renders empty string
 	if(arguments.length <= 1) {
 		return ''
 	}
-	return Array.prototype.slice.call(arguments).slice(0, -1)
+
+
+	return Array.prototype.slice.call(arguments).slice(0, -1) // takes all arguments without the handlebars context
 		.reduce(function(prev, next) {
 			return context[next]
-				? prev + ' ' + next
+				? prev + ' ' + next // adds argument name if the value is truthy
 				: prev + ''
 		}, '')
 		.replace(/_/g, '-') // converts underscores to dashes
@@ -76,6 +91,25 @@ __templating_engine.registerHelper("default", function (name, defaultValue, opti
 		: defaultValue
 });
 // * ———————————————————————————————————————————————————————— * //
+// *    divisible helper
+// *	Simple ternary-style helper that will choose between two ouputs based on if the variables provided is divisible by next argument
+// *	Usage:
+// *
+// *	{{divisible @index 2 'even' 'odd'}} // outputs even if @index % 2 == 0
+// *
+// * ———————————————————————————————————————————————————————— * //
+__templating_engine.registerHelper("divisible", function (number_to_dividee, divided_by, value_if_true, value_if_false) {
+
+	// if no false is provided
+	if(typeof value_if_false === 'object') {
+		value_if_false = ''
+	}
+
+	return number_to_dividee % divided_by == 0
+		? value_if_true
+		: value_if_false
+})
+// * ———————————————————————————————————————————————————————— * //
 // *    Files helper
 // *	Find all files in path and provide them as each
 // *	Usage:
@@ -100,11 +134,11 @@ __templating_engine.registerHelper('files', function(path, block) {
 // * ———————————————————————————————————————————————————————— * //
 // *    First helper
 // *	Gets the first element of an array or object
-// *	Usage:
 // *
-// *	{{#first people}}
-// *		<p>First person's age is: {{age}}</p>
-// *	{{/first}}
+// *	Usage:
+// *		{{#first people}}
+// *			<p>First person's age is: {{age}}</p>
+// *		{{/first}}
 // * ———————————————————————————————————————————————————————— * //
 __templating_engine.registerHelper('first', function(array, options) {
 	return options.fn(array[Object.keys(array)[0]])
@@ -153,14 +187,13 @@ __templating_engine.registerHelper('grouped_each', function(every, context, opti
 // * ———————————————————————————————————————————————————————— * //
 // *    htmlescape helper
 // *	Usage:
-// *
-// *	{{htmlescape 'www.example.com?p=escape spaces here'}}
+// *		{{htmlescape 'www.example.com?p=escape spaces here'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
 
 __templating_engine.registerHelper("uriencode", function (url) {
-	return encodeURI(url);
-});
+	return encodeURI(url)
+})
 // * ———————————————————————————————————————————————————————— * //
 // *    List helper
 // *	Provides #each functionality with a inline list
@@ -180,8 +213,10 @@ __templating_engine.registerHelper('list', function() {
 	for (var i = 0; i < arguments.length - 1; i++) {
 		accum += block.fn(arguments[i])
 	}
+
+	// returns the built string
 	return accum
-});
+})
 // * ———————————————————————————————————————————————————————— * //
 // *    Lorem helper
 // *	Generates dummy text with a specified length in words
@@ -332,6 +367,12 @@ __templating_engine.registerHelper('switch', function() {
 // *
 // * ———————————————————————————————————————————————————————— * //
 __templating_engine.registerHelper("ternary", function (condition, value_if_true, value_if_false) {
+
+	// if no false is provided
+	if(typeof value_if_false === 'object') {
+		value_if_false = ''
+	}
+
 	return condition
 		? value_if_true
 		: value_if_false
