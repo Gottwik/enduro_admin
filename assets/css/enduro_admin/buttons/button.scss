@@ -16,8 +16,11 @@ button,
 	font-weight: 400;
 
 	i {
+		@include font-size(icon);
 		margin-right: 10px;
 		margin-left: -10px;
+		position: relative;
+		top: 2px;
 	}
 
 

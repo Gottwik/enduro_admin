@@ -37,5 +37,11 @@
 			border-bottom: 1px $primary-color solid;
 			box-shadow: 0 0 6px rgba($primary-color, .5);
 		}
+
+		// override for remembered passwords
+		input:-webkit-autofill{
+			background-color: inherit !important;
+			background-image: none !important;
+		}
 	}
 }
