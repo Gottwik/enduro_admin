@@ -1,6 +1,6 @@
 //var $jq = jQuery.noConflict();
 
-var enduro_admin_app = angular.module('enduro_admin',['ngRoute', 'ngCookies', 'ngFileUpload'], function($rootScopeProvider) {
+var enduro_admin_app = angular.module('enduro_admin',['ngRoute', 'ngCookies', 'ngFileUpload', 'cfp.hotkeys'], function($rootScopeProvider) {
   $rootScopeProvider.digestTtl(15)
 })
 
@@ -30,7 +30,7 @@ enduro_admin_app.config(['$routeProvider',
 		})
 		.when('/cms/:page_path*', {
 			templateUrl: '/admin/layout/main_layout.html',
-			controller: 'pagesplit_controller'
+			controller: 'pagesplit_controller',
 		})
 		.otherwise({ redirectTo: '/' })
 	}]);

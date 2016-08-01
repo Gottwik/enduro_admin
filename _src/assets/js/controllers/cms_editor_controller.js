@@ -1,4 +1,5 @@
-enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$routeParams', 'content_service', 'culture_service', function($scope, $rootScope, $routeParams, content_service, culture_service) {
+enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$routeParams', 'content_service', 'culture_service', 'hotkeys',
+	function($scope, $rootScope, $routeParams, content_service, culture_service, hotkeys) {
 
 	// Get pages
 	content_service.get_content($routeParams.page_path)
@@ -19,7 +20,9 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		$scope.on_default_culture = $(obj.target).data('culture') == $scope.cultures[0]
 	}
 
-	$scope.publish = function() {
+	$scope.publish = function(e) {
+		// e.preventDefault()
+
 		$scope.publishing = true
 
 		content_service.save_content($routeParams.page_path, $scope.context)
@@ -42,5 +45,15 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		}
 		return false
 	}
+
+	hotkeys.bindTo($scope)
+	.add({
+		combo: ['mod+s', 'mod+enter'],
+		description: 'publish current page',
+		callback: function(e) {
+			e.preventDefault()
+			$scope.publish()
+		}
+	})
 
 }])

@@ -24,6 +24,7 @@
     "bootstrap": "v4.0.0-alpha.2",
     "ng-file-upload": "^12.0.4",
     "font-awesome": "^4.6.3",
-    "tooltipster": "^4.0.2"
+    "tooltipster": "^4.0.2",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#1.5.0"
   }
 }
