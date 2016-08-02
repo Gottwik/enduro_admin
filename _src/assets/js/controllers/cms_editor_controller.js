@@ -50,6 +50,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 	.add({
 		combo: ['mod+s', 'mod+enter'],
 		description: 'publish current page',
+		allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
 		callback: function(e) {
 			e.preventDefault()
 			$scope.publish()
