@@ -1,6 +1,6 @@
-<div class="form-control col-md-12">
+<div class="form-control col-md-12" en-textarea>
 	<label>
 		<span>{{formated_key}}</span>
-		<textarea ng-model="context[terminatedkey]" ng-bind="current_culture"></textarea>
+		<textarea ng-model="context[terminatedkey]" ngf-drop="upload($files)" ng-bind="current_culture"></textarea>
 	</label>
 </div>

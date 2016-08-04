@@ -31,7 +31,7 @@ enduro_admin_app.controller('image_controller', ['$scope', 'Upload', 'url_config
 			var progress = parseInt(100.0 * evt.loaded / evt.total)
 			$scope.progress = progress
 			console.log(progress)
-		});
+		})
 	};
 
 	$scope.delete_image = function() {
