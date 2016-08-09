@@ -59,5 +59,9 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 		return $http.get(url_config.get_base_url() + 'check_juicebox_enabled', {params: {sid: $cookies.get('sid'), new_pagename: new_pagename, generator: generator}})
 	}
 
+	content_service.get_temp_page = function(page_path, content) {
+		return $http.post(url_config.get_base_url() + 'get_temp_page', {sid: $cookies.get('sid'), content: content, filename: page_path})
+	}
+
 	return content_service
 }]);

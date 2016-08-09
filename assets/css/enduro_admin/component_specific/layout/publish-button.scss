@@ -1,6 +1,26 @@
 .publish-button {
 
+	transition: background-color $standard-transition;
+
 	&.publishing {
 		background-color: $grey;
+
+		i {
+			animation: cloud-pulse 1s ease infinite;
+		}
+	}
+}
+
+@keyframes cloud-pulse {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(.7);
+	}
+
+	100% {
+		transform: scale(1);
 	}
 }

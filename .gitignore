@@ -1,6 +1,6 @@
-!/_src/enduro_login.html
 /assets/vendor
 /node_modules
 /assets/css/sprites
 /enduro_secret.json
 /juicebox/**/*
+/_src/t/*

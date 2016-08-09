@@ -4,7 +4,7 @@
 // *	adds features to textarea
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app
-.directive('enTextarea', ['$document', 'Upload', 'url_config', '$cookies', function($document, Upload, url_config, $cookies) {
+.directive('enTextarea', ['$document', 'url_config', '$cookies', 'image_service', function($document, url_config, $cookies, image_service) {
 	return {
 		link: function(scope, element, attr) {
 
@@ -23,7 +23,6 @@ enduro_admin_app
 
 				// allow tab character
 				textarea.keydown(function(event) {
-						console.log('asd')
 					if (event.keyCode == 9) {
 						// get caret position/selection
 						var val = this.value
@@ -42,6 +41,11 @@ enduro_admin_app
 
 				// dropped file
 				textarea.on('drop', function(event) {
+					event.preventDefault()
+
+					var self = this
+					var selection_start = self.selectionStart
+
 					var files = event.originalEvent.dataTransfer.files
 
 					// just return if there are no files
@@ -52,28 +56,34 @@ enduro_admin_app
 					// picks the first file
 					var file = files[0]
 
-					Upload.upload({
-						url: url_config.get_base_url() + 'img_upload',
-						data: {
-							sid: $cookies.get('sid'),
-							file: file
-						}
-					}).then(function (res) {
-						if(res.data.success) {
-							console.log('uploaded', res.data.image_url)
-							textarea.val(textarea.val() + '![](' + res.data.image_url + ')')
-						} else {
-							console.log('upload not successfull')
-						}
-					}, function (res) {
-						console.log('Error status: ' + res.status)
-					}, function (evt) {
-						var progress = parseInt(100.0 * evt.loaded / evt.total)
-
-						console.log(progress)
-					})
+					upload_image_to_textarea(file)
 
 				})
+
+				textarea.on('paste', function(event) {
+					// use event.originalEvent.clipboard for newer chrome versions
+					var items = (event.clipboardData  || event.originalEvent.clipboardData).items;
+
+					// find pasted image among pasted items
+					var blob = null;
+					for (var i = 0; i < items.length; i++) {
+						if (items[i].type.indexOf("image") === 0) {
+							blob = items[i].getAsFile();
+						}
+					}
+
+					upload_image_to_textarea(blob)
+
+				})
+
+				function upload_image_to_textarea(file) {
+					image_service.upload_image(file)
+						.then(function(image_url) {
+							var markdown_link = '![](' + image_url + ')'
+							textarea.val(textarea.val() + markdown_link)
+						})
+				}
+
 			}
 		}
 	};
