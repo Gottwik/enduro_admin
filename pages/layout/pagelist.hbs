@@ -1,9 +1,11 @@
 <div ng-repeat="page in cmslist track by $index">
 
+	{{!-- page --}}
 	<div ng-if="page.page && !page.hidden" ng-controller="menupage_controller">
 		<div class="menupage" ng-class="{'active': cmslist.active}" ng-click="pageclick()"><a href="#cms\{{page.fullpath}}"><i class="fa fa-file-o" ng-class="{'fa-file': cmslist.active}"></i>\{{page.name}}</a></div>
 	</div>
 
+	{{!-- folder --}}
 	<div ng-if="page.folder" ng-controller="folder_controller">
 
 		<div class="menufolder" ng-click="folderclick()"><i class="fa fa-folder-o" ng-class="{'fa-folder-open-o': cmslist.open}"></i>\{{page.name}}</div>

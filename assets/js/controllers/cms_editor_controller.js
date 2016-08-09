@@ -6,14 +6,15 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		.then(function(res){
 			$scope.page_name = res.page_name.split('/').splice(-1)[0]
 			$scope.context = res.context
-		})
+			$scope.no_page_associated = res.no_page_associated
+		}, function() {})
 
 	culture_service.get_cultures()
 		.then(function(res){
 			$scope.cultures = res;
 			$scope.current_culture = res[0] || ''
 			$scope.on_default_culture = $scope.current_culture == res[0]
-		})
+		}, function() {})
 
 	$scope.change_culture = function(obj) {
 		$scope.current_culture = $(obj.target).data('culture')
@@ -26,6 +27,8 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		content_service.save_content($routeParams.page_path, $scope.context)
 			.then(() => {
 				$scope.publishing = false
+			}, () => {
+				$scope.publishing = false
 			})
 	}
 
@@ -35,7 +38,6 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		content_service.get_temp_page($routeParams.page_path, $scope.context)
 			.then((temp_destination_path) => {
 
-				console.log(temp_destination_path)
 				$scope.temping = false
 				if($scope.tempwindow && $scope.tempwindow.location.hostname) {
 					$scope.tempwindow.focus()
@@ -44,6 +46,8 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 					$scope.tempwindow = window.open('/' + temp_destination_path.data, 'enduro temp window')
 				}
 
+			}, () => {
+				$scope.temping = false
 			})
 	}
 

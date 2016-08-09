@@ -1,0 +1,32 @@
+<div class="modal" en-modal ng-controller="login_controller">
+	<div class="modal-body login-card">
+
+		<div class="close-button" ng-click="close()"></div>
+
+		<div>
+			<h2>Whoow</h2>
+			<div class="wedge-2x"></div>
+			<p>Your session expired. Log in to continue your work</p>
+		</div>
+
+		<form ng-submit="submit()">
+			<div class="form-row">
+				<label class="login-textfield-label">
+					<input type="text" ng-model="enduro_username" required tabindex="1">
+					<span>Username</span>
+				</label>
+			</div>
+			<div class="form-row">
+				<label class="login-textfield-label">
+					<input type="password" ng-model="enduro_password" required tabindex="2">
+					<span>Password</span>
+				</label>
+			</div>
+			<div class="form-row">
+				<div class="wedge-2x"></div>
+				<button id="submit" type="submit" class="pull-right" tabindex="3">Submit</button>
+			</div>
+			<div class="clearfix"></div>
+		</form>
+	</div>
+</div>

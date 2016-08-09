@@ -45,6 +45,7 @@ enduro_admin_app.run(['$rootScope', '$location', 'user_service', function($rootS
 					$location.path('/login')
 				}
 			}, function(){
+				console.log('asd1')
 				$location.path('/login')
 			})
 	})

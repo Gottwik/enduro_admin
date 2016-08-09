@@ -7,12 +7,17 @@
 		margin-bottom: 4px;
 		padding: 11px 15px 10px;
 		tab-size : 4;
+		background-color: $white;
 
 		// modifiers
 		&.markdown {
 			height: 70vh;
 			font-family: "Lucida Console", Monaco, monospace;
 			font-size: 13px;
+		}
+
+		&.uploading {
+			animation: pulse 1s ease infinite;
 		}
 	}
 }

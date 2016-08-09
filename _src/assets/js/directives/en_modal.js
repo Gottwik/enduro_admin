@@ -9,6 +9,8 @@ enduro_admin_app
 		replace: true,
 		link: function(scope, element, attr) {
 
+			$('body').addClass('modal-open')
+
 			// click on the modal overlay
 			element.click(function(event) {
 				if(event.target == element[0]) {
@@ -21,8 +23,9 @@ enduro_admin_app
 				close_self()
 			}
 
+			// closes the modal
 			function close_self() {
-				// closes the modal
+				$('body').removeClass('modal-open')
 				$rootScope.modal = ''
 			}
 		}

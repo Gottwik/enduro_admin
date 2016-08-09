@@ -68,7 +68,9 @@ enduro_admin_app
 					var blob = null;
 					for (var i = 0; i < items.length; i++) {
 						if (items[i].type.indexOf("image") === 0) {
-							blob = items[i].getAsFile();
+							blob = items[i].getAsFile()
+							blob.name = 'cp.' + blob.type.split('/').pop()
+							console.log(blob)
 						}
 					}
 
@@ -76,10 +78,13 @@ enduro_admin_app
 
 				})
 
+
 				function upload_image_to_textarea(file) {
+					textarea.addClass('uploading')
 					image_service.upload_image(file)
 						.then(function(image_url) {
-							var markdown_link = '![](' + image_url + ')'
+							//textarea.removeClass('uploading')
+							var markdown_link = '\n\n![](' + image_url + ')'
 							textarea.val(textarea.val() + markdown_link)
 						})
 				}

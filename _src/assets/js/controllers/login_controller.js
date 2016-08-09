@@ -18,7 +18,11 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http'
 		user_service.login_by_password($scope.enduro_username, $scope.enduro_password)
 			.then(function(data){
 				if(data.success) {
-					$location.path('/cms/index')
+					// go away from login page or stay on current page
+					if($location.path() == '/login') {
+						$location.path('/cms/index')
+					}
+					$rootScope.modal = ''
 				} else {
 					login_failed()
 				}

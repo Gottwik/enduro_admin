@@ -1,4 +1,4 @@
-enduro_admin_app.factory('culture_service', ['$http', 'url_config', '$cookies', function culture_service($http, url_config, $cookies) {
+enduro_admin_app.factory('culture_service', ['$http', 'url_config', '$cookies', 'user_service', function culture_service($http, url_config, $cookies, user_service) {
 	var culture_service = {};
 
 	culture_service.get_cultures = function(username, password) {
@@ -9,10 +9,8 @@ enduro_admin_app.factory('culture_service', ['$http', 'url_config', '$cookies', 
 				} else {
 					console.log('error getting page list')
 				}
-			}, function() {
-				console.log('error getting page list')
-			});
+			}, user_service.error)
 	}
 
 	return culture_service
-}]);
+}])

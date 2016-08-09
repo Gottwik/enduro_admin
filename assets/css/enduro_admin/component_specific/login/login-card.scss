@@ -8,4 +8,8 @@
 	.card-body {
 		border: 1px solid rgba($black, 0);
 	}
+
+	.modal & {
+		transform: inherit;
+	}
 }

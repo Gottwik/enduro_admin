@@ -9,4 +9,8 @@
 	z-index: 2;
 	text-align: right;
 	padding: 10px;
+
+	.modal-open & {
+		padding-right: 25px;
+	}
 }

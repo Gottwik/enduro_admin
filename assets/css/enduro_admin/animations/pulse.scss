@@ -1,0 +1,13 @@
+@keyframes pulse {
+	0% {
+		background-color: $white
+	}
+
+	30% {
+		background-color: rgba($primary-color, .05)
+	}
+
+	0% {
+		background-color: $white
+	}
+}

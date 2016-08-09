@@ -6,6 +6,12 @@ body {
 	color: $primary-text-color;
 	font-weight: 300;
 	background-color: $primary-background-color;
+
+	// events
+	&.modal-open {
+		overflow: hidden;
+		margin-right: 15px;
+	}
 }
 
 .full-background {
