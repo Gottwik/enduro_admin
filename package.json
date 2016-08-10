@@ -1,6 +1,6 @@
 {
   "name": "enduro_admin",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "",
   "main": "assets/vendor/enduro/index.js",
   "scripts": {
