@@ -8,6 +8,7 @@ $modal-width: 800px;
 	top: 0;
 	left: 0;
 	z-index: 50;
+	animation: modal-in .3s ease 1;
 }
 
 .modal-body {
@@ -23,4 +24,14 @@ $modal-width: 800px;
 	@include container-background();
 	@include shadow();
 	@include rounded-corners();
+}
+
+@keyframes modal-in {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }

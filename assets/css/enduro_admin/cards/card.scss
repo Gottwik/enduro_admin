@@ -7,4 +7,8 @@
 	@include shadow();
 	@include rounded-corners();
 	padding: 50px 50px 40px;
+
+	@include media-breakpoint-down(sm) {
+		padding: 30px 20px 20px;
+	}
 }

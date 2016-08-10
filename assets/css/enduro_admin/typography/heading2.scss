@@ -2,4 +2,10 @@ h2 {
 	@include font-size(lg);
 	font-weight: 300;
 	margin-top: -20px;
+
+	i {
+		position: relative;
+		top: -2px;
+		margin-right: 5px;
+	}
 }

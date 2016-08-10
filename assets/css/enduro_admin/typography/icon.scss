@@ -1,0 +1,8 @@
+i,
+.icon {
+
+
+	&.large {
+		@include font-size(md);
+	}
+}

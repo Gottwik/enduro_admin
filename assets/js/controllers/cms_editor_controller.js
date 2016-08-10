@@ -4,9 +4,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 	// Get pages
 	content_service.get_content($routeParams.page_path)
 		.then(function(res){
-			$scope.page_name = res.page_name.split('/').splice(-1)[0]
-			$scope.context = res.context
-			$scope.no_page_associated = res.no_page_associated
+			$scope = angular.extend($scope, res)
 		}, function() {})
 
 	culture_service.get_cultures()

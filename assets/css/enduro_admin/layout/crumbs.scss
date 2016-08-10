@@ -1,0 +1,16 @@
+.crumbs {
+	li {
+		display: inline-block;
+		color: lighten($grey, 30%);
+
+		&:not(:first-child):before {
+			content: '/';
+			margin: 0 5px;
+			color: $primary-color;
+			@include font-size(md);
+			position: relative;
+			top: 1px;
+		}
+
+	}
+}

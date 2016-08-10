@@ -1,4 +1,4 @@
-enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Upload', function user_service(url_config, $cookies, $q, Upload) {
+enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Upload', 'user_service', function image_service(url_config, $cookies, $q, Upload, user_service) {
 	var image_service = {};
 
 
@@ -17,10 +17,9 @@ enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Uplo
 				} else {
 					console.log('upload not successfull')
 				}
-			}, function (res) {
-				console.log('Error status: ' + res.status)
-				reject()
-			}, function (evt) {
+			},
+			user_service.error,
+			function (evt) {
 				var progress = parseInt(100.0 * evt.loaded / evt.total)
 
 				console.log(progress)
