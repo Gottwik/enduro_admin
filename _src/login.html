@@ -73,6 +73,10 @@
 		<div>
 			<h2>Login please:</h2>
 			<div class="wedge-2x"></div>
+			<div class="infobox" ng-class="{'hidden': !settings.login_message}">
+				<i class="fa fa-exclamation-triangle"></i>
+				<span>{{settings.login_message}}</span>
+			</div>			<div class="wedge-2x"></div>
 			<p class="hidden lost-password-assistance">Looks like you are having issues logging in. For security reasons there is no recovery, contact the site's administrator</p>
 		</div>
 
@@ -96,7 +100,7 @@
 			<div class="clearfix"></div>
 		</form>
 		<div class="wedge-2x"></div>
-		<div class="infobox" ng-class="{'hidden': juicebox_enabled}">
+		<div class="infobox" ng-class="{'hidden': settings.juicebox_enabled}">
 			<i class="fa fa-exclamation-triangle"></i>
 			<span>Juicebox is not enabled - Whatever you do here won't survive container restart or scaling</span>
 		</div>

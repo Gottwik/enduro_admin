@@ -30,15 +30,28 @@ enduro_admin_app.factory('user_service', ['$http', 'url_config', '$cookies', '$q
 
 	service.error = function(err) {
 
+		// session expired
 		if(err.status == 401) {
 			open_login_modal()
 		}
+
+		// does not have enough access rights
+		if(err.status == 403) {
+			open_no_rights_modal()
+		}
+
 		return $q.reject(false)
 	}
 
 	function open_login_modal() {
 		if(!$rootScope.modal) {
 			$rootScope.modal = '/admin/modals/login_modal.html'
+		}
+	}
+
+	function open_no_rights_modal() {
+		if(!$rootScope.modal) {
+			$rootScope.modal = '/admin/modals/no_rights_modal.html'
 		}
 	}
 

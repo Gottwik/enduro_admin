@@ -43,9 +43,10 @@ enduro_admin_app.run(['$rootScope', '$location', 'user_service', function($rootS
 			.then(function(data) {
 				if(!data.data.success) {
 					$location.path('/login')
+				} else {
+					$rootScope.user = data.data.user
 				}
 			}, function(){
-				console.log('asd1')
 				$location.path('/login')
 			})
 	})

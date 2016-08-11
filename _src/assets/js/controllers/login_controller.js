@@ -7,10 +7,12 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http'
 	$scope.failed_attempts = 0
 
 	// detects if juicebox(versioning for cms at aws) to provide feedback to user if it is not enables
-	$scope.juicebox_enabled = true
-	content_service.get_juicebox_enabled()
-		.then((juicebox_enabled) => {
-			$scope.juicebox_enabled = juicebox_enabled.data
+	$scope.settings = {asd: 'asd'}
+	$scope.settings.juicebox_enabled = true
+	content_service.get_application_settings()
+		.then((settings) => {
+			$scope.settings = settings.data
+			console.log($scope.settings.login_message)
 		})
 
 	// user submits the login form

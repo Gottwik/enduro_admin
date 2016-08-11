@@ -1,8 +1,8 @@
 <div ng-controller="cms-editor-controller">
 	<div class="header-bar">
 		<div class="page-search">a</div>
-		<div class="btn btn-minor small publish-button" ng-click="temp()" ng-class="{'publishing': temping}" ng-if="!no_page_associated"><i class="fa fa-bolt"></i>Temp</div>
-		<div class="btn btn-success small publish-button" ng-click="publish()" ng-class="{'publishing': publishing}"><i class="fa fa-cloud"></i>Publish</div>
+		<div class="btn btn-minor small publish-button" ng-click="temp()" ng-class="{'publishing': temping" ng-if="!no_page_associated"><i class="fa fa-bolt"></i>Temp</div>
+		<div class="btn btn-success small publish-button" ng-click="publish()" ng-class="{'publishing': publishing, 'disabled': is_demo}"><i class="fa fa-cloud"></i>Publish</div>
 	</div>
 	<div class="page-viewport">
 		<div class="panel">

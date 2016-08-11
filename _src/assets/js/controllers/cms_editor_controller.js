@@ -49,6 +49,9 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 			})
 	}
 
+	// decides if the application is demo
+	$scope.is_demo = $rootScope.user.tags && $rootScope.user.tags.indexOf('demo') + 1
+
 	// Helper functions
 	$scope.isString = function(item) { return angular.isString(item) }
 	$scope.isNumber = function(item) { return angular.isNumber(item) }

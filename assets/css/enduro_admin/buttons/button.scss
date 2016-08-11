@@ -23,7 +23,7 @@ button,
 		top: 2px;
 	}
 
-
+	// modifiers
 	&.small {
 		@include font-size(xs);
 		padding: 4px 15px 0;
@@ -32,6 +32,15 @@ button,
 			margin-left: -7px;
 			margin-right: 7px;
 			position: relative;
+		}
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+		background-color: lighten($grey, 50%);
+
+		&:hover {
+			border-bottom: 5px transparent solid;
 		}
 	}
 

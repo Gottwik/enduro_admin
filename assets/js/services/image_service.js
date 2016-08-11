@@ -15,6 +15,7 @@ enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Uplo
 					console.log('uploaded', res.data.image_url)
 					resolve(res.data.image_url)
 				} else {
+					console.log(res)
 					console.log('upload not successfull')
 				}
 			},

@@ -15,7 +15,6 @@
 			image: 'https://static.pexels.com/photos/62097/pexels-photo-62097-large.jpeg'
 		}
 	],
-
 	$tested_foods_min: 3,
 	$tested_foods_max: 3,
 	tested_foods: [
@@ -36,9 +35,8 @@
 			title: 'Gourmet foods',
 			$text_type: 'textarea',
 			text: 'We will test your hotdogs. Additional services include determining optimal condiment ratios.'
-		},
+		}
 	],
-
 	testimonial: {
 		$image_size: 6,
 		$image_type: 'image',
