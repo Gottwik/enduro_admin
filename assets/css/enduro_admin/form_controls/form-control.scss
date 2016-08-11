@@ -1,3 +1,5 @@
 .form-control:not(.specified-width) {
 	width: 100%;
+	padding-right: ($grid-gutter-width / 2);
+	padding-left:  ($grid-gutter-width / 2);
 }

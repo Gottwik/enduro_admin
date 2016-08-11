@@ -1,5 +1,5 @@
 .login-card {
-	max-width: 500px;
+	width: 500px;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -20,5 +20,9 @@
 		transform: none;
 		margin: 0 auto 0;
 		padding: 20px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		width: auto;
 	}
 }
