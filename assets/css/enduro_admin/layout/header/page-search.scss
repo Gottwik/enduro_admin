@@ -1,3 +1,21 @@
 .page-search {
 	float: left;
+	position: relative;
+
+		input {
+			background: transparent;
+			border: 0;
+			border-bottom: 1px $light-grey solid;
+			height: 32px;
+			padding-left: 30px;
+			width: 200px;
+		}
+
+		i {
+			position: absolute;
+			left: 5px;
+			top: 7px;
+			color: lighten($grey, 40%);
+			@include font-size(icon);
+		}
 }

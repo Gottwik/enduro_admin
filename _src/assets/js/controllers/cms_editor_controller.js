@@ -72,7 +72,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 	.add({
 		// publish hotkey
 		combo: ['mod+s', 'mod+enter'],
-		description: 'publish current page',
+		description: 'Publish current page',
 		allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
 		callback: function(e) {
 			e.preventDefault()
@@ -82,11 +82,21 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 	.add({
 		// temp hotkey
 		combo: ['mod+d', 'mod+t'],
-		description: 'temp current page',
+		description: 'Temp current page',
 		allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
 		callback: function(e) {
 			e.preventDefault()
 			$scope.temp()
+		}
+	})
+	.add({
+		// temp hotkey
+		combo: ['mod+p'],
+		description: 'Search for page',
+		allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+		callback: function(e) {
+			e.preventDefault()
+			$('.page-search-input').focus()
 		}
 	})
 

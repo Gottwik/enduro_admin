@@ -2,7 +2,8 @@ enduro_admin_app.controller('mainmenu_controller', ['$scope', 'content_service',
 
 	content_service.get_cms_list()
 		.then(function(data) {
-			$rootScope.cmslist = data
+			$rootScope.cmslist = data.structured
+			$rootScope.flat_cmslist = data.flat
 		})
 
 }])

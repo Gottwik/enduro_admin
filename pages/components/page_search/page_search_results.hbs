@@ -1,0 +1,6 @@
+<div class="page-search-results" ng-show="search_shown">
+	<div class="result" ng-repeat="result in page_search_results track by $index" tabindex="-1">
+		<span class="page-result-title">\{{result.name}}</span>
+		<span class="page-result-path">\{{result.fullpath}}</span>
+	</div>
+</div>

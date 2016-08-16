@@ -2,6 +2,7 @@
 $white: #fff;
 $black: #28231f;
 $grey: #423d3d;
+$light-grey: lighten($grey, 60%);
 
 // primary color
 $primary-color: rgba(81, 203, 238, 1);

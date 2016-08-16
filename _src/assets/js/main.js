@@ -4,7 +4,6 @@ require.config({
 	paths: {
 		jquery: 'vendor/jquery/dist/jquery',
 		tooltipster: 'vendor/tooltipster/dist/js/tooltipster.bundle'
-
 	},
 
 	map: {

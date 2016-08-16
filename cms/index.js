@@ -20,7 +20,7 @@
 	tested_foods: [
 		{
 			icon: 'envira',
-			title: 'Hot dogs',
+			title: 'Hot dogsss',
 			$text_type: 'textarea',
 			text: 'We will test your hotdogs. Additional services include determining optimal condiment ratios.'
 		},

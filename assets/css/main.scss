@@ -7,8 +7,6 @@
 // Mixins
 @import 'mixins/*';
 
-// Mixins
-@import 'enduro_admin/*';
 
 @import '../vendor/kiskabricks_wedgecss/wedge';
 
@@ -16,3 +14,6 @@ $fa-font-path: '../vendor/font-awesome/fonts';
 @import '../vendor/font-awesome/scss/font-awesome';
 @import '../vendor/tooltipster/dist/css/tooltipster.bundle.min.css';
 @import '../vendor/angular-hotkeys/build/hotkeys.min.css';
+
+
+@import 'enduro_admin/*';

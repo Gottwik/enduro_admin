@@ -1,0 +1,28 @@
+.page-search-results {
+	position: absolute;
+	@include container-background(5);
+	@include shadow();
+	left: -10px;
+	top: #{$top-bar-height - 10px};
+	text-align: left;
+	width: 400px;
+	max-height: calc(100vh - #{$top-bar-height + 100px});
+	overflow: auto;
+
+	.result {
+		padding: 5px 40px;
+
+		.active,
+		&:hover,
+		&:focus {
+			background-color: #f00;
+		}
+	}
+
+	.page-result-title {
+		font-weight: 400;
+		display: block;
+		margin-bottom: -8px;
+	}
+
+}
