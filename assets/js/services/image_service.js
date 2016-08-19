@@ -1,9 +1,8 @@
-enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Upload', 'user_service', function image_service(url_config, $cookies, $q, Upload, user_service) {
-	var image_service = {};
+enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Upload', 'user_service', function image_service (url_config, $cookies, $q, Upload, user_service) {
+	var image_service = {}
 
-
-	image_service.upload_image = function(file) {
-		return $q(function(resolve, reject) {
+	image_service.upload_image = function (file) {
+		return $q(function (resolve, reject) {
 			Upload.upload({
 				url: url_config.get_base_url() + 'img_upload',
 				data: {
@@ -11,7 +10,7 @@ enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Uplo
 					file: file
 				}
 			}).then(function (res) {
-				if(res.data.success) {
+				if (res.data.success) {
 					console.log('uploaded', res.data.image_url)
 					resolve(res.data.image_url)
 				} else {
@@ -29,4 +28,4 @@ enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Uplo
 	}
 
 	return image_service
-}]);
+}])

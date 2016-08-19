@@ -1,15 +1,15 @@
-enduro_admin_app.controller('object_controller', ['$scope', 'format_service', '$rootScope', function($scope, format_service, $rootScope) {
+enduro_admin_app.controller('object_controller', ['$scope', 'format_service', function ($scope, format_service) {
 
 	$scope.object_name = format_service.deslug($scope.key)
 
 	$scope.parent_no_frame = $scope.no_frame
 	$scope.no_frame = false
 
-	if($scope.value) {
+	if ($scope.value) {
 		$scope.context = $scope.value
 	}
 
-	$scope.expand = function() {
+	$scope.expand = function () {
 		$scope.open = !$scope.open
 	}
 

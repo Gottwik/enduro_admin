@@ -4,9 +4,9 @@
 // *	enables list items to be reordered by dragging
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app
-.directive('enDraggable', ['$document', function($document) {
+.directive('enDraggable', ['$document', function ($document) {
 	return {
-		link: function(scope, element, attr) {
+		link: function (scope, element, attr) {
 
 			// stores initial dragging location
 			var start_x = 0
@@ -27,7 +27,7 @@ enduro_admin_app
 			var shift_to = 0
 
 			// mousedown event
-			element.find('.array-move-control').on('mousedown', function(event) {
+			element.find('.array-move-control').on('mousedown', function (event) {
 				// Prevent default dragging of selected content
 				event.preventDefault()
 
@@ -38,20 +38,20 @@ enduro_admin_app
 				// register move and up events
 				$document.on('mousemove', mousemove)
 				$document.on('mouseup', mouseup)
-			});
+			})
 
 			// mousemove event
-			function mousemove(event) {
+			function mousemove (event) {
 				// stores array items by directive attribute
 				siblings = element.parent().find('> [en-draggable]').toArray()
 
 				// calculate current relative position
-				y = event.pageY - start_y;
-				x = event.pageX - start_x;
+				y = event.pageY - start_y
+				x = event.pageX - start_x
 
 				// if sibling positions are not set set it now and only once
-				if(!sibling_positions) {
-					sibling_positions = siblings.map(function(item) {
+				if (!sibling_positions) {
+					sibling_positions = siblings.map(function (item) {
 						return $(item).position()
 					})
 				}
@@ -62,24 +62,24 @@ enduro_admin_app
 				// set relative position to the element to move it with mouse cursor
 				element.css({
 					top: y + 'px',
-					left:  x + 'px'
-				});
+					left: x + 'px'
+				})
 
 				// store element position
 				var element_position = element.position()
 
 				// iterate array item and find the closest to the dragged element
 				var min_distance = Number.MAX_SAFE_INTEGER
-				for(index in siblings) {
+				for (index in siblings) {
 
 					var current_distance
 
-					if(siblings[index] == element[0]) {
+					if (siblings[index] == element[0]) {
 						shift_from = parseInt(index)
 					}
 
 					current_distance = distance(element_position, sibling_positions[index])
-					if(current_distance < min_distance) {
+					if (current_distance < min_distance) {
 						shift_to = parseInt(index)
 						min_distance = current_distance
 					}
@@ -91,21 +91,21 @@ enduro_admin_app
 			}
 
 			// mouse up event - dragging is finished
-			function mouseup() {
+			function mouseup () {
 
 				// disable mouse move and up events
-				$document.off('mousemove', mousemove);
-				$document.off('mouseup', mouseup);
+				$document.off('mousemove', mousemove)
+				$document.off('mouseup', mouseup)
 
 				// remove dragging class
 				element.removeClass('dragging')
 
 				// set all items position to auto - angular will reposition the elements
-				for(s in siblings) {
+				for (s in siblings) {
 					$(siblings[s]).css({
 						top: 'auto',
 						left: 'auto'
-					});
+					})
 				}
 
 				// reset the mouse tracking variables
@@ -122,22 +122,22 @@ enduro_admin_app
 			}
 
 			// moves the items visually as the element is being dragged
-			function visual_shift() {
+			function visual_shift () {
 
 				// iterate all elements
-				for(var i = 0; i < siblings.length; i++) {
+				for (var i = 0; i < siblings.length; i++) {
 
 					// continue if element is same as the dragged element
-					if(i == shift_from) {
+					if (i == shift_from) {
 						continue
 					}
 
 					// continue if elements are not affected by the shift
-					if(i < Math.min(shift_from, shift_to)) {
+					if (i < Math.min(shift_from, shift_to)) {
 						moveto(i, i)
 						continue
 					}
-					if(i > Math.max(shift_from, shift_to)) {
+					if (i > Math.max(shift_from, shift_to)) {
 						moveto(i, i)
 						continue
 					}
@@ -151,17 +151,17 @@ enduro_admin_app
 			}
 
 			// calculates distance between two points
-			function distance(a, b) {
-				return Math.sqrt( Math.pow(Math.abs(a.top - b.top), 2) + Math.pow(Math.abs(a.left - b.left), 2) )
+			function distance (a, b) {
+				return Math.sqrt(Math.pow(Math.abs(a.top - b.top), 2) + Math.pow(Math.abs(a.left - b.left), 2))
 			}
 
 			// moves element a to where b is
-			function moveto(a, b) {
+			function moveto (a, b) {
 				$(siblings[a]).css({
 					top: sibling_positions[b].top - sibling_positions[a].top,
 					left: sibling_positions[b].left - sibling_positions[a].left
-				});
+				})
 			}
 		}
-	};
-}]);
+	}
+}])

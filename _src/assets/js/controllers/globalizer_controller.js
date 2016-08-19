@@ -1,7 +1,7 @@
-enduro_admin_app.controller('globalizer_controller', ['$scope', 'content_service', 'format_service', '$rootScope', function($scope, content_service, format_service, $rootScope) {
+enduro_admin_app.controller('globalizer_controller', ['$scope', 'content_service', 'format_service', function ($scope, content_service, format_service) {
 
 	content_service.get_globalized_options($scope.globalizer)
-		.then(function(globalized_options) {
+		.then(function (globalized_options) {
 			$scope.globalized_options = globalized_options.map((option) => {
 				return {
 					value: option,
@@ -12,10 +12,10 @@ enduro_admin_app.controller('globalizer_controller', ['$scope', 'content_service
 
 	$scope.formated_globalizer = format_service.deglobalize($scope.value)
 
-	$scope.globalizer_change = function(globalizer_handle) {
-		if($scope.terminated_context.modulizer) {
+	$scope.globalizer_change = function (globalizer_handle) {
+		if ($scope.terminated_context.modulizer) {
 			content_service.get_globalized_context(globalizer_handle)
-				.then(function(globalized_context) {
+				.then(function (globalized_context) {
 					$scope.context['module_context'] = globalized_context
 				})
 		}

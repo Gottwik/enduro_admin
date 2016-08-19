@@ -12,16 +12,17 @@ define([],function() { return function(__templating_engine) {
 // *
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper("add", function () {
+__templating_engine.registerHelper('add', function () {
 
-	if(arguments.length <= 1) {
+	if (arguments.length <= 1) {
 		return ''
 	}
 
-	return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function(prev, next) {
+	return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function (prev, next) {
 		return prev + next
 	})
-});
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    class helper
 // *	render variable name if variable is true
@@ -38,18 +39,16 @@ __templating_engine.registerHelper("add", function () {
 // *		{{class 'gradient_bottom'}} // will render gradient-bottom
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('class', function() {
+__templating_engine.registerHelper('class', function () {
 	var context = this
 
-
 	// if no argument is provided renders empty string
-	if(arguments.length <= 1) {
+	if (arguments.length <= 1) {
 		return ''
 	}
 
-
 	return Array.prototype.slice.call(arguments).slice(0, -1) // takes all arguments without the handlebars context
-		.reduce(function(prev, next) {
+		.reduce(function (prev, next) {
 			return context[next]
 				? prev + ' ' + next // adds argument name if the value is truthy
 				: prev + ''
@@ -58,6 +57,7 @@ __templating_engine.registerHelper('class', function() {
 		.substring(1) // removes first space
 
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Compare helper
 // *	Simple ternary-style helper that will choose between two ouputs based on if the variables provided are equal
@@ -66,11 +66,12 @@ __templating_engine.registerHelper('class', function() {
 // *	{{Compare age 20 'this dude is exactly 20 years old' 'he's not 20 years old}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper("compare", function (variable1, variable2, value_if_true, value_if_false) {
+__templating_engine.registerHelper('compare', function (variable1, variable2, value_if_true, value_if_false) {
 	return variable1 == variable2
 		? value_if_true
 		: value_if_false
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Default helper
 // *	Let's you specify the default value in case the primary value is null
@@ -80,16 +81,17 @@ __templating_engine.registerHelper("compare", function (variable1, variable2, va
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper("default", function (name, defaultValue, options) {
+__templating_engine.registerHelper('default', function (name, defaultValue, options) {
 
-	if(typeof options === 'undefined') {
+	if (typeof options === 'undefined') {
 		defaultValue = ''
 	}
 
 	return typeof name !== 'undefined'
 		? name
 		: defaultValue
-});
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    divisible helper
 // *	Simple ternary-style helper that will choose between two ouputs based on if the variables provided is divisible by next argument
@@ -98,10 +100,10 @@ __templating_engine.registerHelper("default", function (name, defaultValue, opti
 // *	{{divisible @index 2 'even' 'odd'}} // outputs even if @index % 2 == 0
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper("divisible", function (number_to_dividee, divided_by, value_if_true, value_if_false) {
+__templating_engine.registerHelper('divisible', function (number_to_dividee, divided_by, value_if_true, value_if_false) {
 
 	// if no false is provided
-	if(typeof value_if_false === 'object') {
+	if (typeof value_if_false === 'object') {
 		value_if_false = ''
 	}
 
@@ -109,6 +111,7 @@ __templating_engine.registerHelper("divisible", function (number_to_dividee, div
 		? value_if_true
 		: value_if_false
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Files helper
 // *	Find all files in path and provide them as each
@@ -118,7 +121,7 @@ __templating_engine.registerHelper("divisible", function (number_to_dividee, div
 // *		<p>Image: {{this}}</p>
 // *	{{/files}}
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('files', function(path, block) {
+__templating_engine.registerHelper('files', function (path, block) {
 	var glob = require('glob')
 
 	var files = glob.sync(CMD_FOLDER + path + '/**/*.*')
@@ -131,6 +134,7 @@ __templating_engine.registerHelper('files', function(path, block) {
 
 	return output
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    First helper
 // *	Gets the first element of an array or object
@@ -140,18 +144,19 @@ __templating_engine.registerHelper('files', function(path, block) {
 // *			<p>First person's age is: {{age}}</p>
 // *		{{/first}}
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('first', function(array, options) {
+__templating_engine.registerHelper('first', function (array, options) {
 	return options.fn(array[Object.keys(array)[0]])
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Grouped each helper
 // *    Will split array into chunks of specified size
 // *    taken from https://funkjedi.com/technology/412-every-nth-item-in-handlebars/
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper('grouped_each', function(every, context, options) {
+__templating_engine.registerHelper('grouped_each', function (every, context, options) {
 
-	if(!context || !(Object.keys(context).length || context.length)) {
+	if (!context || !(Object.keys(context).length || context.length)) {
 		return ''
 	}
 
@@ -172,6 +177,7 @@ __templating_engine.registerHelper('grouped_each', function(every, context, opti
 	// Outputs processed html
 	return out
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    htmlescape helper
 // *	Usage:
@@ -179,9 +185,10 @@ __templating_engine.registerHelper('grouped_each', function(every, context, opti
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper("uriencode", function (url) {
+__templating_engine.registerHelper('uriencode', function (url) {
 	return encodeURI(url)
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    List helper
 // *	Provides #each functionality with a inline list
@@ -192,7 +199,7 @@ __templating_engine.registerHelper("uriencode", function (url) {
 // *	{{/list}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('list', function() {
+__templating_engine.registerHelper('list', function () {
 
 	// block is the last argument
 	var block = arguments[arguments.length - 1]
@@ -205,6 +212,7 @@ __templating_engine.registerHelper('list', function() {
 	// returns the built string
 	return accum
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Lorem helper
 // *	Generates dummy text with a specified length in words
@@ -218,7 +226,7 @@ __templating_engine.registerHelper('list', function() {
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper("lorem", function (length, upperrange) {
+__templating_engine.registerHelper('lorem', function (length, upperrange) {
 
 	length = length || 10
 
@@ -233,7 +241,7 @@ __templating_engine.registerHelper("lorem", function (length, upperrange) {
 	// Randomize string
 	dummy = dummy
 		.split(' ')
-		.sort(function() {
+		.sort(function () {
 			return .5 - Math.random()
 		})
 		.slice(0, length)
@@ -243,25 +251,28 @@ __templating_engine.registerHelper("lorem", function (length, upperrange) {
 	dummy = dummy[0].toUpperCase() + dummy.substring(1) + '.'
 
 	return dummy
-});
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    multiply helper
-// *	multiplies two numbers together
+// *	works with any number of arguments
 // *	Usage:
 // *
 // *	{{multiply @index 2}}
+// *	{{multiply 2 2 2}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper("multiply", function () {
+__templating_engine.registerHelper('multiply', function () {
 
-	if(arguments.length <= 1) {
+	if (arguments.length <= 1) {
 		return ''
 	}
 
-	return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function(prev, next) {
+	return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function (prev, next) {
 		return prev * next
 	})
-});
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Partial helper
 // *	Loads a partial dynamically by name. This allows to define the structure of a page in a cms file.
@@ -270,9 +281,9 @@ __templating_engine.registerHelper("multiply", function () {
 // *	{{partial 'partial name'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper("partial", function (name, context, options) {
+__templating_engine.registerHelper('partial', function (name, context, options) {
 
-	if(!options) {
+	if (!options) {
 		options = context
 		context = this
 	}
@@ -284,7 +295,6 @@ __templating_engine.registerHelper("partial", function (name, context, options) 
 	if (!partial) return ''
 
 	// build up context
-	context = context
 	context.global = options.data.root.global
 
 	// Compile and call the partial with context
@@ -292,7 +302,8 @@ __templating_engine.registerHelper("partial", function (name, context, options) 
 		? new __templating_engine.SafeString(partial(context))
 		: new __templating_engine.SafeString(__templating_engine.compile(partial)(context))
 
-});
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    slug helper
 // *	Usage:
@@ -304,7 +315,7 @@ __templating_engine.registerHelper("partial", function (name, context, options) 
 
 __templating_engine.registerHelper('slug', function (text) {
 
-	if(!text) {
+	if (!text) {
 		return ''
 	}
 
@@ -313,8 +324,9 @@ __templating_engine.registerHelper('slug', function (text) {
 		.replace(/[^\w\-]+/g, '')		// Remove all non-word chars
 		.replace(/\-\-+/g, '-')			// Replace multiple - with single -
 		.replace(/^-+/, '')				// Trim - from start of text
-		.replace(/-+$/, '');			// Trim - from end of text
-});
+		.replace(/-+$/, '')				// Trim - from end of text
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    switch helper
 // *	provides switch functionality with inline arguments
@@ -325,11 +337,11 @@ __templating_engine.registerHelper('slug', function (text) {
 // *	returns last value as default
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('switch', function() {
+__templating_engine.registerHelper('switch', function () {
 
 	// create a list out of arguments
 	var arguments_list = []
-	for(var i in arguments) {
+	for (var i in arguments) {
 		arguments_list.push(arguments[i])
 	}
 
@@ -337,15 +349,16 @@ __templating_engine.registerHelper('switch', function() {
 	arguments_list = arguments_list.slice(0, -1)
 
 	// check even argumens and return respective odd argument
-	for(i = 0; i < Math.floor(arguments_list.length / 2); i++) {
-		if(arguments_list[i * 2]) {
+	for (i = 0; i < Math.floor(arguments_list.length / 2); i++) {
+		if (arguments_list[i * 2]) {
 			return arguments_list[i * 2 + 1]
 		}
 	}
 
 	// return last provided argument as a default value
 	return arguments_list.slice(-1)[0]
-});
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Ternary helper
 // *	Simple if helper with two possible outputs
@@ -354,17 +367,18 @@ __templating_engine.registerHelper('switch', function() {
 // *	{{ternary this 'was true' 'was false'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper("ternary", function (condition, value_if_true, value_if_false) {
+__templating_engine.registerHelper('ternary', function (condition, value_if_true, value_if_false) {
 
 	// if no false is provided
-	if(typeof value_if_false === 'object') {
+	if (typeof value_if_false === 'object') {
 		value_if_false = ''
 	}
 
 	return condition
 		? value_if_true
 		: value_if_false
-});
+})
+
 // * ———————————————————————————————————————————————————————— * //
 // *    Times helper
 // *	Duplicates specified inner block specified times
@@ -375,28 +389,28 @@ __templating_engine.registerHelper("ternary", function (condition, value_if_true
 // *	{{/times}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('times', function(iterations, upperrange, block) {
+__templating_engine.registerHelper('times', function (iterations, upperrange, block) {
 
 	// will store the final accumulated html
 	var accum = ''
 
 	// if upperrange is not provided
-	if(typeof upperrange !== 'number') {
-		block = upperrange;
+	if (typeof upperrange !== 'number') {
+		block = upperrange
 	} else {
 		// if upperrange is provided, picks randomly from range
 		iterations = Math.round(Math.random() * (upperrange - iterations) + iterations)
 	}
 
-	for(var i = 0; i < iterations; ++i) {
+	for (var i = 0; i < iterations; ++i) {
 
 		// Sets is_first variable to context
 		i == 0
 			? this.is_first = true
-			: this.is_first = false;
+			: this.is_first = false
 
 		// Sets index to context
-		this.times_index = i;
+		this.times_index = i
 
 		// Renders block context and adds it to the accumulated context
 		accum += block.fn(this)
@@ -405,6 +419,7 @@ __templating_engine.registerHelper('times', function(iterations, upperrange, blo
 	// return accumulated html
 	return accum
 })
+
 // * ———————————————————————————————————————————————————————— * //
 // * 	Within helper
 // *	Changes context of the block inside for array's descendant
@@ -417,8 +432,9 @@ __templating_engine.registerHelper('times', function(iterations, upperrange, blo
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper('within', function(array, key, options) {
+__templating_engine.registerHelper('within', function (array, key, options) {
 	return options.fn(array[key])
 })
+
 
  }})

@@ -7,14 +7,12 @@ require.config({
 	},
 
 	map: {
-        // '*' means all modules that define the specified module will get the corresponding module
-        // Some modules, for some reason, say require("jQuery") instead of require("jquery")
-        "*": { "jQuery": "jquery"}
-    },
-});
+		'*': { 'jQuery': 'jquery'}
+	},
+})
 
-require(['jquery'], function($) {
-	require(['tooltipster'], function() {
+require(['jquery'], function ($) {
+	require(['tooltipster'], function () {
 
 	})
-});
+})

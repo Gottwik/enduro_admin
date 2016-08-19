@@ -1,7 +1,7 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	login controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http', 'user_service', '$location', 'content_service', function($scope, $rootScope, $http, user_service, $location, content_service) {
+enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', 'user_service', '$location', 'content_service', function ($scope, $rootScope, user_service, $location, content_service) {
 
 	// will store failed attempts to provide feedback to user what to do if they forgot the password
 	$scope.failed_attempts = 0
@@ -16,12 +16,12 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http'
 		})
 
 	// user submits the login form
-	$scope.submit = function() {
+	$scope.submit = function () {
 		user_service.login_by_password($scope.enduro_username, $scope.enduro_password)
-			.then(function(data){
-				if(data.success) {
+			.then(function (data) {
+				if (data.success) {
 					// go away from login page or stay on current page
-					if($location.path() == '/login') {
+					if ($location.path() == '/login') {
 						$location.path('/cms/index')
 					}
 					$rootScope.modal = ''
@@ -32,12 +32,12 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http'
 	}
 
 	// provides visual feedback to user that the password was not correct
-	function login_failed() {
+	function login_failed () {
 
 		$scope.failed_attempts++
 		console.log($scope.failed_attempts)
 
-		if($scope.failed_attempts > 4) {
+		if ($scope.failed_attempts > 4) {
 			provide_lost_password_assistance()
 		}
 
@@ -48,12 +48,12 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', '$http'
 		login_card.addClass('login-failed wiggle')
 
 		// listen to wiggle animation change and remove wiggle class so it can be added again
-		login_card.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+		login_card.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {
 			login_card.removeClass('wiggle')
-		});
+		})
 	}
 
-	function provide_lost_password_assistance() {
+	function provide_lost_password_assistance () {
 		$('.lost-password-assistance').show()
 	}
 

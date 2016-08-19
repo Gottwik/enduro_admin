@@ -1,47 +1,23 @@
 <div class="array-control col-md-12" ng-controller="array_controller">
 	<div class="clearfix"></div>
-
 	<div class="container-title">
-		<h3 ng-if="!terminated_context.hidetitle">{{object_name}}</h3>
-	</div>
-
+		<h3 ng-if="!terminated_context.hidetitle">{{object_name}}</h3> </div>
 	<div class="row">
-
 		<!-- repeat starts here -->
 		<div ng-repeat="(key, value) in context" class="js-array-item col-md-{{terminated_context.size || 4}}" ng-class="{'clearfix' : $index % (12 / (terminated_context.size || 4)) == 0}" en-draggable>
-
 			<div class="card">
-
 				<div class="tiny-controls">
-
-					<!-- delete an item -->
-					<i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="deleteitem(key)"></i>
-
-					<!-- move an item -->
-					<i class="fa fa-arrows array-move-control"></i>
-
-					<!-- duplicate an item -->
-					<i
-						class="fa fa-files-o tooltip"
-						ng-class="{'hidden': context.length >= terminated_context.max}"
-						ng-click="duplicate(key)"
-						ngtooltipster
-						title="Clone item"></i>
-				</div>
-
+					<!-- delete an item --><i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="deleteitem(key)"></i>
+					<!-- move an item --><i class="fa fa-arrows array-move-control"></i>
+					<!-- duplicate an item --><i class="fa fa-files-o tooltip" ng-class="{'hidden': context.length >= terminated_context.max}" ng-click="duplicate(key)" ngtooltipster title="Clone item"></i> </div>
 				<div ng-include="'/admin/assets/js/controls/object_control.html'" ng-init="no_label=true"></div>
 			</div>
 			<div class="half-wedge"></div>
 		</div>
 		<!-- repeat ends here -->
-
 		<div ng-if="!templatitator">
 			<div class="js-array-item col-md-4">
-				<div class="wedge"></div>
-				<button ng-click="additem()" class="small" ng-class="{'hidden': context.length >= terminated_context.max}"><i class="fa fa-plus"></i>Add</button>
-			</div>
+				<div class="wedge"></div> <button ng-click="additem()" class="small" ng-class="{'hidden': context.length >= terminated_context.max}"><i class="fa fa-plus"></i>Add</button> </div>
 		</div>
-
 	</div>
-
 </div>
