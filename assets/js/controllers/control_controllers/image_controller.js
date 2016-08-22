@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	image controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('image_controller', ['$scope', 'image_service', function ($scope, image_service) {
 
 	$scope.progress = 100

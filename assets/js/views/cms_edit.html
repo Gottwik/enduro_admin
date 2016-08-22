@@ -1,6 +1,6 @@
 <div ng-controller="cms-editor-controller">
 	<div class="header-bar">
-		<div class="page-search" ng-controller="page-search-controller" ng-keydown="arrowpress($event)">
+		<div class="page-search" ng-controller="page_search_controller" ng-keydown="arrowpress($event)">
 			<input class="page-search-input" type="text" tabindex="1" placeholder="search" ng-model="pagesearch_string">
 			<i class="fa fa-search"></i>
 			<div ng-include="'admin/components/page_search/page_search_results.html'"></div>
@@ -13,10 +13,10 @@
 			<div class="panel-body">
 
 				<div class="subwedge"></div>
-
+<!--
 				<ul class="crumbs">
-					<li ng-repeat="crumb in path_list">{{crumb}}</li>
-				</ul>
+					<li ng-repeat="crumb in path_list track by $index">{{crumb}}</li>
+				</ul> -->
 
 				<div class="wedge"></div>
 

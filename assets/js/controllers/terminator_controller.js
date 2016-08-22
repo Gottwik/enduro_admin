@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	terminator controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('terminator_controller', ['$scope', 'format_service', 'terminator_service', function ($scope, format_service, terminator_service) {
 
 	$scope.$watch('current_culture', function () {

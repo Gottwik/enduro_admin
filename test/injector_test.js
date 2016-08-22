@@ -11,7 +11,6 @@ global.window.mocha = {}
 global.window.beforeEach = beforeEach
 global.window.afterEach = afterEach
 
-
 require('../assets/vendor/angular/angular')
 require('../assets/vendor/angular-mocks/angular-mocks')
 
@@ -40,7 +39,7 @@ var expect = require('chai').expect
 describe('Angularjs services', function () {
 
 	beforeEach(function () {
-		angular.mock.module('enduro_admin_app')
+		angular.mock.module('enduro_admin')
 	})
 
 	describe('format-service', function () {

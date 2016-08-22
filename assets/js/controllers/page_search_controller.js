@@ -1,7 +1,7 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	page search controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', function ($scope, $rootScope) {
+enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 
 	var options = {
 		caseSensitive: false,
@@ -13,27 +13,42 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', f
 		maxPatternLength: 32,
 		keys: [
 			'name',
+			'fullpath',
 		]
 	}
 
 	var fuse = new Fuse($rootScope.flat_cmslist, options)
 
 	$scope.pagesearch_string = ''
+	$scope.active_index = 0
 
 	$scope.$watch('pagesearch_string', function () {
 		$scope.search_shown = $scope.pagesearch_string.length > 0
 
-		filter_by_distance()
+		if ($scope.pagesearch_string.length) {
+			filter_by_distance()
+		}
 	})
 
 	$scope.arrowpress = function (e) {
-		console.log(e.keyCode)
-		if (e.keyCode == 38) {
 
+		// if (!page_search_results) {
+		// 	return false
+		// }
+
+		// arrow up
+		if (e.keyCode == 38) {
+			$scope.active_index = Math.max(0, $scope.active_index - 1)
 		}
 
+		// arrow down
 		if (e.keyCode == 40) {
-			console.log('asd')
+			$scope.active_index = Math.min($scope.page_search_results.length, $scope.active_index + 1)
+		}
+
+		// enter key
+		if (e.keyCode == 13) {
+			$location.path('cms' + $scope.page_search_results[$scope.active_index].fullpath)
 		}
 	}
 

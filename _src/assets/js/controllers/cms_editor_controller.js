@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	cms editor controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$routeParams', 'content_service', 'culture_service', 'hotkeys',
 	function ($scope, $rootScope, $routeParams, content_service, culture_service, hotkeys) {
 
@@ -23,9 +26,9 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 			$scope.publishing = true
 
 			content_service.save_content($routeParams.page_path, $scope.context)
-				.then(() => {
+				.then(function () {
 					$scope.publishing = false
-				}, () => {
+				}, function () {
 					$scope.publishing = false
 				})
 		}
@@ -34,7 +37,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 			$scope.temping = true
 
 			content_service.get_temp_page($routeParams.page_path, $scope.context)
-				.then((temp_destination_path) => {
+				.then(function (temp_destination_path) {
 
 					$scope.temping = false
 					if ($scope.tempwindow && $scope.tempwindow.location.hostname) {
@@ -44,7 +47,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 						$scope.tempwindow = window.open('/' + temp_destination_path.data, 'enduro temp window')
 					}
 
-				}, () => {
+				}, function () {
 					$scope.temping = false
 				})
 		}

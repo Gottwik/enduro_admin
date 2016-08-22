@@ -4,8 +4,8 @@
   "description": "",
   "main": "assets/vendor/enduro/index.js",
   "scripts": {
-    "test": "mocha --recursive",
-    "uitest": "mocha-casperjs uitest/*"
+    "test": "mocha --recursive && node uitest/enduro_uitest",
+    "uitest": ""
   },
   "author": "Martin Gottweis",
   "license": "MIT",

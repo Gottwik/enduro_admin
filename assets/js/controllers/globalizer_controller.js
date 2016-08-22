@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	globalizer controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('globalizer_controller', ['$scope', 'content_service', 'format_service', function ($scope, content_service, format_service) {
 
 	content_service.get_globalized_options($scope.globalizer)

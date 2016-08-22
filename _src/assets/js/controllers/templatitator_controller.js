@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	templatitator controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('templatitator_controller', ['$scope', 'content_service', 'format_service', function ($scope, content_service, format_service) {
 
 	$scope.temlatitator_selected = ''

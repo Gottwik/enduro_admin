@@ -1,3 +1,6 @@
+// * ———————————————————————————————————————————————————————— * //
+// * 	menupage controller
+// * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('menupage_controller', ['$scope', '$rootScope', function ($scope, $rootScope) {
 
 	$scope.cmslist = $scope.page
