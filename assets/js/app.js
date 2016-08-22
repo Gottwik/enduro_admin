@@ -18,6 +18,7 @@ enduro_admin_app
 // routing configuration
 enduro_admin_app.config(['$routeProvider',
 	function ($routeProvider) {
+
 		$routeProvider
 			.when('/login', {
 				templateUrl: '/admin/login.html',

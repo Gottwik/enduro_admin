@@ -1,3 +1,5 @@
+console.log('ZZZZZ')
+
 // * ———————————————————————————————————————————————————————— * //
 // * 	login controller
 // * ———————————————————————————————————————————————————————— * //
@@ -10,9 +12,8 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', 'user_s
 	$scope.settings = {asd: 'asd'}
 	$scope.settings.juicebox_enabled = true
 	content_service.get_application_settings()
-		.then((settings) => {
+		.then(function (settings) {
 			$scope.settings = settings.data
-			console.log($scope.settings.login_message)
 		})
 
 	// user submits the login form
@@ -35,7 +36,6 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', 'user_s
 	function login_failed () {
 
 		$scope.failed_attempts++
-		console.log($scope.failed_attempts)
 
 		if ($scope.failed_attempts > 4) {
 			provide_lost_password_assistance()
