@@ -7,6 +7,8 @@ body {
 	font-weight: 300;
 	background-color: $primary-background-color;
 
+	min-width: 800px;
+
 	// events
 	&.modal-open {
 		overflow: hidden;

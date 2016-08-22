@@ -32,10 +32,6 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '
 
 	$scope.arrowpress = function (e) {
 
-		// if (!page_search_results) {
-		// 	return false
-		// }
-
 		// arrow up
 		if (e.keyCode == 38) {
 			$scope.active_index = Math.max(0, $scope.active_index - 1)
@@ -43,12 +39,17 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '
 
 		// arrow down
 		if (e.keyCode == 40) {
-			$scope.active_index = Math.min($scope.page_search_results.length, $scope.active_index + 1)
+			$scope.active_index = Math.min($scope.page_search_results.length - 1, $scope.active_index + 1)
 		}
 
 		// enter key
 		if (e.keyCode == 13) {
 			$location.path('cms' + $scope.page_search_results[$scope.active_index].fullpath)
+		}
+
+		// escape key
+		if (e.keyCode == 27) {
+			$scope.pagesearch_string = ''
 		}
 	}
 
