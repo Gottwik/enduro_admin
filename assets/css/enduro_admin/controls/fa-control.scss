@@ -1,0 +1,39 @@
+.fa-control label {
+	@include rounded-corners();
+	@include font-size(icon2x);
+	width: 80px !important;
+	height: 80px;
+	text-align: center;
+	padding-top: 10px;
+	transition: color $quick-transition, background-color $quick-transition;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $primary-color;
+		color: $white;
+	}
+
+	&:after {
+		bottom: 0 !important;
+	}
+
+}
+
+.fa-chooser {
+	color: $black;
+
+	i {
+		@include rounded-corners();
+		@include font-size(icon);
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		cursor: pointer;
+		padding-top: 5px;
+
+		&:hover {
+			background-color: $primary-color;
+			color: $white;
+		}
+	}
+}

@@ -19,19 +19,22 @@
 	$tested_foods_max: 3,
 	tested_foods: [
 		{
-			icon: 'envira',
+			$icon_type: 'fa',
+			icon: 'music',
 			title: 'Hot dogsss',
 			$text_type: 'textarea',
 			text: 'We will test your hotdogs. Additional services include determining optimal condiment ratios.'
 		},
 		{
-			icon: 'envira',
+			$icon_type: 'fa',
+			icon: 'heart',
 			title: 'Hamburgers',
 			$text_type: 'textarea',
 			text: 'We will test your hotdogs. Additional services include determining optimal condiment ratios.'
 		},
 		{
-			icon: 'envira',
+			$icon_type: 'fa',
+			icon: 'star',
 			title: 'Gourmet foods',
 			$text_type: 'textarea',
 			text: 'We will test your hotdogs. Additional services include determining optimal condiment ratios.'
