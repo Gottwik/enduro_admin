@@ -3,7 +3,7 @@
 		<div class="page-search" ng-controller="page_search_controller" ng-keydown="arrowpress($event)">
 			<input class="page-search-input" type="text" tabindex="1" placeholder="search" ng-model="pagesearch_string">
 			<i class="fa fa-search"></i>
-			<div ng-include="'admin/components/page_search/page_search_results.html'"></div>
+			<div ng-include="'/admin/components/page_search/page_search_results.html'"></div>
 		</div>
 		<div class="btn btn-minor small publish-button" ng-click="temp()" ng-class="{'publishing': temping}" ng-if="!no_page_associated"><i class="fa fa-bolt"></i>Temp</div>
 		<div class="btn btn-success small publish-button" ng-click="publish()" ng-class="{'publishing': publishing, 'disabled': is_demo}"><i class="fa fa-cloud"></i>Publish</div>
