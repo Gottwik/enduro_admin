@@ -36,7 +36,7 @@ enduro_admin_app.config(['$routeProvider',
 	}]
 )
 
-enduro_admin_app.run(['$rootScope', '$location', 'user_service', function ($rootScope, $location, user_service) {
+enduro_admin_app.run(['$rootScope', '$location', 'user_service', 'extension_service', function ($rootScope, $location, user_service, extension_service) {
 
 	// location change event
 	$rootScope.$on('$locationChangeSuccess', function () {
@@ -51,5 +51,7 @@ enduro_admin_app.run(['$rootScope', '$location', 'user_service', function ($root
 				$location.path('/login')
 			})
 	})
+
+	extension_service.inject()
 
 }])
