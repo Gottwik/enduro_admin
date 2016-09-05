@@ -9,7 +9,6 @@ enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'cont
 		$rootScope.modal = ''
 
 		var slugged_newname = format_service.slug($scope.new_pagename)
-
 		content_service.add_page(slugged_newname, $rootScope.adding_generator.fullpath.split('/').slice(2, -1)[0])
 			.then(function () {
 				add_page_to_cmslist($rootScope.cmslist, $rootScope.adding_generator.fullpath.split('/').slice(1, -1), slugged_newname)
@@ -19,6 +18,7 @@ enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'cont
 	}
 
 	function add_page_to_cmslist (cmslist, path, new_pagename) {
+		console.log(cmslist, path)
 		if (path.length == 1) {
 			// try to get template which shares the name of the folder
 			var newpage = angular.copy(cmslist[path[0]][path[0]])
@@ -37,7 +37,7 @@ enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'cont
 			$rootScope.cmslist = cmslist
 
 		} else {
-			add_page_to_cmslist(cmslist[path[0]], path.splice(1), new_pagename)
+			add_page_to_cmslist(cmslist, path.splice(1), new_pagename)
 		}
 	}
 
