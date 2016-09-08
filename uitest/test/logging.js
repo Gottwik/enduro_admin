@@ -1,4 +1,6 @@
 before(function () {
+	casper.start('http://localhost:5000/admin')
+
 	casper.on('remote.message', function (message) {
 		this.echo(message)
 	})
