@@ -1,12 +1,15 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	addpage controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'content_service', 'format_service', '$location', function ($scope, $rootScope, content_service, format_service, $location) {
+enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'content_service', 'format_service', '$location', 'modal_service', function ($scope, $rootScope, content_service, format_service, $location, modal_service) {
 
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	addpage
+	// * ———————————————————————————————————————————————————————— * //
 	$scope.addpage = function () {
 
 		// closes the modal
-		$rootScope.modal = ''
+		modal_service.close()
 
 		var slugged_newname = format_service.slug($scope.new_pagename)
 		content_service.add_page(slugged_newname, $rootScope.adding_generator.fullpath.split('/').slice(2, -1)[0])
@@ -18,7 +21,6 @@ enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'cont
 	}
 
 	function add_page_to_cmslist (cmslist, path, new_pagename) {
-		console.log(cmslist, path)
 		if (path.length == 1) {
 			// try to get template which shares the name of the folder
 			var newpage = angular.copy(cmslist[path[0]][path[0]])
