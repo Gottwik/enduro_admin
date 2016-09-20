@@ -33,7 +33,7 @@ enduro_admin_app.controller('object_controller', ['$scope', 'format_service', 'p
 
 	// helper function that checks if context of this object is empty
 	$scope.context_is_not_empty = function () {
-		return Object.keys($scope.context).length > 0
+		return $scope.context && Object.keys($scope.context).length > 0
 	}
 
 }])
