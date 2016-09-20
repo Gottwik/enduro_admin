@@ -7,10 +7,12 @@ enduro_admin_app.controller('terminator_controller', ['$scope', 'format_service'
 		// get all the terminator attributes for given key
 		$scope.terminated_context = {}
 		for (key in $scope.context) {
-			var terminator_matches = key.match(new RegExp('\\$' + $scope.key + '_(.*)'))
-			if (terminator_matches && terminator_matches.length) {
-				termianted_attribute = terminator_matches[1]
-				$scope.terminated_context[termianted_attribute] = $scope.context[key]
+			if (key[0] == '$') {
+				var terminator_matches = key.match(new RegExp('\\$' + $scope.key + '_(.*)'))
+				if (terminator_matches && terminator_matches.length) {
+					termianted_attribute = terminator_matches[1]
+					$scope.terminated_context[termianted_attribute] = $scope.context[key]
+				}
 			}
 		}
 
@@ -28,7 +30,7 @@ enduro_admin_app.controller('terminator_controller', ['$scope', 'format_service'
 		}
 
 		// field size
-		$scope.size = 'col-md-12'
+		$scope.size = 'col-md-12' // 12 is the default size for components
 		if ($scope.terminated_context.size) {
 			$scope.size = 'specified-width col-md-' + $scope.terminated_context.size
 		}

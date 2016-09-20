@@ -17,7 +17,10 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '
 		]
 	}
 
-	var fuse = new Fuse($rootScope.flat_cmslist, options)
+	var fuse
+	$scope.$watch($rootScope.flat_cmslist, function () {
+		fuse = new Fuse($rootScope.flat_cmslist, options)
+	})
 
 	$scope.pagesearch_string = ''
 	$scope.active_index = 0
@@ -54,8 +57,9 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '
 	}
 
 	function filter_by_distance () {
-		$scope.page_search_results = fuse.search($scope.pagesearch_string)
-		console.log($scope.page_search_results)
+		if (fuse) {
+			$scope.page_search_results = fuse.search($scope.pagesearch_string)
+		}
 	}
 
 }])

@@ -1,11 +1,13 @@
 .crumbs {
+	float: left;
+
 	li {
 		display: inline-block;
 		color: lighten($grey, 30%);
 
 		&:not(:first-child):before {
 			content: '/';
-			margin: 0 5px;
+			margin: 0 0;
 			color: $primary-color;
 			@include font-size(md);
 			position: relative;

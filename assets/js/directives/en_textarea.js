@@ -67,11 +67,13 @@ enduro_admin_app
 						if (items[i].type.indexOf('image') === 0) {
 							blob = items[i].getAsFile()
 							blob.name = 'cp.' + blob.type.split('/').pop()
-							console.log(blob)
 						}
 					}
 
-					upload_image_to_textarea(blob)
+					// check if we actuall have some images or something
+					if (blob != null) {
+						upload_image_to_textarea(blob)
+					}
 
 				})
 
@@ -79,9 +81,11 @@ enduro_admin_app
 					textarea.addClass('uploading')
 					image_service.upload_image(file)
 						.then(function (image_url) {
-							// textarea.removeClass('uploading')
+							textarea.removeClass('uploading')
 							var markdown_link = '\n\n![](' + image_url + ')'
 							textarea.val(textarea.val() + markdown_link)
+						}, function () {
+							textarea.removeClass('uploading')
 						})
 				}
 

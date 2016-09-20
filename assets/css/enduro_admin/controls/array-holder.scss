@@ -4,7 +4,16 @@
 }
 
 .array-control {
-	padding-top: 30px;
+
+	.container-title {
+		position: relative;
+		top: 7px;
+		left: $grid-gutter-width / 2;
+	}
+
+	.object-container {
+		margin: 10px 0 !important;
+	}
 }
 
 .js-array-item:not(.dragging) {

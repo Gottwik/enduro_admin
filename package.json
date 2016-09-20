@@ -4,7 +4,7 @@
   "description": "",
   "main": "assets/vendor/enduro/index.js",
   "scripts": {
-    "test": "mocha --recursive && node uitest/enduro_uitest",
+    "test": "mocha --recursive --bail && node uitest/enduro_uitest",
     "uitest": ""
   },
   "author": "Martin Gottweis",

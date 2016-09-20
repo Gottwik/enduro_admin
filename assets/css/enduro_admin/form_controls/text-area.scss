@@ -19,5 +19,9 @@
 		&.uploading {
 			animation: pulse 1s ease infinite;
 		}
+
+		&.smaller {
+			height: 20vh;
+		}
 	}
 }

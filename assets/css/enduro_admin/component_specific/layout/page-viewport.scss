@@ -3,4 +3,9 @@
 	width: 100%;
 	height: 100%;
 	margin-top: $top-bar-height;
+	transition: opacity .3s ease;
+
+	.is-currently-preloading & {
+		opacity: .3;
+	}
 }

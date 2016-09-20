@@ -1,9 +1,10 @@
 .tiny-controls {
 	position: absolute;
-	top: 0;
+	top: 10px;
 	right: 10px;
 	background-color: $primary-color;
 	border-bottom-left-radius: 4px;
+	z-index: 99;
 
 	i {
 		color: $white;

@@ -1,0 +1,12 @@
+.page-action-box {
+	float: right;
+
+	li {
+		cursor: pointer;
+		transition: color $quick-transition;
+
+		&:hover {
+			color: $primary-color;
+		}
+	}
+}

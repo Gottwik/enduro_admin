@@ -1,5 +1,5 @@
 enduro_admin_app = angular.module('enduro_admin', ['ngRoute', 'ngCookies', 'ngFileUpload', 'cfp.hotkeys'], function ($rootScopeProvider) {
-	$rootScopeProvider.digestTtl(15)
+	$rootScopeProvider.digestTtl(25)
 })
 
 // defining constants

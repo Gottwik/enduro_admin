@@ -1,15 +1,19 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	cms editor controller
+// *	main controller for cms editor
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$routeParams', 'content_service', 'culture_service', 'hotkeys',
 	function ($scope, $rootScope, $routeParams, content_service, culture_service, hotkeys) {
 
-		// Get pages
+		// get page specified in route
 		content_service.get_content($routeParams.page_path)
 			.then(function (res) {
+
+				// extend scope with the fetched context
 				$scope = angular.extend($scope, res)
 			}, function () {})
 
+		// gets all available cultures
 		culture_service.get_cultures()
 			.then(function (res) {
 				$scope.cultures = res
@@ -17,12 +21,30 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				$scope.on_default_culture = $scope.current_culture == res[0]
 			}, function () {})
 
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	change culture
+		// *	will swtich culture to specified
+		// *
+		// *	@param obj {$event} - event initializing the culture switch
+		// *	returns nothing, just switches the culture
+		// * ———————————————————————————————————————————————————————— * //
 		$scope.change_culture = function (obj) {
-			$scope.current_culture = $(obj.target).data('culture')
-			$scope.on_default_culture = $(obj.target).data('culture') == $scope.cultures[0]
+
+			// gets data-culture from the element initializing the switch
+			var selected_culture = $(obj.target).data('culture')
+
+			// sets current culture and true/false whether page is on default culture
+			$scope.current_culture = selected_culture
+			$scope.on_default_culture = selected_culture == $scope.cultures[0]
 		}
 
-		$scope.publish = function (e) {
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	change culture
+		// *	saves context
+		// *
+		// *	returns nothing
+		// * ———————————————————————————————————————————————————————— * //
+		$scope.publish = function () {
 			$scope.publishing = true
 
 			content_service.save_content($routeParams.page_path, $scope.context)
@@ -33,7 +55,13 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				})
 		}
 
-		$scope.temp = function (e) {
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	change culture
+		// *	generates temp page out of current context
+		// *
+		// *	returns nothing
+		// * ———————————————————————————————————————————————————————— * //
+		$scope.temp = function () {
 			$scope.temping = true
 
 			content_service.get_temp_page($routeParams.page_path, $scope.context)
@@ -50,6 +78,18 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				}, function () {
 					$scope.temping = false
 				})
+		}
+
+		// * ———————————————————————————————————————————————————————— * //
+		// * 	delete current page
+		// *	returns nothing
+		// * ———————————————————————————————————————————————————————— * //
+		$scope.delete_current_page = function () {
+			// console.log('deleting current page')
+			// console.log($routeParams.page_path)
+
+			// delete page from the cmslist
+			console.log($rootScope.cmslist)
 		}
 
 		// decides if the application is demo

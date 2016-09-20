@@ -1,8 +1,14 @@
 i,
 .icon {
 
-
 	&.large {
 		@include font-size(md);
+	}
+
+	&.inline {
+		@include font-size(xs);
+		margin-right: 6px;
+		position: relative;
+		bottom: 1px;
 	}
 }

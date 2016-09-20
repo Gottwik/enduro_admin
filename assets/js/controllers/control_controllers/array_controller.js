@@ -1,17 +1,57 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	array controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('array_controller', ['$scope', 'format_service', function ($scope, format_service) {
+enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'content_service', function ($scope, format_service, content_service) {
 
 	// stores object name and capitalize and deslugs it
 	$scope.object_name = format_service.deslug($scope.key)
 
 	// moves the value to the context for it to propagate
-	$scope.context = $scope.value
+	if ($scope.value) {
+		if ($scope.terminated_context && $scope.terminated_context.expander) {
+			$scope.context = {}
+		} else {
+			$scope.context = $scope.value
+		}
+	}
+
+	if ($scope.templatitator) {
+		content_service.get_globalized_context($scope.templatitator)
+			.then(function (templates) {
+				$scope.template_list = Object.keys(templates).map((key) => {
+					return {
+						value: templates[key],
+						label: key,
+						formatted_label: format_service.deslug(key)
+					}
+				})
+			})
+	}
+
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	actions
+	// * ———————————————————————————————————————————————————————— * //
+
+	// action when expander button is clicked
+	$scope.expand = function () {
+		if ($scope.context_is_not_empty()) {
+			$scope.context = {}
+		} else {
+			$scope.context = $scope.value
+		}
+	}
 
 	// clones first item in the array
 	$scope.additem = function () {
-		$scope.context.push(angular.copy($scope.context[0]))
+
+		// copies the first item
+		var new_item = angular.copy($scope.context[0])
+
+		// clean the first item
+		content_service.clean(new_item)
+
+		// push cleaned item to the array
+		$scope.context.push(new_item)
 	}
 
 	// deletes an item
@@ -40,6 +80,15 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', fun
 
 		// trigger update manually
 		$scope.$apply()
+	}
+
+	$scope.add_template = function (context) {
+		$scope.context.push(angular.copy(context))
+	}
+
+	// helper function that checks if context of this object is empty
+	$scope.context_is_not_empty = function () {
+		return Object.keys($scope.context).length > 0
 	}
 
 }])

@@ -1,3 +1,6 @@
 <div class="page-search-results" ng-show="search_shown">
-	<div class="result" ng-repeat="search_result in page_search_results track by $index" ng-class="{'active': $index == active_index}" tabindex="-1"> <span class="page-result-title">{{search_result.name}}</span> <span class="page-result-path">{{search_result.fullpath}}</span> </div>
+	<div class="result" ng-repeat="search_result in page_search_results track by $index" ng-class="{'active': $index == active_index}" tabindex="-1">
+		<span class="page-result-title">{{search_result.name}}</span>
+		<span class="page-result-path">{{search_result.fullpath}}</span>
+	</div>
 </div>

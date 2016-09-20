@@ -8,7 +8,6 @@ describe('Adding page', function () {
 			casper.click('.modal-body .add-page-button')
 		})
 		casper.waitForSelector('.menupage[data-cmspage="gen3"]', function () {
-			this.capture('uitest/test.png', { top: 0, left: 0, width: 1920, height: 1080 })
 			expect('.menupage[data-cmspage="gen3"]').to.be.inDOM.and.be.visible
 		})
 	})

@@ -13,10 +13,14 @@
 			<div class="panel-body">
 
 				<div class="subwedge"></div>
-<!--
+
 				<ul class="crumbs">
 					<li ng-repeat="crumb in path_list track by $index">{{crumb}}</li>
-				</ul> -->
+				</ul>
+
+				<ul class="page-action-box">
+					<li ng-click="delete_current_page()" ngtooltipster title="The most current version of the page will still be recoverable in the juicebox"><i class="fa fa-trash-o inline"></i>Delete page</li>
+				</ul>
 
 				<div class="wedge"></div>
 

@@ -46,7 +46,7 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 	}
 
 	content_service.get_globalized_context = function (globalizer_string) {
-		return $http.get(url_config.get_base_url() + 'get_globalized_context', {params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string}})
+		return $http.get(url_config.get_base_url() + 'get_globalized_context', {cache: true, params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string}})
 			.then(function (res) {
 				return res.data
 			}, user_service.error)
@@ -65,6 +65,28 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 			.then(function (res) {
 				return $q.resolve(res)
 			}, user_service.error)
+	}
+
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	clean
+	// * 	removes all values while keeping the structure of the object
+	// *
+	// * 	@param item {object} - object to be cleaned
+	// * 	return object - object without string values
+	// * ———————————————————————————————————————————————————————— * //
+	content_service.clean = function (item) {
+		var self = this
+
+		for (i in item) {
+			if (typeof item[i] === 'string' && i[0] != '$') {
+				item[i] = ''
+			}
+
+			if (typeof item[i] === 'object') {
+				self.clean(item[i])
+			}
+		}
+		return item
 	}
 
 	return content_service

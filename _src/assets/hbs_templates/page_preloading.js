@@ -1,0 +1,3 @@
+define(["handlebars"], function(Handlebars) { return Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"page-preloading\" ng-controller=\"page_preloading_controller\">\n	<div class=\"contentbox\">\n		<div class=\"action\">\n			<span>Building page</span>\n			<div class=\"progressbar\"></div>\n		</div>\n	</div>\n</div>";
+},"useData":true}); });

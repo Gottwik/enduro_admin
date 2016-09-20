@@ -32,7 +32,7 @@ function run_mocha_casper () {
 
 	// listens to data - console.log from the casper
 	mocha_casper.stdout.on('data', function (data) {
-		console.log(data.toString())
+		process.stdout.write(data.toString())
 	})
 
 	// listens to casper's exit

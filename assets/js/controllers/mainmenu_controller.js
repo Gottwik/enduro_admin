@@ -7,5 +7,4 @@ enduro_admin_app.controller('mainmenu_controller', ['$scope', 'content_service',
 			$rootScope.cmslist = data.structured
 			$rootScope.flat_cmslist = data.flat
 		})
-
 }])
