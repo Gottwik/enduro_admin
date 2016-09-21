@@ -1,102 +1,43 @@
 {
-	test: 'test',
-	$testobject_expander: true,
-	testobject: {
-		label: 'test'
-	},
-	$atestobject_expander: true,
-	atestobject: {
-		label: 'test'
-	},
-	$array_expander: true,
-	array: [
+	test_array: [
 		{
-			label_61: 'test',
-			label_47: 'test',
-			label_97: 'test',
-			label_48: 'test',
-			label_86: 'test',
-			label_54: 'test',
-			label_21: 'test',
-			label_48: 'test',
-			label_73: 'test',
-			label_30: 'test',
-			label_62: 'test',
+			label: '1'
 		},
 		{
-			label_70: 'test',
-			label_66: 'test',
-			label_99: 'test',
-			label_4: 'test',
-			label_90: 'test',
-			label_55: 'test',
-			label_52: 'test',
-			label_12: 'test',
-			label_28: 'test',
-			label_43: 'test',
-			label_97: 'test',
+			label: '2'
 		},
 		{
-			label_35: 'test',
-			label_61: 'test',
-			label_50: 'test',
-			label_33: 'test',
-			label_25: 'test',
-			label_77: 'test',
-			label_25: 'test',
-			label_17: 'test',
-			label_27: 'test',
-			label_33: 'test',
-			label_16: 'test',
+			label: '3'
+		},
+		{
+			label: '4'
+		},
+		{
+			label: '5'
+		},
+		{
+			label: '6'
 		},
 	],
-	$aarray_expander: true,
-	$aarray_size: 12,
-	aarray: [
+	$test_array2_expander: true,
+	test_array2: [
 		{
-			label_61: 'test',
-			label_47: 'test',
-			label_97: 'test',
-			label_48: 'test',
-			label_86: 'test',
-			label_54: 'test',
-			label_21: 'test',
-			label_48: 'test',
-			label_73: 'test',
-			label_30: 'test',
-			label_62: 'test',
-			items: [
-				{
-					label: 'tras',
-					label2: 'tras',
-				}
-			]
+			label: '1'
 		},
 		{
-			label_70: 'test',
-			label_66: 'test',
-			label_99: 'test',
-			label_4: 'test',
-			label_90: 'test',
-			label_55: 'test',
-			label_52: 'test',
-			label_12: 'test',
-			label_28: 'test',
-			label_43: 'test',
-			label_97: 'test',
+			label: '2'
 		},
 		{
-			label_35: 'test',
-			label_61: 'test',
-			label_50: 'test',
-			label_33: 'test',
-			label_25: 'test',
-			label_77: 'test',
-			label_25: 'test',
-			label_17: 'test',
-			label_27: 'test',
-			label_33: 'test',
-			label_16: 'test',
+			label: '3'
+		},
+		{
+			label: '4'
+		},
+		{
+			label: '5'
+		},
+		{
+			label: '6'
 		},
 	]
 }

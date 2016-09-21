@@ -11,6 +11,7 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'co
 		if ($scope.terminated_context && $scope.terminated_context.expander) {
 			$scope.context = {}
 		} else {
+			console.log($scope.value[0])
 			$scope.context = $scope.value
 		}
 	}
@@ -56,7 +57,9 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'co
 
 	// deletes an item
 	$scope.deleteitem = function (key) {
+		console.log(key)
 		$scope.context.splice(key, 1)
+		console.log($scope.context)
 	}
 
 	// duplicate an item
