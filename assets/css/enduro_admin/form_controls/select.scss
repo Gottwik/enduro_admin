@@ -1,7 +1,5 @@
 .nice-wrapper {
-	@include input-accent();
-	margin-bottom: 10px;
-	margin-top: 10px;
+	// @include input-accent();
 
 	> span {
 		@include font-size(xs);
@@ -11,7 +9,14 @@
 		font-weight: 500;
 	}
 
+	label {
+		&:after {
+			bottom: 0px !important;
+		}
+	}
+
 	select {
+		border-radius: 3px;
 		appearance: none;
 		width: 100%;
 		padding: 11px 15px 10px;
