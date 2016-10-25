@@ -4,7 +4,7 @@
 			$label_type: 'date',
 			label: '18 October, 2016',
 			$time_type: 'time',
-			time: '12:00 PM',
+			time: '18:00',
 			$timezone_type: 'timezone',
 			timezone: '-11.0',
 			specs: {

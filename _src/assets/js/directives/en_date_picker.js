@@ -8,9 +8,10 @@ enduro_admin_app
 			link: function (scope, element, attrs) {
 
 				element = $(element)
-				console.log(element)
 				element.find('.datetime_date').pickadate()
-				element.find('.datetime_time').pickatime()
+				element.find('.datetime_time').pickatime({
+					format: 'HH:i'
+				})
 			}
 		}
 	}])
