@@ -1,7 +1,7 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	image controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('image_controller', ['$scope', 'image_service', function ($scope, image_service) {
+enduro_admin_app.controller('image_controller', ['$scope', 'image_service', '$sce', '$element', function ($scope, image_service, $sce, $element) {
 
 	$scope.progress = 100
 
@@ -23,6 +23,19 @@ enduro_admin_app.controller('image_controller', ['$scope', 'image_service', func
 
 	$scope.delete_image = function () {
 		$scope.context[$scope.terminatedkey] = ''
+	}
+
+	$scope.video_source = $sce.trustAsResourceUrl($scope.context[$scope.terminatedkey])
+
+	$scope.play = function () {
+		video_element = $element.find('video').get(0)
+		if (video_element.paused) {
+			$element.find('video').get(0).play()
+			$scope.video_playing = true
+		} else {
+			$element.find('video').get(0).pause()
+			$scope.video_playing = false
+		}
 	}
 
 }])
