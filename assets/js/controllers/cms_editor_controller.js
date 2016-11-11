@@ -8,10 +8,11 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// get page specified in route
 		content_service.get_content($routeParams.page_path)
 			.then(function (res) {
-
+				$scope.deletable = res.deletable
 				// extend scope with the fetched context
 				$scope = angular.extend($scope, res)
 			}, function () {})
+
 
 		// gets all available cultures
 		culture_service.get_cultures()
@@ -85,11 +86,13 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// *	returns nothing
 		// * ———————————————————————————————————————————————————————— * //
 		$scope.delete_current_page = function () {
-			// console.log('deleting current page')
-			// console.log($routeParams.page_path)
+			content_service.delete_page($routeParams.page_path)
+				.then(function (res) {
+					console.log(res)
+				})
 
 			// delete page from the cmslist
-			console.log($rootScope.cmslist)
+			// console.log($rootScope.cmslist)
 		}
 
 		// decides if the application is demo

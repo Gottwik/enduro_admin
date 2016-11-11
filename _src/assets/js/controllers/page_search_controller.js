@@ -28,7 +28,7 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '
 	$scope.$watch('pagesearch_string', function () {
 		$scope.search_shown = $scope.pagesearch_string.length > 0
 
-		if ($scope.pagesearch_string.length) {
+		if ($scope.pagesearch_string && $scope.pagesearch_string.length) {
 			filter_by_distance()
 		}
 	})

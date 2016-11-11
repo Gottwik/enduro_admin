@@ -67,6 +67,10 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 			}, user_service.error)
 	}
 
+	content_service.delete_page = function (pagename) {
+		return $http.get(url_config.get_base_url() + 'delete_page', {params: {sid: $cookies.get('sid'), pagename: pagename}})
+	}
+
 	// * ———————————————————————————————————————————————————————— * //
 	// * 	clean
 	// * 	removes all values while keeping the structure of the object
