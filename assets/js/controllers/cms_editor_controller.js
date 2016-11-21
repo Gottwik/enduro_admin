@@ -4,7 +4,7 @@
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$routeParams', 'content_service', 'culture_service', 'hotkeys',
 	function ($scope, $rootScope, $routeParams, content_service, culture_service, hotkeys) {
-		console.log('cms-editor-controller')
+
 		// get page specified in route
 		content_service.get_content($routeParams.page_path)
 			.then(function (res) {
