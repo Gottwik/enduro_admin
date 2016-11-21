@@ -4,7 +4,7 @@
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$routeParams', 'content_service', 'culture_service', 'hotkeys',
 	function ($scope, $rootScope, $routeParams, content_service, culture_service, hotkeys) {
-
+		console.log('cms-editor-controller')
 		// get page specified in route
 		content_service.get_content($routeParams.page_path)
 			.then(function (res) {
@@ -12,7 +12,6 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				// extend scope with the fetched context
 				$scope = angular.extend($scope, res)
 			}, function () {})
-
 
 		// gets all available cultures
 		culture_service.get_cultures()
@@ -64,7 +63,6 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// * ———————————————————————————————————————————————————————— * //
 		$scope.temp = function () {
 			$scope.temping = true
-
 			content_service.get_temp_page($routeParams.page_path, $scope.context)
 				.then(function (temp_destination_path) {
 

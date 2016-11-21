@@ -7,7 +7,6 @@ enduro_admin_app.factory('extension_service', ['$http', 'url_config', '$cookies'
 				if (res.data && res.data.success) {
 					for (r in res.data.data) {
 						$('<script>')
-							.attr('type', 'text/javascript')
 							.attr('src', get_link_to_extension(res.data.data[r]))
 							.appendTo('head')
 					}
