@@ -1,4 +1,5 @@
 {
-	$image_type: 'video',
-	image: 'https://s3-us-west-2.amazonaws.com/coverr/mp4/Blue-Horizon.mp4',
+	$image_type: 'date',
+	image: '10:30 AM',
+	$image_value: '10:30:00'
 }

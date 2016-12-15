@@ -13,7 +13,6 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				$scope = angular.extend($scope, res)
 			}, function () {})
 
-
 		// gets all available cultures
 		culture_service.get_cultures()
 			.then(function (res) {
@@ -64,7 +63,6 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// * ———————————————————————————————————————————————————————— * //
 		$scope.temp = function () {
 			$scope.temping = true
-
 			content_service.get_temp_page($routeParams.page_path, $scope.context)
 				.then(function (temp_destination_path) {
 

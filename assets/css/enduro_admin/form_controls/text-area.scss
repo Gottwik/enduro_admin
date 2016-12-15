@@ -1,9 +1,8 @@
 .form-control {
 	textarea {
+		@include standard-border();
 		width: 100%;
 		min-height: 150px;
-		border-radius: 3px;
-		border: solid 1px rgba($primary-color, .4);
 		margin-bottom: 4px;
 		padding: 11px 15px 10px;
 		tab-size : 4;

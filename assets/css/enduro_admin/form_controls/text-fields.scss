@@ -23,11 +23,10 @@
 	input[type="email"],
 	input[type="password"],
 	input[type="tel"] {
+		@include standard-border();
 		color: $black;
 		width: 100%;
 		padding: 11px 15px 10px;
-		border-radius: 3px;
-		border: solid 1px rgba($primary-color, .4);
 		margin-bottom: 10px;
 		background: rgba($white, .5);
 		transition: border-bottom $quick-transition;

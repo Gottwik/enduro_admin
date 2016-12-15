@@ -1,19 +1,15 @@
 // * ———————————————————————————————————————————————————————— * //
-// * 	attaches date picker to datetime control
+// * 	attaches time picker to datetime control
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app
-	.directive('enDatePicker', [function () {
+	.directive('enTimePicker', [function () {
 		return {
 			restrict: 'A',
 			link: function (scope, element, attrs) {
-
+				console.log('..')
 				element = $(element)
-				element.pickadate({
-					format: 'dddd, dd mmmm, yyyy',
-					formatSubmit: 'yyyy-mm-dd',
-					today: '',
-					clear: '',
-					close: '',
+				element.pickatime({
+					formatSubmit: 'HH:i:00',
 					onSet: function () {
 						scope.context['$' + scope.terminatedkey + '_value'] = element.siblings('input').val()
 					}
