@@ -17,6 +17,8 @@ require('../assets/vendor/angular-mocks/angular-mocks')
 global.angular = window.angular
 global.inject = global.angular.mock.inject
 global.ngModule = global.angular.mock.module
+global._ = window._
+global.$ = window.$
 
 global.Mousetrap = require('../assets/vendor/mousetrap/mousetrap')
 require('../assets/vendor/angular-hotkeys/build/hotkeys')

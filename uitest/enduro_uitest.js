@@ -37,8 +37,8 @@ function run_mocha_casper () {
 
 	// listens to casper's exit
 	mocha_casper.on('close', function (data) {
-		// rimraf(path.join(process.cwd(), admin_test_project_path), function () {
+		rimraf(path.join(process.cwd(), admin_test_project_path), function () {
 			process.exit()
-		// })
+		})
 	})
 }
