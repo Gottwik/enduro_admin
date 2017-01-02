@@ -41,6 +41,8 @@ enduro_admin_app.config(['$routeProvider',
 
 enduro_admin_app.run(function ($rootScope, $location, user_service, extension_service) {
 
+	$rootScope._ = _
+
 	// location change event
 	$rootScope.$on('$locationChangeSuccess', function () {
 		user_service.is_logged_in()

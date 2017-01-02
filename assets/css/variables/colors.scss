@@ -25,3 +25,8 @@ $alert-color: #c53636;
 
 // logo colors
 $base-logo-color: $black;
+
+$scheme: (#2ecc71, #3498db, #9b59b6);
+$color1: nth($scheme, 1);
+$color2: nth($scheme, 2);
+$color3: nth($scheme, 3);

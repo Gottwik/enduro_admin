@@ -1,7 +1,9 @@
-enduro_admin_app.factory('juice_service', function juice_service ($http, url_config, $cookies, modal_service) {
+enduro_admin_app.factory('juice_service', function juice_service ($http, url_config, $cookies, modal_service, $rootScope) {
 	var juice_service = {}
 
 	juice_service.forcepull = function (username, password) {
+
+		$rootScope.diff_result = {}
 
 		var forcepull_response
 
@@ -31,8 +33,9 @@ enduro_admin_app.factory('juice_service', function juice_service ($http, url_con
 			.then(function () {
 
 				// close the modal after 1 second
-				modal_service.close()
-				console.log(forcepull_response.data)
+				// modal_service.close()
+
+				$rootScope.diff_result = forcepull_response.data.diff_result
 				if (forcepull_response.data) {
 					// return forcepull_response.data
 				} else {

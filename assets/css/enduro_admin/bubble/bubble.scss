@@ -1,0 +1,19 @@
+.bubble {
+	@include rounded-corners();
+	background-color: $primary-color;
+	padding: 2px 8px;
+	font-size: 12px;
+
+	&.green {
+		background-color: $color1;
+	}
+
+	&.blue {
+		background-color: $color2;
+	}
+
+	&.purple {
+		background-color: $color3;
+		color: $white;
+	}
+}

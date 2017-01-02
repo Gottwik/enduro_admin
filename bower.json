@@ -27,7 +27,8 @@
     "tooltipster": "^4.0.2",
     "angular-hotkeys": "chieffancypants/angular-hotkeys#1.5.0",
     "fuse.js": "fuse#^2.4.1",
-    "pickadate": "^3.5.6"
+    "pickadate": "^3.5.6",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8",
