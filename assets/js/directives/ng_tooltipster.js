@@ -1,5 +1,5 @@
 // * ———————————————————————————————————————————————————————— * //
-// * 	Creates tooltip for objects
+// * 	angular wrapper for tooltipster (https://github.com/iamceege/tooltipster)
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app
 	.directive('ngtooltipster', [function () {
@@ -15,6 +15,8 @@ enduro_admin_app
 
 				$(element).tooltipster({
 					content: content,
+					delay: 0,
+					animationDuration: 0,
 				})
 			}
 		}

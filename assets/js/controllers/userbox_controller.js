@@ -1,7 +1,7 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	logout controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('logout_controller', ['$scope', 'user_service', '$location', 'juice_service', function ($scope, user_service, $location, juice_service) {
+enduro_admin_app.controller('userbox_controller', function ($scope, user_service, $location, juice_service) {
 
 	$scope.logout = function () {
 		user_service.logout()
@@ -17,4 +17,4 @@ enduro_admin_app.controller('logout_controller', ['$scope', 'user_service', '$lo
 			})
 	}
 
-}])
+})

@@ -2,7 +2,7 @@
 .tooltipster-sidetip .tooltipster-box {
 	background: rgba($white, .97);
 	border: 0;
-	border-radius: 6px;
+	border-radius: 3px;
 	max-width: 300px;
 	border: 1px $primary-color solid;
 }
@@ -21,7 +21,7 @@
 	@include font-size(xs);
 	@include smooth-font();
 	color: $black;
-	padding: 10px 20px;
+	padding: 5px 10px;
 }
 
 .control-tooltip {

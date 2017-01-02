@@ -9,6 +9,9 @@ enduro_admin_app
 			return (window.location.href.indexOf('localhost') + 1)
 				?	'http://localhost:5000/admin_api/'
 				:	'/admin_api/'
+		},
+		get_api_url: function (api_endpoint) {
+			return this.get_base_url() + api_endpoint
 		}
 	})
 	.constant('path_config', {
@@ -36,7 +39,7 @@ enduro_admin_app.config(['$routeProvider',
 	}]
 )
 
-enduro_admin_app.run(['$rootScope', '$location', 'user_service', 'extension_service', function ($rootScope, $location, user_service, extension_service) {
+enduro_admin_app.run(function ($rootScope, $location, user_service, extension_service) {
 
 	// location change event
 	$rootScope.$on('$locationChangeSuccess', function () {
@@ -52,6 +55,8 @@ enduro_admin_app.run(['$rootScope', '$location', 'user_service', 'extension_serv
 			})
 	})
 
+	$
+
 	extension_service.inject()
 
-}])
+})

@@ -12,12 +12,12 @@
 			</ul>
 		</div>
 
-		<div class="userbox" ng-controller="logout_controller">
+		<div class="userbox" ng-controller="userbox_controller">
 			<div class="userbox-bar">
-				<a href="#/logout" ng-click="forcepull()"><i class="fa fa-refresh"></i></a>
-				<a href="#/logout" ng-click="logout()"><i class="fa fa-user"></i></a>
-				<a href="#/cms/.settings"><i class="fa fa-cog"></i></a>
-				<a href="#/logout" ng-click="logout()"><i class="fa fa-power-off"></i></a>
+				<a ng-click="forcepull()" ngtooltipster title="Manual reload content"><i class="fa fa-refresh"></i></a>
+				<a ng-click="logout()" ngtooltipster title="Account settings"><i class="fa fa-user"></i></a>
+				<a href="#/cms/.settings" ngtooltipster title="Page settings"><i class="fa fa-cog"></i></a>
+				<a ng-click="logout()" ngtooltipster title="Logout"><i class="fa fa-power-off"></i></a>
 			</div>
 		</div>
 

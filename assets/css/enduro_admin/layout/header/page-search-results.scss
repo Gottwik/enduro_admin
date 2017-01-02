@@ -8,10 +8,12 @@
 	width: 400px;
 	max-height: calc(100vh - #{$top-bar-height + 100px});
 	overflow: auto;
+	padding: 13px 0;
 
 	.result {
-		padding: 5px 40px;
+		padding: 10px 20px;
 		cursor: pointer;
+		display: block;
 
 		&.active {
 			color: $white;

@@ -9,6 +9,7 @@
 	.userbox-bar {
 		a {
 			@include button-hover();
+			color: inherit;
 			padding: 10px 0;
 			display: block;
 			float: left;

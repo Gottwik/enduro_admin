@@ -1,12 +1,14 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	page search controller
+// *	enables quickly searching for pages
+// *	uses fuse(https://github.com/krisk/fuse/) for fuzzy search
 // * ———————————————————————————————————————————————————————— * //
 enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 
-	var options = {
+	// options for fuse
+	var fuse_options = {
 		caseSensitive: false,
 		shouldSort: true,
-		tokenize: false,
 		threshold: 0.6,
 		location: 0,
 		distance: 100,
@@ -17,9 +19,12 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '
 		]
 	}
 
+	// stores fuse
 	var fuse
+
+	// initialize fuse when cmslist gets set or changes
 	$scope.$watch($rootScope.flat_cmslist, function () {
-		fuse = new Fuse($rootScope.flat_cmslist, options)
+		fuse = new Fuse($rootScope.flat_cmslist, fuse_options)
 	})
 
 	$scope.pagesearch_string = ''
