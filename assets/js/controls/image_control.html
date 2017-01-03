@@ -13,6 +13,7 @@
 		</div>
 
 		<div ng-if="context[terminatedkey]" class="tiny-controls">
+			<i class="fa fa-link" ng-class="" ng-click="direct_input()"></i>
 			<i class="fa fa-refresh" ngf-select="upload($file)" ng-model="context[terminatedkey]"></i>
 			<i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="delete_image()"></i>
 		</div>
@@ -22,5 +23,12 @@
 		</div>
 
 		<div class="img-progress" style="width: {{100 - progress}}%"></div>
+
+		<div class="direct-input">
+			<div class="">
+				<input type="text" ng-model="context[terminatedkey]">
+				<button class="small" ng-click="direct_input()">Set</button>
+			</div>
+		</div>
 	</div>
 </div>

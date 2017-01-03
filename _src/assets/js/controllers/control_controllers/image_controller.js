@@ -38,4 +38,9 @@ enduro_admin_app.controller('image_controller', ['$scope', 'image_service', '$sc
 		}
 	}
 
+	// direct input of an url
+	$scope.direct_input = function () {
+		$element.toggleClass('direct-input-enabled')
+	}
+
 }])
