@@ -7,7 +7,7 @@
 
 	{{!-- folder --}}
 	<div ng-if="page.folder" ng-controller="folder_controller">
-		<div class="menufolder" data-cmsfolder="\{{page.page_slug}}" ng-click="folderclick()"><i class="fa fa-folder-o" ng-class="{'fa-folder-open-o': cmslist.open}"></i>\{{page.name}}</div>
+		<div class="menufolder" data-cmsfolder="\{{page.folder_slug}}" ng-click="folderclick()"><i class="fa fa-folder-o" ng-class="{'fa-folder-open-o': cmslist.open}"></i>\{{page.name}}</div>
 		<div class="inner-folder" ng-class="{'open': cmslist.open}">
 			<div class="addpage-button" ng-click="add_page()" ng-if="page.generator"><i class="fa fa-plus-square-o"></i>Add page</div>
 			<div ng-include="'/admin/layout/pagelist.html'"></div>

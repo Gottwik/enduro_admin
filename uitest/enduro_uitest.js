@@ -27,7 +27,7 @@ function run_mocha_casper () {
 
 	// starts the mocha-casperjs
 	const spawn = require('child_process').spawn
-	const mocha_casper = spawn(mocha_casper_path, ['uitest/test/*', '--viewport-width=1900 --viewport-height=1080'])
+	const mocha_casper = spawn(mocha_casper_path, ['uitest/test/*', '--viewport-width=1900 --viewport-height=1080 --bail'])
 	// const mocha_casper = spawn(__dirname + '/../node_modules/mocha-casperjs/bin/mocha-casperjs', ['uitest/test/*', '--viewport-width=1500'])
 
 	// listens to data - console.log from the casper

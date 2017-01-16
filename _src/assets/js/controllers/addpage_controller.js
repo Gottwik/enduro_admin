@@ -31,7 +31,7 @@ enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'cont
 			}
 
 			newpage.name = format_service.deslug(new_pagename)
-			newpage.slug = new_pagename
+			newpage.page_slug = new_pagename
 			newpage.fullpath = newpage.fullpath.split('/').slice(0, -1).join('/') + '/' + format_service.slug(new_pagename)
 			newpage.hidden = false
 			cmslist[path[0]][new_pagename] = newpage
