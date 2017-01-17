@@ -63,16 +63,17 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// * ———————————————————————————————————————————————————————— * //
 		$scope.temp = function () {
 			$scope.temping = true
+
+			if (!$scope.tempwindow || !$scope.tempwindow.location.hostname) {
+				$scope.tempwindow = window.open()
+			}
+
 			content_service.get_temp_page($routeParams.page_path, $scope.context)
 				.then(function (temp_destination_path) {
 
 					$scope.temping = false
-					if ($scope.tempwindow && $scope.tempwindow.location.hostname) {
-						$scope.tempwindow.focus()
-						$scope.tempwindow.location = '/' + temp_destination_path.data
-					} else {
-						$scope.tempwindow = window.open('/' + temp_destination_path.data, 'enduro temp window')
-					}
+					$scope.tempwindow.focus()
+					$scope.tempwindow.location = '/' + temp_destination_path.data
 
 				}, function () {
 					$scope.temping = false
