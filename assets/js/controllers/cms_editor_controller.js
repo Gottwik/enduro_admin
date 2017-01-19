@@ -29,13 +29,19 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// *	returns nothing, just switches the culture
 		// * ———————————————————————————————————————————————————————— * //
 		$scope.change_culture = function (obj) {
+			var self = this
 
 			// gets data-culture from the element initializing the switch
 			var selected_culture = $(obj.target).data('culture')
 
+			self.change_culture_with_culture_slug(selected_culture)
+		}
+
+		$scope.change_culture_with_culture_slug = function (culture_slug) {
+
 			// sets current culture and true/false whether page is on default culture
-			$scope.current_culture = selected_culture
-			$scope.on_default_culture = selected_culture == $scope.cultures[0]
+			$scope.current_culture = culture_slug
+			$scope.on_default_culture = culture_slug == $scope.cultures[0]
 		}
 
 		// * ———————————————————————————————————————————————————————— * //
@@ -113,7 +119,9 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		}
 
 		// adding hotkeys
-		hotkeys.bindTo($scope)
+		var hotkeys_handler = hotkeys.bindTo($scope)
+
+		hotkeys_handler
 			.add({
 				// publish hotkey
 				combo: ['mod+s', 'mod+enter'],
@@ -135,7 +143,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				}
 			})
 			.add({
-				// temp hotkey
+				// search for page hotkey
 				combo: ['mod+p'],
 				description: 'Search for page',
 				allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
@@ -144,5 +152,20 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 					$('.page-search-input').focus()
 				}
 			})
+
+		for (var culture_index in _.range(5)) {
+			(function add_culture_switch_hotkey (culture_index) {
+				hotkeys_handler.add({
+					// switch cultures hotkey
+					combo: ['mod+' + culture_index],
+					description: 'switch culture',
+					allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+					callback: function (e) {
+						e.preventDefault()
+						$scope.change_culture_with_culture_slug($scope.cultures[culture_index - 1])
+					}
+				})
+			})(culture_index)
+		}
 
 	}])

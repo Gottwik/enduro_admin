@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="test_app">
+	<head>
+		<title>enduro.js - admin</title>
+
+		<link rel="stylesheet" href="/admin/assets/css/main.css">
+		<link rel="stylesheet" href="/_prebuilt/_settings.css">
+		<link href='https://fonts.googleapis.com/css?family=Lato:700,400,300,100' rel='stylesheet' type='text/css'>
+
+		<script src="/admin/assets/vendor/jquery/dist/jquery.min.js"></script>
+
+		<script src="/admin/assets/vendor/angular/angular.js"></script>
+		<script src="/admin/assets/vendor/angular-hotkeys/build/hotkeys.js"></script>
+		<script src="/admin/assets/vendor/angular-route/angular-route.js"></script>
+		<script src="/admin/assets/vendor/angular-cookies/angular-cookies.js"></script>
+		<script src="/admin/assets/vendor/angular-vertilize/angular-vertilize.js"></script>
+		<script src="/admin/assets/vendor/fuse.js/src/fuse.min.js"></script>
+		<script src="/admin/assets/vendor/ng-file-upload/ng-file-upload.min.js"></script>
+
+		<script>
+			var enduro_admin_app = angular.module('test_app', ['ngRoute'], function ($rootScopeProvider) {
+				$rootScopeProvider.digestTtl(15)
+			})
+
+			enduro_admin_app.config(['$routeProvider', function ($routeProvider) {
+				$routeProvider
+					.when('/', {
+						templateUrl: '/admin/test.html'
+					})
+			}])
+		</script>
+
+			<script src="/admin/assets/js/services/content_service.js"></script>
+			<script src="/admin/assets/js/services/culture_service.js"></script>
+			<script src="/admin/assets/js/services/extension_service.js"></script>
+			<script src="/admin/assets/js/services/format_service.js"></script>
+			<script src="/admin/assets/js/services/image_service.js"></script>
+			<script src="/admin/assets/js/services/juice_service.js"></script>
+			<script src="/admin/assets/js/services/modal_service.js"></script>
+			<script src="/admin/assets/js/services/preloader_service.js"></script>
+			<script src="/admin/assets/js/services/random_service.js"></script>
+			<script src="/admin/assets/js/services/terminator_service.js"></script>
+			<script src="/admin/assets/js/services/user_service.js"></script>
+
+			<script src="/admin/assets/js/controllers/addpage_controller.js"></script>
+			<script src="/admin/assets/js/controllers/cms_editor_controller.js"></script>
+			<script src="/admin/assets/js/controllers/control_controllers/array_controller.js"></script>
+			<script src="/admin/assets/js/controllers/control_controllers/fa_controller.js"></script>
+			<script src="/admin/assets/js/controllers/control_controllers/image_controller.js"></script>
+			<script src="/admin/assets/js/controllers/control_controllers/object_controller.js"></script>
+			<script src="/admin/assets/js/controllers/folder_controller.js"></script>
+			<script src="/admin/assets/js/controllers/globalizer_controller.js"></script>
+			<script src="/admin/assets/js/controllers/login_controller.js"></script>
+			<script src="/admin/assets/js/controllers/mainmenu_controller.js"></script>
+			<script src="/admin/assets/js/controllers/menupage_controller.js"></script>
+			<script src="/admin/assets/js/controllers/page_preloading_controller.js"></script>
+			<script src="/admin/assets/js/controllers/page_search_controller.js"></script>
+			<script src="/admin/assets/js/controllers/pagesplit_controller.js"></script>
+			<script src="/admin/assets/js/controllers/templatitator_controller.js"></script>
+			<script src="/admin/assets/js/controllers/terminator_controller.js"></script>
+			<script src="/admin/assets/js/controllers/userbox_controller.js"></script>
+
+			<script src="/admin/assets/js/directives/en_date_picker.js"></script>
+			<script src="/admin/assets/js/directives/en_draggable.js"></script>
+			<script src="/admin/assets/js/directives/en_modal.js"></script>
+			<script src="/admin/assets/js/directives/en_progressbar.js"></script>
+			<script src="/admin/assets/js/directives/en_textarea.js"></script>
+			<script src="/admin/assets/js/directives/en_time_picker.js"></script>
+			<script src="/admin/assets/js/directives/ng_tooltipster.js"></script>
+
+
+	</head>
+	<body>
+		<div ng-view></div>
+	</body>
+</html>
