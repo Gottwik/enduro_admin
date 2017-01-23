@@ -1,12 +1,9 @@
 <div class="full-background light"></div>
 <div class="main-viewport">
-
 	<nav class="sidebar">
 		<div class="sidebar-branding">
 			<?xml version="1.0" encoding="utf-8"?>
-			<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-			<svg version="1.1" id="enduro-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-				 y="0px" viewBox="0 171.3 852 255" enable-background="new 0 171.3 852 255" xml:space="preserve">
+			<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" id="enduro-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 171.3 852 255" enable-background="new 0 171.3 852 255" xml:space="preserve">
 			<g id="logo">
 				<path id="polygon" fill="#231F20" d="M100.8,400.8l-73.2-42.3c-6.7-3.8-10.8-10.9-10.8-18.6v-84.6c0-7.7,4.1-14.8,10.8-18.6
 					l73.2-42.3c6.7-3.8,14.8-3.8,21.5,0l73.2,42.3c6.7,3.8,10.8,10.9,10.8,18.6v84.6c0,7.7-4.1,14.8-10.8,18.6l-73.2,42.3
@@ -68,37 +65,26 @@
 					c-2.6-0.9-4.8-2.1-6.8-3.5c-2-1.4-3.6-3.1-4.8-5.1c-1.2-2-1.8-4.5-1.8-7.5c0-2.5,0.6-4.9,1.7-7.2c1.1-2.3,2.7-4.4,4.8-6.2
 					c2.1-1.8,4.5-3.2,7.4-4.2c2.9-1.1,6.1-1.6,9.6-1.6c4.3,0,8.1,0.6,11.4,1.8c3.3,1.2,6.4,3.1,9.4,5.7L820.8,285z"/>
 			</g>
-			</svg>
-		</div>
-
+			</svg> </div>
 		<div class="sidebar-items" ng-controller="mainmenu_controller">
 			<ul class="sidebar-group">
 				<div ng-include="'/admin/layout/pagelist.html'"></div>
 			</ul>
 		</div>
-
 		<div class="userbox" ng-controller="userbox_controller">
-			<div class="userbox-bar">
-				<a ng-click="forcepull()" ngtooltipster title="Manual reload content"><i class="fa fa-refresh"></i></a>
-				<a ng-click="logout()" ngtooltipster title="Account settings"><i class="fa fa-user"></i></a>
-				<a href="#/cms/.settings" ngtooltipster title="Page settings"><i class="fa fa-cog"></i></a>
-				<a ng-click="logout()" ngtooltipster title="Logout"><i class="fa fa-power-off"></i></a>
-			</div>
+			<div class="userbox-bar"> <a ng-click="forcepull()" ngtooltipster title="Manual reload content"><i class="fa fa-refresh"></i></a> <a ng-click="logout()" ngtooltipster title="Account settings"><i class="fa fa-user"></i></a> <a href="#/cms/.settings" ngtooltipster title="Page settings"><i class="fa fa-cog"></i></a>				<a ng-click="logout()" ngtooltipster title="Logout"><i class="fa fa-power-off"></i></a> </div>
 		</div>
-
 	</nav>
-
 	<!-- Inner page -->
 	<div class="inner-page-viewport" ng-class="{'is-currently-preloading': $root.is_currently_preloading}">
 		<div class="currently-editing-page" ng-include="inner_page" ng-controller="pagesplit_controller"></div>
 		<div class="page-preloading" ng-controller="page_preloading_controller">
 			<div class="contentbox">
-				<div class="action">
-					<span>Building page</span>
+				<div class="action"> <span>Building page</span>
 					<div class="progressbar"></div>
 				</div>
 			</div>
-		</div>	</div>
+		</div>
+	</div>
 </div>
-
 <div ng-include="modal"></div>

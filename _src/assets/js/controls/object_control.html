@@ -1,19 +1,14 @@
 <div ng-controller="object_controller">
-
 	<div ng-include="'/admin/components/cms_utilities/expander_button.html'"></div>
-
 	<div class="object-container" ng-show="context_is_not_empty()" ng-class="{'no-frame': parent_no_frame || terminated_context.noframe}">
 		<div ng-if="!no_label" class="container-title">
 			<h3>{{object_name}}</h3>
 		</div>
 		<div class="row" ng-if="isObject(context)">
 			<div ng-repeat="(key, value) in context track by $index" ng-controller="terminator_controller">
-
 				<div ng-if="!terminated_context.hidden">
 					<div ng-if="globalizer" ng-include="'/admin/assets/js/controls/globalizer_control.html'"></div>
-
 					<div ng-if="!globalizer && terminated_context.type" ng-include="'/admin/assets/js/controls/' + terminated_context.type + '_control.html'"></div>
-
 					<!-- default, non-defined controls -->
 					<div ng-if="!globalizer && !terminated_context.type">
 						<div ng-if="isString(value) || isNumber(value)" ng-include="'/admin/assets/js/controls/text_control.html'"></div>
@@ -22,7 +17,6 @@
 						<div ng-if="isBoolean(value)" ng-include="'/admin/assets/js/controls/boolean_control.html'"></div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		<div class="clearfix"></div>

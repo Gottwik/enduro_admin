@@ -12,12 +12,32 @@
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,100' rel='stylesheet' type='text/css'>
 
 		<script type="text/javascript">
-			// didnt really work with the style of the textfield
-			// window.onload = function(){
-			// 	var text_input = document.getElementById('pswrdinput');
-			// 	text_input.focus();
-			// 	text_input.select();
-			// }
+			$( document ).ready(function() {
+				$('.login_form').submit(function (e) {
+
+					// store login card for later use
+					var login_card = $('.login-card')
+
+					$.getJSON('/admin_api/trollhunter', $('.login_form').serialize(), function (res) {
+						if (res.success) {
+							// just reload if login successful
+							location.reload()
+						} else {
+
+							// add failed and wiggle classes
+							login_card.addClass('login-failed wiggle')
+
+							// listen to wiggle animation change and remove wiggle class so it can be added again
+							login_card.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {
+								login_card.removeClass('wiggle')
+							})
+
+						}
+					})
+
+					e.preventDefault()
+				})
+			})
 		</script>
 
 	</head>
@@ -35,7 +55,7 @@
 					<div class="wedge-2x"></div>
 				</div>
 
-				<form class="login_form" method="GET" action=''>
+				<form class="login_form" action="http://google.com" method="GET">
 					<div class="form-row">
 						<label class="login-textfield-label">
 							<input id="pswrdinput" class="passphrase_input" type="password" name="pswrd" placeholder="passphrase" autocomplete=off>

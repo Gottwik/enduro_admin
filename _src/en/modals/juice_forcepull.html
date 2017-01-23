@@ -1,40 +1,17 @@
 <div class="modal" en-modal>
 	<div class="modal-body card">
-
 		<div class="close-button" ng-click="close()" ng-show="diff_result.diffSet"></div>
-
 		<h2 ng-show="!diff_result.diffSet">Syncing content</h2>
 		<h2 ng-show="diff_result.diffSet">Syncing completed</h2>
-
 		<div class="progressbars" ng-show="!diff_result.diffSet">
-			<div en-progressbar class="connecting_progressbar">
-				<span class="label">Connecting to content server</span>
-			</div>
-			<div en-progressbar class="downloading_content">
-				<span class="label">Downloading content file</span>
-			</div>
-			<div en-progressbar class="unzipping_file">
-				<span class="label">Unzipping content file</span>
-			</div>
-			<div en-progressbar class="recompiling_website">
-				<span class="label">Recompiling website</span>
-			</div>
+			<div en-progressbar class="connecting_progressbar"> <span class="label">Connecting to content server</span> </div>
+			<div en-progressbar class="downloading_content"> <span class="label">Downloading content file</span> </div>
+			<div en-progressbar class="unzipping_file"> <span class="label">Unzipping content file</span> </div>
+			<div en-progressbar class="recompiling_website"> <span class="label">Recompiling website</span> </div>
 		</div>
-
 		<div class="files">
-
-			<div class="file" ng-repeat="file in diff_result.diffSet">
-				<span ng-repeat="tab in _.range(file.level * 4)">&nbsp;</span>
-				<i class="fa fa-folder-o" ng-if="file.type1 == 'directory' || file.type2 == 'directory'"></i>
-				<i class="fa fa-file-o" ng-if="file.type1 != 'directory' && file.type2 != 'directory'"></i>
-				<span class="name">&nbsp;{{file.name}}</span>
-				<span class="bubble" ng-class="{'purple': file.status == 'juice_newer' || file.status == 'juice_only', 'green': file.status == 'local_newer' || file.status == 'local_only'}" ng-if="file.status != 'equal' && file.type != 'directory'">{{file.status}}</span>
-			</div>
-
+			<div class="file" ng-repeat="file in diff_result.diffSet"> <span ng-repeat="tab in _.range(file.level * 4)">&nbsp;</span> <i class="fa fa-folder-o" ng-if="file.type1 == 'directory' || file.type2 == 'directory'"></i> <i class="fa fa-file-o" ng-if="file.type1 != 'directory' && file.type2 != 'directory'"></i>				<span class="name">&nbsp;{{file.name}}</span> <span class="bubble" ng-class="{'purple': file.status == 'juice_newer' || file.status == 'juice_only', 'green': file.status == 'local_newer' || file.status == 'local_only'}" ng-if="file.status != 'equal' && file.type != 'directory'">{{file.status}}</span>				</div>
 		</div>
-
 		<div class="wedge"></div>
-
-
 	</div>
 </div>
