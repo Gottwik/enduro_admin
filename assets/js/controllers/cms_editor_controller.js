@@ -16,9 +16,32 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// gets all available cultures
 		culture_service.get_cultures()
 			.then(function (res) {
+
+				// store the cultures
 				$scope.cultures = res
+
+				// set first culture
 				$scope.current_culture = res[0] || ''
+
+				// determine if the default culture is set
 				$scope.on_default_culture = $scope.current_culture == res[0]
+
+				// will create hotkeys to switch between cultures with cmd+1, cmd+2...
+				for (var culture_index in _.range($scope.cultures.length)) {
+					(function add_culture_switch_hotkey (culture_index) {
+						hotkeys_handler.add({
+							// switch cultures hotkey
+							combo: ['mod+' + culture_index],
+							description: 'switch culture',
+							allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+							callback: function (e) {
+								e.preventDefault()
+								$scope.change_culture_with_culture_slug($scope.cultures[culture_index - 1])
+							}
+						})
+					})(culture_index)
+				}
+
 			}, function () {})
 
 		// * ———————————————————————————————————————————————————————— * //
@@ -152,20 +175,14 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 					$('.page-search-input').focus()
 				}
 			})
-
-		for (var culture_index in _.range(5)) {
-			(function add_culture_switch_hotkey (culture_index) {
-				hotkeys_handler.add({
-					// switch cultures hotkey
-					combo: ['mod+' + culture_index],
-					description: 'switch culture',
-					allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
-					callback: function (e) {
-						e.preventDefault()
-						$scope.change_culture_with_culture_slug($scope.cultures[culture_index - 1])
-					}
-				})
-			})(culture_index)
-		}
+			.add({
+				// search for page hotkey
+				combo: ['mod+l'],
+				description: 'log context',
+				callback: function (e) {
+					e.preventDefault()
+					console.log($scope.context)
+				}
+			})
 
 	}])

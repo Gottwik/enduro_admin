@@ -133,11 +133,13 @@
 }
 
 .img-progress {
-	position: absolute;
-	width: 0%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	background-color: rgba($black, .5);
+	@include cover();
+	background-color: rgba($primary-color, 1);
 	pointer-events: none;
+	transition: opacity .8s ease;
+	opacity: 0;
+
+	&.loading {
+		opacity: 1;
+	}
 }

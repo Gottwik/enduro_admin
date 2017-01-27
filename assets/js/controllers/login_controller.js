@@ -9,6 +9,7 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', 'user_s
 	// detects if juicebox(versioning for cms at aws) to provide feedback to user if it is not enables
 	$scope.settings = {dummy: 'dummy'}
 	$scope.settings.juicebox_enabled = true
+	$scope.settings.has_admins = true
 	content_service.get_application_settings()
 		.then(function (settings) {
 			$scope.settings = settings.data

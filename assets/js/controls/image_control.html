@@ -21,8 +21,7 @@
 		<div ng-if="!context[terminatedkey]" class="img-file-upload-button" ngf-select="upload($file)" ng-model="context[terminatedkey]" >
 			<i class="fa fa-plus"></i>
 		</div>
-
-		<div class="img-progress" style="width: {{100 - progress}}%"></div>
+		<div class="img-progress" ng-class="{'loading': loading}"></div>
 
 		<div class="direct-input">
 			<div class="">

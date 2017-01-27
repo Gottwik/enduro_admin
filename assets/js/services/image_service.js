@@ -22,8 +22,6 @@ enduro_admin_app.factory('image_service', ['url_config', '$cookies', '$q', 'Uplo
 			user_service.error,
 			function (evt) {
 				var progress = parseInt(100.0 * evt.loaded / evt.total)
-
-				console.log(progress)
 			})
 		})
 	}

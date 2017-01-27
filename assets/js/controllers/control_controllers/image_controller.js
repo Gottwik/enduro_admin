@@ -1,12 +1,14 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	image controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('image_controller', ['$scope', 'image_service', '$sce', '$element', function ($scope, image_service, $sce, $element) {
+enduro_admin_app.controller('image_controller', function ($scope, image_service, $sce, $element, $timeout) {
 
-	$scope.progress = 100
+	$scope.loading = false
 
 	// upload on file select or drop
 	$scope.upload = function (file) {
+
+		$scope.loading = true
 
 		$('.img-dropper').blur()
 		// catch pasted image
@@ -15,9 +17,10 @@ enduro_admin_app.controller('image_controller', ['$scope', 'image_service', '$sc
 			file.name = Math.random().toString(36).substring(7) + '.' + file.type.match(/\/(.*)$/)[1]
 		}
 
-		image_service.upload_image(file)
+		image_service.upload_image(file, $scope.progress_update)
 			.then(function (image_url) {
 				$scope.context[$scope.terminatedkey] = image_url
+				$timeout(function () { $scope.loading = false }, 500)
 			})
 	}
 
@@ -43,4 +46,4 @@ enduro_admin_app.controller('image_controller', ['$scope', 'image_service', '$sc
 		$element.toggleClass('direct-input-enabled')
 	}
 
-}])
+})
