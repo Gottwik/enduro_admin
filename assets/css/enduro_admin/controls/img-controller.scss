@@ -134,12 +134,13 @@
 
 .img-progress {
 	@include cover();
-	background-color: rgba($primary-color, 1);
+	background-color: rgba($primary-color, .5);
 	pointer-events: none;
-	transition: opacity .8s ease;
-	opacity: 0;
+	transition: none;
+	width: 0%;
 
 	&.loading {
-		opacity: 1;
+		width: 100%;
+		transition: width .8s ease;
 	}
 }

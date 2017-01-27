@@ -8,6 +8,10 @@ enduro_admin_app.controller('image_controller', function ($scope, image_service,
 	// upload on file select or drop
 	$scope.upload = function (file) {
 
+		if (!file) {
+			return
+		}
+
 		$scope.loading = true
 
 		$('.img-dropper').blur()
@@ -16,12 +20,13 @@ enduro_admin_app.controller('image_controller', function ($scope, image_service,
 			file = file[0]
 			file.name = Math.random().toString(36).substring(7) + '.' + file.type.match(/\/(.*)$/)[1]
 		}
-
-		image_service.upload_image(file, $scope.progress_update)
-			.then(function (image_url) {
-				$scope.context[$scope.terminatedkey] = image_url
-				$timeout(function () { $scope.loading = false }, 500)
-			})
+		$timeout(function () {
+			image_service.upload_image(file, $scope.progress_update)
+				.then(function (image_url) {
+					$scope.context[$scope.terminatedkey] = image_url
+					$timeout(function () { $scope.loading = false }, 500)
+				})
+		}, 250)
 	}
 
 	$scope.delete_image = function () {

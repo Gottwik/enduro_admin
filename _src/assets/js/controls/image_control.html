@@ -12,15 +12,12 @@
 			</div>
 		</div>
 
-		<div ng-if="context[terminatedkey]" class="tiny-controls">
+		<div class="tiny-controls">
 			<i class="fa fa-link" ng-class="" ng-click="direct_input()"></i>
 			<i class="fa fa-refresh" ngf-select="upload($file)" ng-model="context[terminatedkey]"></i>
 			<i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="delete_image()"></i>
 		</div>
 
-		<div ng-if="!context[terminatedkey]" class="img-file-upload-button" ngf-select="upload($file)" ng-model="context[terminatedkey]" >
-			<i class="fa fa-plus"></i>
-		</div>
 		<div class="img-progress" ng-class="{'loading': loading}"></div>
 
 		<div class="direct-input">
