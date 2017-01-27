@@ -1,0 +1,8 @@
+<div class="form-control nice-wrapper col-md-12" ng-controller="globalizer_controller">
+	<label>
+		<span>{{formated_key}}</span>
+		<select ng-model="context[terminatedkey]" ng-change="globalizer_change(context[terminatedkey])">
+			<option ng-repeat="globalized_option in globalized_options" value="{{globalized_option.value}}">{{globalized_option.label}}</option>
+		</select>
+	</label>
+</div>

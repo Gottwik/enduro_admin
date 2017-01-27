@@ -1,0 +1,10 @@
+<div class="expander-btn" ng-if="terminated_context['expander']" ng-click="expand()">
+	<span ng-class="{'hidden': context_is_not_empty()}">
+		<span>{{terminated_context.expandertitle || object_name}}</span>
+		<i class="fa fa-eye"></i>
+	</span>
+	<span ng-class="{'hidden': !context_is_not_empty()}">
+		<span>{{terminated_context.expandertitle || object_name}}</span>
+		<i class="fa fa-minus"></i>
+	</span>
+</div>
