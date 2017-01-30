@@ -1,0 +1,8 @@
+<div class="form-control {{size}}" >
+	<label>
+		<span ng-if="terminated_context.info" ngtooltipster class="tooltip control-tooltip">{{formated_key}}<i class="fa fa-question-circle-o" title="{{terminated_context.info}}"></i></span>
+		<span ng-if="!terminated_context.info">{{formated_key}}</span>
+		
+		<input ng-model="context[terminatedkey]" ng-bind="current_culture">
+	</label>
+</div>

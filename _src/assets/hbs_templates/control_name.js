@@ -1,0 +1,3 @@
+define(["handlebars"], function(Handlebars) { return Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<span ng-if=\"terminated_context.info\" ngtooltipster class=\"tooltip control-tooltip\">{{formated_key}}<i class=\"fa fa-question-circle-o\" title=\"{{terminated_context.info}}\"></i></span>\n<span ng-if=\"!terminated_context.info\">{{formated_key}}</span>\n\n";
+},"useData":true}); });

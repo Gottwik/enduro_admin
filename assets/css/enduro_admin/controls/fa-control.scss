@@ -22,18 +22,32 @@
 .fa-chooser {
 	color: $black;
 
-	i {
+	.fa-chooser-icon {
 		@include rounded-corners();
-		@include font-size(icon);
-		width: 30px;
-		height: 30px;
+		width: 120px;
+		height: 90px;
 		text-align: center;
 		cursor: pointer;
 		padding-top: 5px;
+		display: block;
+		float: left;
+		padding: 10px;
+
+		i {
+			display: block;
+			@include font-size(icon);
+			margin-bottom: 5px;
+			margin-top: 10px;
+		}
 
 		&:hover {
 			background-color: $primary-color;
 			color: $white;
 		}
+	}
+
+	.modal-body {
+		width: 80%;
+		margin-left: -40%;
 	}
 }

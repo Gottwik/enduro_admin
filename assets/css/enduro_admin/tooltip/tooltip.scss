@@ -25,11 +25,15 @@
 }
 
 .control-tooltip {
-	margin-left: 6px;
 
-	&:before {
-		position: relative;
-		top: 1px;
-		@include font-size(xs);
+	i {
+		margin-left: 3px;
+
+		&:before {
+			position: relative;
+			top: 0px;
+			color: lighten($grey, 20%);
+			@include font-size(xs);
+		}
 	}
 }

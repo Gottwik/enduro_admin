@@ -91,14 +91,7 @@
 	<!-- Inner page -->
 	<div class="inner-page-viewport" ng-class="{'is-currently-preloading': $root.is_currently_preloading}">
 		<div class="currently-editing-page" ng-include="inner_page" ng-controller="pagesplit_controller"></div>
-		<div class="page-preloading" ng-controller="page_preloading_controller">
-			<div class="contentbox">
-				<div class="action">
-					<span>Building page</span>
-					<div class="progressbar"></div>
-				</div>
-			</div>
-		</div>	</div>
+	</div>
 </div>
 
 <div ng-include="modal"></div>

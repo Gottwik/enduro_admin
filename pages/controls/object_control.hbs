@@ -4,7 +4,7 @@
 
 	<div class="object-container" ng-show="context_is_not_empty()" ng-class="{'no-frame': parent_no_frame || terminated_context.noframe}">
 		<div ng-if="!no_label" class="container-title">
-			<h3>{{object_name}}</h3>
+			<h3>\{{object_name}}</h3>
 		</div>
 		<div class="row" ng-if="isObject(context)">
 			<div ng-repeat="(key, value) in context track by $index" ng-controller="terminator_controller">

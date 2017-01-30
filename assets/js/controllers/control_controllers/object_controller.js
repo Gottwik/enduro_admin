@@ -1,7 +1,7 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	object controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('object_controller', ['$scope', 'format_service', 'preloader_service', function ($scope, format_service, preloader_service) {
+enduro_admin_app.controller('object_controller', function ($scope, format_service) {
 
 	// sets the formated name from the object's key
 	$scope.object_name = format_service.deslug($scope.key)
@@ -17,11 +17,6 @@ enduro_admin_app.controller('object_controller', ['$scope', 'format_service', 'p
 		}
 	}
 
-	preloader_service.add_to_be_loaded_object()
-	setTimeout(function () {
-		preloader_service.remove_to_be_loaded_object()
-	})
-
 	// action when expander button is clicked
 	$scope.expand = function () {
 		if ($scope.context_is_not_empty()) {
@@ -36,4 +31,4 @@ enduro_admin_app.controller('object_controller', ['$scope', 'format_service', 'p
 		return $scope.context && Object.keys($scope.context).length > 0
 	}
 
-}])
+})
