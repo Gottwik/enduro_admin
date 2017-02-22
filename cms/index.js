@@ -1,4 +1,3 @@
 {
-	$text2_type: 'fa',
-	text2: '',
+	text: 'text'
 }
