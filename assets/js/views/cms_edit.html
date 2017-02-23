@@ -5,7 +5,7 @@
 			<i class="fa fa-search"></i>
 			<div ng-include="'/admin/components/page_search/page_search_results.html'"></div>
 		</div>
-		<div class="btn btn-minor small publish-button" ng-click="temp()" ng-class="{'publishing': temping}" ng-if="!no_page_associated"><i class="fa fa-bolt"></i>Temp</div>
+		<div class="btn btn-minor small publish-button" ng-click="temp()" ng-class="{'publishing': temping}" ng-if="!has_page_associated"><i class="fa fa-bolt"></i>Temp</div>
 		<div class="btn btn-success small publish-button" ng-click="publish()" ng-class="{'publishing': publishing, 'disabled': is_demo}"><i class="fa fa-cloud"></i>Publish</div>
 	</div>
 	<div class="page-viewport">
@@ -24,8 +24,8 @@
 
 				<div class="wedge"></div>
 
-				<h2 ng-if="!no_page_associated"><a target="_blank" href="/{{page_link}}"><i class="fa fa-link large"></i>{{pretty_name}}</a></h2>
-				<h2 ng-if="no_page_associated">{{pretty_name}}</h2>
+				<h2 ng-if="!has_page_associated"><a target="_blank" href="/{{page_link}}"><i class="fa fa-link large"></i>{{pretty_name}}</a></h2>
+				<h2 ng-if="has_page_associated">{{pretty_name}}</h2>
 
 				<div class="wedge"></div>
 				<div ng-include="'/admin/controls/object_control.html'" ng-init="no_frame=true"></div>
