@@ -1,19 +1,18 @@
 {
   "name": "fuse.js",
-  "version": "2.4.1",
+  "version": "2.6.2",
   "main": "./src/fuse.js",
   "ignore": [
     "test"
   ],
   "homepage": "https://github.com/krisk/Fuse",
-  "_release": "2.4.1",
+  "_release": "2.6.2",
   "_resolution": {
     "type": "version",
-    "tag": "v2.4.1",
-    "commit": "3495527d8ec5e452a10c65ad798aad2f01b2aa87"
+    "tag": "v2.6.2",
+    "commit": "a546cb3aa2a845e4f4cb2460ad94e0b92ccbe407"
   },
   "_source": "https://github.com/krisk/Fuse.git",
-  "_target": "^2.4.1",
-  "_originalSource": "fuse",
-  "_direct": true
+  "_target": "^2.6.2",
+  "_originalSource": "fuse"
 }

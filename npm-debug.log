@@ -1,0 +1,122 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/Users/martingottweis/npm/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.6
+3 info using node@v5.9.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/martingottweis/projects/enduro_admin',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/martingottweis/.npm/enduro_admin/1.0.54/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/martingottweis/.npm correctMkdir not in flight; initializing
+10 info lifecycle enduro_admin@1.0.54~prepublish: enduro_admin@1.0.54
+11 silly lifecycle enduro_admin@1.0.54~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/martingottweis/.npm/enduro_admin/1.0.54/package.tgz',
+12 verbose tar pack   '/Users/martingottweis/projects/enduro_admin' ]
+13 verbose tarball /Users/martingottweis/.npm/enduro_admin/1.0.54/package.tgz
+14 verbose folder /Users/martingottweis/projects/enduro_admin
+15 verbose addLocalTarball adding from inside cache /Users/martingottweis/.npm/enduro_admin/1.0.54/package.tgz
+16 verbose correctMkdir /Users/martingottweis/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd enduro_admin@1.0.54
+18 verbose afterAdd /Users/martingottweis/.npm/enduro_admin/1.0.54/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/martingottweis/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/martingottweis/.npm/enduro_admin/1.0.54/package/package.json written
+21 silly publish { name: 'enduro_admin',
+21 silly publish   version: '1.0.54',
+21 silly publish   description: '[![npm version](https://badge.fury.io/js/enduro_admin.svg)](https://badge.fury.io/js/enduro_admin)',
+21 silly publish   main: 'assets/vendor/enduro/index.js',
+21 silly publish   scripts:
+21 silly publish    { test: 'mocha --recursive --bail && node uitest/enduro_uitest',
+21 silly publish      uitest: '' },
+21 silly publish   author: { name: 'Martin Gottweis' },
+21 silly publish   license: 'MIT',
+21 silly publish   devDependencies:
+21 silly publish    { bower: '^1.7.7',
+21 silly publish      casper: '^0.1.1',
+21 silly publish      'casper-chai': '^0.3.0',
+21 silly publish      casperjs: '^1.1.3',
+21 silly publish      chai: '^3.5.0',
+21 silly publish      enduro: '*',
+21 silly publish      glob: '^7.0.5',
+21 silly publish      jsdom: '^3.1.2',
+21 silly publish      'mocha-casperjs': '^0.5.7',
+21 silly publish      rimraf: '^2.5.2',
+21 silly publish      mocha: '^3.2.0' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/Gottwik/enduro_admin.git' },
+21 silly publish   homepage: 'http://www.endurojs.com',
+21 silly publish   readme: '# Enduro\n\n[![npm version](https://badge.fury.io/js/enduro_admin.svg)](https://badge.fury.io/js/enduro_admin)\n\nThis is a admin interface for [enduro.js](https://github.com/kiskadigitalmedia/Enduro).\n\n![image](http://i.imgur.com/M8vGA92.png)\n\n## Developing enduro admin\n1. I decided to decouple admin interface from enduro to make things cleaner\n2. enduro admin is built using enduro ( duh ;-) )\n2. clone enduro_admin\'s git repo: https://github.com/kiskadigitalmedia/Enduro_admin\n3. cd into enduro\'s directory\n4. run `npm link ../enduro_admin` or wherever you cloned the enduro_admin to\n5. run enduro on enduro_admin by `enduro -nr -noadmin`\n6. run `enduro` on your project\n7. now you can edit enduro admin\'s source code and see the change on your project at localhost:5000/admin\n',
+21 silly publish   readmeFilename: 'README.MD',
+21 silly publish   gitHead: '46df0dea25d95500acd2890b739e58537e8684d6',
+21 silly publish   bugs: { url: 'https://github.com/Gottwik/enduro_admin/issues' },
+21 silly publish   _id: 'enduro_admin@1.0.54',
+21 silly publish   _shasum: '059dc97c34d43e1d478bb76890e77cda95c89df9',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name enduro_admin
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'enduro_admin',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'enduro_admin',
+26 silly mapToRegistry   name: 'enduro_admin',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/enduro_admin
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/martingottweis/.npm/enduro_admin/1.0.54/package.tgz
+30 verbose request uri https://registry.npmjs.org/enduro_admin
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 2:13:41 PM
+33 verbose request using bearer token for auth
+34 verbose request id 5029fd2f54eeb48c
+35 http request PUT https://registry.npmjs.org/enduro_admin
+36 http 403 https://registry.npmjs.org/enduro_admin
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '96',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Fri, 24 Feb 2017 13:13:46 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-hhn1520-HHN',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1487942022.778881,VS0,VE3642',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/martingottweis/.npm/registry.npmjs.org/enduro_admin on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.54." : enduro_admin
+40 verbose stack     at makeError (/Users/martingottweis/npm/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/Users/martingottweis/npm/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/Users/martingottweis/npm/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/Users/martingottweis/npm/lib/node_modules/npm/node_modules/request/request.js:200:22)
+40 verbose stack     at emitTwo (events.js:100:13)
+40 verbose stack     at Request.emit (events.js:185:7)
+40 verbose stack     at Request.<anonymous> (/Users/martingottweis/npm/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+40 verbose stack     at emitOne (events.js:95:20)
+40 verbose stack     at Request.emit (events.js:182:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/Users/martingottweis/npm/lib/node_modules/npm/node_modules/request/request.js:988:12)
+41 verbose statusCode 403
+42 verbose pkgid enduro_admin
+43 verbose cwd /Users/martingottweis/projects/enduro_admin
+44 error Darwin 14.5.0
+45 error argv "/usr/local/bin/node" "/Users/martingottweis/npm/bin/npm" "publish"
+46 error node v5.9.1
+47 error npm  v3.10.6
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.54." : enduro_admin
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

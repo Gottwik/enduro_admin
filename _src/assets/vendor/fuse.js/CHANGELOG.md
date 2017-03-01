@@ -1,3 +1,16 @@
+# Version 2.6.2
+
+- Fix typings based on TypeScript guidelines (#129)
+
+# Version 2.6.0
+
+- Added Typescript definition
+- Added ability to set min/max matched character lengths when returning the matched indices (#122)
+
+# Version 2.5.0
+
+- Added option to search by matching all tokens (in every record) when `matchAllTokens:true` (#95)
+
 # Version 2.3.0
 
 - Added token separator to options, when `tokenize:true` (#93)

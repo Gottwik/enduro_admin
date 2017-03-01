@@ -20,6 +20,7 @@
 ;(function (global) {
   'use strict'
 
+  /** @type {function(...*)} */
   function log () {
     console.log.apply(console, arguments)
   }
@@ -75,37 +76,52 @@
     // the `threshold`, `distance`, and `location` are inconsequential for individual tokens.
     tokenize: false,
 
+    // When true, the result set will only include records that match all tokens. Will only work
+    // if `tokenize` is also true.
+    matchAllTokens: false,
+
     // Regex used to separate words when searching. Only applicable when `tokenize` is `true`.
-    tokenSeparator: / +/g
+    tokenSeparator: / +/g,
+
+    // Minimum number of characters that must be matched before a result is considered a match
+    minMatchCharLength: 1,
+
+    // When true, the algorithm continues searching to the end of the input even if a perfect
+    // match is found before the end of the same input.
+    findAllMatches: false
   }
 
+  /**
+   * @constructor
+   * @param {!Array} list
+   * @param {!Object<string, *>} options
+   */
   function Fuse (list, options) {
-    var i
-    var len
     var key
-    var keys
 
     this.list = list
     this.options = options = options || {}
 
-    // Add boolean type options
-    for (i = 0, keys = ['sort', 'shouldSort', 'verbose', 'tokenize'], len = keys.length; i < len; i++) {
-      key = keys[i]
-      this.options[key] = key in options ? options[key] : defaultOptions[key]
-    }
-    // Add all other options
-    for (i = 0, keys = ['searchFn', 'sortFn', 'keys', 'getFn', 'include', 'tokenSeparator'], len = keys.length; i < len; i++) {
-      key = keys[i]
-      this.options[key] = options[key] || defaultOptions[key]
+    for (key in defaultOptions) {
+      if (!defaultOptions.hasOwnProperty(key)) {
+        continue;
+      }
+      // Add boolean type options
+      if (typeof defaultOptions[key] === 'boolean') {
+        this.options[key] = key in options ? options[key] : defaultOptions[key];
+      // Add all other options
+      } else {
+        this.options[key] = options[key] || defaultOptions[key]
+      }
     }
   }
 
-  Fuse.VERSION = '2.4.1'
+  Fuse.VERSION = '2.6.2'
 
   /**
    * Sets a new list for Fuse to match against.
-   * @param {Array} list
-   * @return {Array} The newly set list
+   * @param {!Array} list
+   * @return {!Array} The newly set list
    * @public
    */
   Fuse.prototype.set = function (list) {
@@ -211,6 +227,8 @@
     var termScores
     var word
     var tokenSearchResult
+    var hasMatchInText
+    var checkTextMatches
     var i
     var j
 
@@ -220,6 +238,8 @@
     }
 
     scores = []
+
+    var numTextMatches = 0
 
     if (typeof text === 'string') {
       words = text.split(options.tokenSeparator)
@@ -233,6 +253,8 @@
           if (options.verbose) log('Pattern:', tokenSearcher.pattern)
 
           termScores = []
+          hasMatchInText = false
+
           for (j = 0; j < words.length; j++) {
             word = words[j]
             tokenSearchResult = tokenSearcher.search(word)
@@ -240,13 +262,21 @@
             if (tokenSearchResult.isMatch) {
               obj[word] = tokenSearchResult.score
               exists = true
+              hasMatchInText = true
               scores.push(tokenSearchResult.score)
             } else {
               obj[word] = 1
-              scores.push(1)
+              if (!this.options.matchAllTokens) {
+                scores.push(1)
+              }
             }
             termScores.push(obj)
           }
+
+          if (hasMatchInText) {
+            numTextMatches++
+          }
+
           if (options.verbose) log('Token scores:', termScores)
         }
 
@@ -270,8 +300,12 @@
 
       if (options.verbose) log('Score average:', finalScore)
 
+      checkTextMatches = (this.options.tokenize && this.options.matchAllTokens) ? numTextMatches >= this.tokenSearchers.length : true
+
+      if (options.verbose) log('Check Matches', checkTextMatches)
+
       // If a match is found, add the item to <rawResults>, including its score
-      if (exists || mainSearchResult.isMatch) {
+      if ((exists || mainSearchResult.isMatch) && checkTextMatches) {
         // Check if the item already exists in our results
         existingResult = this.resultMap[index]
 
@@ -490,6 +524,8 @@
    *
    * Licensed under the Apache License, Version 2.0 (the "License")
    * you may not use this file except in compliance with the License.
+   *
+   * @constructor
    */
   function BitapSearcher (pattern, options) {
     options = options || {}
@@ -567,10 +603,10 @@
 
   /**
    * Compute and return the result of the search
-   * @param {String} text The text to search in
-   * @return {Object} Literal containing:
-   *                          {Boolean} isMatch Whether the text is a match or not
-   *                          {Decimal} score Overall score for the match
+   * @param {string} text The text to search in
+   * @return {{isMatch: boolean, score: number}} Literal containing:
+   *                          isMatch - Whether the text is a match or not
+   *                          score - Overall score for the match
    * @public
    */
   BitapSearcher.prototype.search = function (text) {
@@ -578,6 +614,7 @@
     var i
     var j
     var textLen
+    var findAllMatches
     var location
     var threshold
     var bestLoc
@@ -629,6 +666,8 @@
       }
     }
 
+    findAllMatches = options.findAllMatches
+
     location = options.location
     // Set starting location at beginning text and initialize the alphabet.
     textLen = text.length
@@ -676,7 +715,11 @@
       // Use the result from this iteration as the maximum for the next.
       binMax = binMid
       start = Math.max(1, location - binMid + 1)
-      finish = Math.min(location + binMid, textLen) + this.patternLen
+      if (findAllMatches) {
+        finish = textLen;
+      } else {
+        finish = Math.min(location + binMid, textLen) + this.patternLen
+      }
 
       // Initialize the bit array
       bitArr = Array(finish + 2)
@@ -749,12 +792,16 @@
         start = i
       } else if (!match && start !== -1) {
         end = i - 1
-        matchedIndices.push([start, end])
+        if ((end - start) + 1 >= this.options.minMatchCharLength) {
+            matchedIndices.push([start, end])
+        }
         start = -1
       }
     }
     if (matchMask[i - 1]) {
-      matchedIndices.push([start, i - 1])
+      if ((i-1 - start) + 1 >= this.options.minMatchCharLength) {
+        matchedIndices.push([start, i - 1])
+      }
     }
     return matchedIndices
   }
@@ -775,4 +822,4 @@
     global.Fuse = Fuse
   }
 
-})(this)
+})(this);

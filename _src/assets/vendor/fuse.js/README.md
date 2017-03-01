@@ -1,17 +1,46 @@
-# Fuse
+# Fuse.js
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/kirorisk)
+*Lightweight fuzzy-search, in JavaScript, with zero dependencies*
 
-[![NPM](https://nodei.co/npm/fuse.js.png?downloads=true)](https://nodei.co/npm/fuse.js/)
+[![npm version](https://badge.fury.io/js/fuse.js.svg)](https://www.npmjs.com/package/fuse.js)
+[![Build Status](https://secure.travis-ci.org/krisk/Fuse.svg?branch=master)](http://travis-ci.org/krisk/Fuse)
+[![Join the chat at https://gitter.im/fuselib/Lobby](https://badges.gitter.im/fuselib/Lobby.svg)](https://gitter.im/fuselib/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-red.svg)](https://www.paypal.me/kirorisk)
+[![Donate](https://img.shields.io/badge/patreon-donate-red.svg)](https://www.patreon.com/fusejs)
 
-[![Build Status](https://secure.travis-ci.org/krisk/Fuse.png?branch=master)](http://travis-ci.org/krisk/Fuse)
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40kirorisk)](https://twitter.com/kirorisk)
 
-Fuse is a full JavaScript fuzzy-search implementation that searches across the keys of every record in a list.
+Check out the [demo & usage](http://fusejs.io/)
 
-- [Demo & usage](http://kiro.me/exp/fuse.html)
-- [Project page](http://kiro.me/projects/fuse.html)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
 
-## Options
+- [Where-to-post summary](#where-to-post-summary)
+- [Usage](#usage)
+  - [Options](#options)
+  - [Methods](#methods)
+  - [Weighted Search](#weighted-search)
+- [Contributing](#contributing)
+  - [Coding conventions](#coding-conventions)
+  - [Testing](#testing)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Where-to-post summary
+
+- How do I? -- [StackOverflow](https://stackoverflow.com/questions/ask?tags=fuse.js)
+- I got this error, why? -- [StackOverflow](https://stackoverflow.com/questions/ask?tags=fuse.js)
+- I got this error and I'm sure it's a bug -- file an [issue](https://github.com/krisk/Fuse/issues)
+- I have an idea/request -- file an [issue](https://github.com/krisk/Fuse/issues)
+- You're a horrible human being -- send me an [email](kirollos+github@gmail.com)
+- You're awesome -- support Fuse.js development with [Patreon](https://www.patreon.com/fusejs)/[PayPal](https://www.paypal.me/kirorisk)
+
+---
+
+## Usage
+
+### Options
 
 **keys** (*type*: `Array`)
 
@@ -19,7 +48,7 @@ List of properties that will be searched.  This also supports nested properties:
 
 ```javascript
 var books = [{
-  title: "Old Man's War"
+  title: "Old Man's War",
   author: {
     firstName: "John",
     lastName: "Scalzi"
@@ -28,19 +57,19 @@ var books = [{
 var fuse = new Fuse(books, { keys: ["title", "author.firstName"] });
 ```
 
----
+-
 
 **id** (*type*: `String`)
 
 The name of the identifier property. If specified, the returned result will be a list of the items' identifiers, otherwise it will be a list of the items.
 
----
+-
 
 **caseSensitive** (*type*: `Boolean`, *default*: `false`)
 
 Indicates whether comparisons should be case sensitive.
 
----
+-
 
 **include** (*type*: `Array`, *default*: `[]`)
 
@@ -50,13 +79,13 @@ An array of values that should be included from the searcher's output. When this
 { include: ['score', 'matches' ] }
 ```
 
----
+-
 
 **shouldSort** (*type*: `Boolean`, *default*: `true`)
 
 Whether to sort the result list, by score.
 
----
+-
 
 **searchFn** (*type*: `Function`, *default*: `BitapSearcher`)
 
@@ -78,7 +107,7 @@ The search function to use.  Note that the search function (`[[Function]]`) must
 [[Function]].prototype.search = function(text) { ... }
 ```
 
----
+-
 
 **getFn** (*type*: `Function`, *default*: `Utils.deepValue`)
 
@@ -95,55 +124,73 @@ getFn: function (obj, path) {
   return obj.get(path);
 }
 ```
----
+-
 
 **sortFn** (*type*: `Function`, *default*: `Array.prototype.sort`)
 
 The function that is used for sorting the result list.
 
----
+-
 
 **location** (*type*: `Integer`, *default*: `0`)
 
 Determines approximately where in the text is the pattern expected to be found.
 
----
+-
 
 **threshold** (*type*: `Decimal`, *default*: `0.6`)
 
 At what point does the match algorithm give up. A threshold of `0.0` requires a perfect match (of both letters and location), a threshold of `1.0` would match anything.
 
----
+-
 
 **distance** (*type*: `Integer`, *default*: `100`)
 
 Determines how close the match must be to the fuzzy location (specified by `location`). An exact letter match which is `distance` characters away from the fuzzy location would score as a complete mismatch. A `distance` of `0` requires the match be at the exact `location` specified, a `distance` of `1000` would require a perfect match to be within 800 characters of the `location` to be found using a `threshold` of `0.8`.
 
----
+-
 
 **maxPatternLength** (*type*: `Integer`, *default*: `32`)
 
 The maximum length of the pattern. The longer the pattern, the more intensive the search operation will be.  Whenever the pattern exceeds the `maxPatternLength`, an error will be thrown.  Why is this important? Read [this](http://en.wikipedia.org/wiki/Word_(computer_architecture)#Word_size_choice).
 
----
+-
 
 **verbose** (*type*: `Boolean`, *default*: `false`)
 
 Will print to the console. Useful for debugging.
 
----
+-
 
 **tokenize** (*type*: `Boolean`, *default*: `false`)
 
 When true, the search algorithm will search individual words **and** the full string, computing the final score as a function of both. Note that when `tokenize` is `true`, the `threshold`, `distance`, and `location` are inconsequential for individual tokens.
 
----
+-
 
 **tokenSeparator** (*type*: `Regex`, *default*: `/ +/g`)
 
 Regex used to separate words when searching. Only applicable when `tokenize` is `true`.
 
-## Methods
+-
+
+**matchAllTokens** (*type*: `Boolean`, *default*: `false`)
+
+When `true`, the result set will only include records that match all tokens. Will only work if `tokenize` is also true.
+
+-
+
+**findAllMatches** (*type*: `Boolean`, *default*: `false`)
+
+When `true`, the matching function will continue to the end of a search pattern even if a perfect match has already been located in the string.
+
+-
+
+**minMatchCharLength** (*type*: `Integer`, *default*: `1`)
+
+When set to include matches, only those whose length exceeds this value will be returned. (For instance, if you want to ignore single character index returns, set to `2`)
+
+### Methods
 
 **`search(/*pattern*/)`**
 
@@ -163,7 +210,7 @@ Searches for all the items whose keys (fuzzy) match the pattern.
 
 Sets a new list for Fuse to match against.
 
-## Weighted Search
+### Weighted Search
 
 In some cases you may want certain keys to be weighted differently:
 
@@ -175,17 +222,19 @@ var fuse = new Fuse(books, {
   }, {
     name: 'author',
     weight: 0.7
-  }],
+  }]
 });
 ```
 
 Where `0 < weight <= 1`
 
-## Coding conventions
+## Contributing
+
+### Coding conventions
 
 Code should be run through [Standard Format](https://www.npmjs.com/package/standard-format).
 
-## Contributing to Fuse
+### Testing
 
 Before submitting a pull request, please add relevant tests in `test/fuse-test.js`, and execute them via `npm test`.
 
