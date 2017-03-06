@@ -14,7 +14,7 @@ enduro_admin_app.factory('juice_service', function juice_service ($http, url_con
 			})
 			.then(function () {
 				$('.modal .downloading_content')[0].start()
-				return $http.get(url_config.get_api_url('juice_pull_force'), {params: {sid: $cookies.get('sid')}})
+				return $http.get(url_config.get_api_url('refresh'), { params: { sid: $cookies.get('sid') } })
 			})
 			.then(function (res) {
 				forcepull_response = res
