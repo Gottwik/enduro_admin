@@ -1,4 +1,4 @@
-define([],function() { return function(__templating_engine) { 
+define([],function() { return function(enduro.templating_engine) { 
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Add helper
@@ -12,16 +12,23 @@ define([],function() { return function(__templating_engine) {
 // *
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('add', function () {
 
-	if (arguments.length <= 1) {
-		return ''
-	}
+var helper = function () {}
 
-	return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function (prev, next) {
-		return prev + next
+helper.prototype.register = function () {
+	enduro.templating_engine.registerHelper('add', function () {
+
+		if (arguments.length <= 1) {
+			return ''
+		}
+
+		return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function (prev, next) {
+			return prev + next
+		})
 	})
-})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    class helper
@@ -39,24 +46,30 @@ __templating_engine.registerHelper('add', function () {
 // *		{{class 'gradient_bottom'}} // will render gradient-bottom
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('class', function () {
-	var context = this
+var helper = function () {}
 
-	// if no argument is provided renders empty string
-	if (arguments.length <= 1) {
-		return ''
-	}
+helper.prototype.register = function () {
+	enduro.templating_engine.registerHelper('class', function () {
+		var context = this
 
-	return Array.prototype.slice.call(arguments).slice(0, -1) // takes all arguments without the handlebars context
-		.reduce(function (prev, next) {
-			return context[next]
-				? prev + ' ' + next // adds argument name if the value is truthy
-				: prev + ''
-		}, '')
-		.replace(/_/g, '-') // converts underscores to dashes
-		.substring(1) // removes first space
+		// if no argument is provided renders empty string
+		if (arguments.length <= 1) {
+			return ''
+		}
 
-})
+		return Array.prototype.slice.call(arguments).slice(0, -1) // takes all arguments without the handlebars context
+			.reduce(function (prev, next) {
+				return context[next]
+					? prev + ' ' + next // adds argument name if the value is truthy
+					: prev + ''
+			}, '')
+			.replace(/_/g, '-') // converts underscores to dashes
+			.substring(1) // removes first space
+
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Compare helper
@@ -66,11 +79,19 @@ __templating_engine.registerHelper('class', function () {
 // *	{{Compare age 20 'this dude is exactly 20 years old' 'he's not 20 years old}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('compare', function (variable1, variable2, value_if_true, value_if_false) {
-	return variable1 == variable2
-		? value_if_true
-		: value_if_false
-})
+var helper = function () {}
+
+helper.prototype.register = function () {
+
+	enduro.templating_engine.registerHelper('compare', function (variable1, variable2, value_if_true, value_if_false) {
+		return variable1 == variable2
+			? value_if_true
+			: value_if_false
+	})
+
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Default helper
@@ -81,16 +102,24 @@ __templating_engine.registerHelper('compare', function (variable1, variable2, va
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper('default', function (name, defaultValue, options) {
+var helper = function () {}
 
-	if (typeof options === 'undefined') {
-		defaultValue = ''
-	}
+helper.prototype.register = function () {
 
-	return typeof name !== 'undefined'
-		? name
-		: defaultValue
-})
+	enduro.templating_engine.registerHelper('default', function (name, defaultValue, options) {
+
+		if (typeof options === 'undefined') {
+			defaultValue = ''
+		}
+
+		return typeof name !== 'undefined'
+			? name
+			: defaultValue
+	})
+
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    divisible helper
@@ -100,17 +129,24 @@ __templating_engine.registerHelper('default', function (name, defaultValue, opti
 // *	{{divisible @index 2 'even' 'odd'}} // outputs even if @index % 2 == 0
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('divisible', function (number_to_dividee, divided_by, value_if_true, value_if_false) {
+var helper = function () {}
 
-	// if no false is provided
-	if (typeof value_if_false === 'object') {
-		value_if_false = ''
-	}
+helper.prototype.register = function () {
 
-	return number_to_dividee % divided_by == 0
-		? value_if_true
-		: value_if_false
-})
+	enduro.templating_engine.registerHelper('divisible', function (number_to_dividee, divided_by, value_if_true, value_if_false) {
+
+		// if no false is provided
+		if (typeof value_if_false === 'object') {
+			value_if_false = ''
+		}
+
+		return number_to_dividee % divided_by == 0
+			? value_if_true
+			: value_if_false
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Files helper
@@ -121,19 +157,26 @@ __templating_engine.registerHelper('divisible', function (number_to_dividee, div
 // *		<p>Image: {{this}}</p>
 // *	{{/files}}
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('files', function (path, block) {
-	var glob = require('glob')
+var helper = function () {}
 
-	var files = glob.sync(CMD_FOLDER + path + '/**/*.*')
+helper.prototype.register = function () {
 
-	var output = files.map((file) => {
-		return file.replace(new RegExp('.*' + path), '')
-	}).reduce((prev, next) => {
-		return prev + block.fn(next)
-	}, '')
+	enduro.templating_engine.registerHelper('files', function (path, block) {
+		var glob = require('glob')
 
-	return output
-})
+		var files = glob.sync(enduro.project_path + path + '/**/*.*')
+
+		var output = files.map((file) => {
+			return file.replace(new RegExp('.*' + path), '')
+		}).reduce((prev, next) => {
+			return prev + block.fn(next)
+		}, '')
+
+		return output
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    First helper
@@ -144,39 +187,52 @@ __templating_engine.registerHelper('files', function (path, block) {
 // *			<p>First person's age is: {{age}}</p>
 // *		{{/first}}
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('first', function (array, options) {
-	return options.fn(array[Object.keys(array)[0]])
-})
+var helper = function () {}
+
+helper.prototype.register = function () {
+
+	enduro.templating_engine.registerHelper('first', function (array, options) {
+		return options.fn(array[Object.keys(array)[0]])
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Grouped each helper
 // *    Will split array into chunks of specified size
 // *    taken from https://funkjedi.com/technology/412-every-nth-item-in-handlebars/
 // * ———————————————————————————————————————————————————————— * //
+var helper = function () {}
 
-__templating_engine.registerHelper('grouped_each', function (every, context, options) {
+helper.prototype.register = function () {
 
-	if (!context || !(Object.keys(context).length || context.length)) {
-		return ''
-	}
+	enduro.templating_engine.registerHelper('grouped_each', function (every, context, options) {
 
-	var out = ''
-	var subcontext = []
-	var i = 0
-
-	for (var key in context) {
-		if (i > 0 && i % every === 0) {
-			out += options.fn(subcontext)
-			subcontext = []
+		if (!context || !(Object.keys(context).length || context.length)) {
+			return ''
 		}
-		subcontext.push(context[key])
-		i++
-	}
-	out += options.fn(subcontext)
 
-	// Outputs processed html
-	return out
-})
+		var out = ''
+		var subcontext = []
+		var i = 0
+
+		for (var key in context) {
+			if (i > 0 && i % every === 0) {
+				out += options.fn(subcontext)
+				subcontext = []
+			}
+			subcontext.push(context[key])
+			i++
+		}
+		out += options.fn(subcontext)
+
+		// Outputs processed html
+		return out
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    htmlescape helper
@@ -184,10 +240,16 @@ __templating_engine.registerHelper('grouped_each', function (every, context, opt
 // *		{{htmlescape 'www.example.com?p=escape spaces here'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
+var helper = function () {}
 
-__templating_engine.registerHelper('uriencode', function (url) {
-	return encodeURI(url)
-})
+helper.prototype.register = function () {
+
+	enduro.templating_engine.registerHelper('uriencode', function (url) {
+		return encodeURI(url)
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    List helper
@@ -199,19 +261,26 @@ __templating_engine.registerHelper('uriencode', function (url) {
 // *	{{/list}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('list', function () {
+var helper = function () {}
 
-	// block is the last argument
-	var block = arguments[arguments.length - 1]
+helper.prototype.register = function () {
 
-	var accum = ''
-	for (var i = 0; i < arguments.length - 1; i++) {
-		accum += block.fn(arguments[i])
-	}
+	enduro.templating_engine.registerHelper('list', function () {
 
-	// returns the built string
-	return accum
-})
+		// block is the last argument
+		var block = arguments[arguments.length - 1]
+
+		var accum = ''
+		for (var i = 0; i < arguments.length - 1; i++) {
+			accum += block.fn(arguments[i])
+		}
+
+		// returns the built string
+		return accum
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Lorem helper
@@ -226,38 +295,45 @@ __templating_engine.registerHelper('list', function () {
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper('lorem', function (length, upperrange) {
+var helper = function () {}
 
-	// set length to 10 if no length is provided
-	if (typeof length !== 'number') {
-		length = 10
-	}
+helper.prototype.register = function () {
 
-	// set upperrange to length if no upperrange is provided
-	upperrange = typeof upperrange === 'number'
-		? upperrange
-		: length
+	enduro.templating_engine.registerHelper('lorem', function (length, upperrange) {
 
-	// generate random length
-	length = Math.round(Math.random() * (upperrange - length) + length)
+		// set length to 10 if no length is provided
+		if (typeof length !== 'number') {
+			length = 10
+		}
 
-	// Calvin and Hobbes is the best!
-	var dummy = 'Calvin and Hobbes is a daily comic strip by American cartoonist Bill Watterson that was syndicated from November 18 1985 to December 31 1995 Commonly cited as the last great newspaper comic Calvin and Hobbes has evinced broad and enduring popularity influence and academic interest Calvin and Hobbes follows the humorous antics of Calvin a precocious mischievous and adventurous six-year-old boy and Hobbes his sardonic stuffed tiger The pair is named after John Calvin 16th-century French Reformation theologian and Thomas Hobbes a 17th-century English political philosopher Set in the contemporary suburban United States the strip depicts Calvin\'s frequent flights of fancy and his friendship with Hobbes It also examines Calvin\'s relationships with family and classmates especially the love hate relationship between him and his classmate Susie Derkins Hobbes dual nature is a defining motif for the strip to Calvin Hobbes is a live anthropomorphic tiger all the other characters see Hobbes as an inanimate stuffed toy Though the series does not mention specific political figures or current events it does explore broad issues like environmentalism public education philosophical quandaries and the flaws of opinion polls At the height of its popularity Calvin and Hobbes was featured in over 2,400 newspapers worldwide In 2010 reruns of the strip appeared in more than 50 countries and nearly 45 million copies of the Calvin and Hobbes books had been sold'
+		// set upperrange to length if no upperrange is provided
+		upperrange = typeof upperrange === 'number'
+			? upperrange
+			: length
 
-	// Randomize string
-	dummy = dummy
-		.split(' ')
-		.sort(function () {
-			return .5 - Math.random()
-		})
-		.slice(0, length)
-		.join(' ')
+		// generate random length
+		length = Math.round(Math.random() * (upperrange - length) + length)
 
-	// make first letter capital and add period at the end
-	dummy = dummy[0].toUpperCase() + dummy.substring(1) + '.'
+		// Calvin and Hobbes is the best!
+		var dummy = 'Calvin and Hobbes is a daily comic strip by American cartoonist Bill Watterson that was syndicated from November 18 1985 to December 31 1995 Commonly cited as the last great newspaper comic Calvin and Hobbes has evinced broad and enduring popularity influence and academic interest Calvin and Hobbes follows the humorous antics of Calvin a precocious mischievous and adventurous six-year-old boy and Hobbes his sardonic stuffed tiger The pair is named after John Calvin 16th-century French Reformation theologian and Thomas Hobbes a 17th-century English political philosopher Set in the contemporary suburban United States the strip depicts Calvin\'s frequent flights of fancy and his friendship with Hobbes It also examines Calvin\'s relationships with family and classmates especially the love hate relationship between him and his classmate Susie Derkins Hobbes dual nature is a defining motif for the strip to Calvin Hobbes is a live anthropomorphic tiger all the other characters see Hobbes as an inanimate stuffed toy Though the series does not mention specific political figures or current events it does explore broad issues like environmentalism public education philosophical quandaries and the flaws of opinion polls At the height of its popularity Calvin and Hobbes was featured in over 2,400 newspapers worldwide In 2010 reruns of the strip appeared in more than 50 countries and nearly 45 million copies of the Calvin and Hobbes books had been sold'
 
-	return dummy
-})
+		// Randomize string
+		dummy = dummy
+			.split(' ')
+			.sort(function () {
+				return .5 - Math.random()
+			})
+			.slice(0, length)
+			.join(' ')
+
+		// make first letter capital and add period at the end
+		dummy = dummy[0].toUpperCase() + dummy.substring(1) + '.'
+
+		return dummy
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    multiply helper
@@ -268,16 +344,23 @@ __templating_engine.registerHelper('lorem', function (length, upperrange) {
 // *	{{multiply 2 2 2}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('multiply', function () {
+var helper = function () {}
 
-	if (arguments.length <= 1) {
-		return ''
-	}
+helper.prototype.register = function () {
 
-	return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function (prev, next) {
-		return prev * next
+	enduro.templating_engine.registerHelper('multiply', function () {
+
+		if (arguments.length <= 1) {
+			return ''
+		}
+
+		return Array.prototype.slice.call(arguments).slice(0, -1).reduce(function (prev, next) {
+			return prev * next
+		})
 	})
-})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Partial helper
@@ -287,28 +370,35 @@ __templating_engine.registerHelper('multiply', function () {
 // *	{{partial 'partial name'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('partial', function (name, context, options) {
+var helper = function () {}
 
-	if (!options) {
-		options = context
-		context = this
-	}
+helper.prototype.register = function () {
 
-	// Get the partial with the given name. This is a string.
-	var partial = __templating_engine.partials[name]
+	enduro.templating_engine.registerHelper('partial', function (name, context, options) {
 
-	// Return empty string if the partial is not defined
-	if (!partial) return ''
+		if (!options) {
+			options = context
+			context = this
+		}
 
-	// build up context
-	context.global = options.data.root.global
+		// Get the partial with the given name. This is a string.
+		var partial = enduro.templating_engine.partials[name]
 
-	// Compile and call the partial with context
-	return (typeof partial == 'function')
-		? new __templating_engine.SafeString(partial(context))
-		: new __templating_engine.SafeString(__templating_engine.compile(partial)(context))
+		// Return empty string if the partial is not defined
+		if (!partial) return ''
 
-})
+		// build up context
+		context.global = options.data.root.global
+
+		// Compile and call the partial with context
+		return (typeof partial == 'function')
+			? new enduro.templating_engine.SafeString(partial(context))
+			: new enduro.templating_engine.SafeString(enduro.templating_engine.compile(partial)(context))
+
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    slug helper
@@ -319,19 +409,23 @@ __templating_engine.registerHelper('partial', function (name, context, options) 
 // *	will return this-link
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper('slug', function (text) {
+var helper = function () {}
 
-	if (!text) {
-		return ''
-	}
+helper.prototype.register = function () {
 
-	return text.toString().toLowerCase()
-		.replace(/\s+/g, '-')			// Replace spaces with -
-		.replace(/[^\w\-]+/g, '')		// Remove all non-word chars
-		.replace(/\-\-+/g, '-')			// Replace multiple - with single -
-		.replace(/^-+/, '')				// Trim - from start of text
-		.replace(/-+$/, '')				// Trim - from end of text
-})
+	var format_service = require(enduro.enduro_path + '/libs/services/format_service')
+
+	enduro.templating_engine.registerHelper('slug', function (text) {
+
+		if (!text) {
+			return ''
+		}
+
+		return format_service.slug(text)
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    switch helper
@@ -343,27 +437,34 @@ __templating_engine.registerHelper('slug', function (text) {
 // *	returns last value as default
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('switch', function () {
+var helper = function () {}
 
-	// create a list out of arguments
-	var arguments_list = []
-	for (var i in arguments) {
-		arguments_list.push(arguments[i])
-	}
+helper.prototype.register = function () {
 
-	// remove last element - which is the whole context
-	arguments_list = arguments_list.slice(0, -1)
+	enduro.templating_engine.registerHelper('switch', function () {
 
-	// check even argumens and return respective odd argument
-	for (i = 0; i < Math.floor(arguments_list.length / 2); i++) {
-		if (arguments_list[i * 2]) {
-			return arguments_list[i * 2 + 1]
+		// create a list out of arguments
+		var arguments_list = []
+		for (var i in arguments) {
+			arguments_list.push(arguments[i])
 		}
-	}
 
-	// return last provided argument as a default value
-	return arguments_list.slice(-1)[0]
-})
+		// remove last element - which is the whole context
+		arguments_list = arguments_list.slice(0, -1)
+
+		// check even argumens and return respective odd argument
+		for (i = 0; i < Math.floor(arguments_list.length / 2); i++) {
+			if (arguments_list[i * 2]) {
+				return arguments_list[i * 2 + 1]
+			}
+		}
+
+		// return last provided argument as a default value
+		return arguments_list.slice(-1)[0]
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Ternary helper
@@ -373,17 +474,24 @@ __templating_engine.registerHelper('switch', function () {
 // *	{{ternary this 'was true' 'was false'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('ternary', function (condition, value_if_true, value_if_false) {
+var helper = function () {}
 
-	// if no false is provided
-	if (typeof value_if_false === 'object') {
-		value_if_false = ''
-	}
+helper.prototype.register = function () {
 
-	return condition
-		? value_if_true
-		: value_if_false
-})
+	enduro.templating_engine.registerHelper('ternary', function (condition, value_if_true, value_if_false) {
+
+		// if no false is provided
+		if (typeof value_if_false === 'object') {
+			value_if_false = ''
+		}
+
+		return condition
+			? value_if_true
+			: value_if_false
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // *    Times helper
@@ -395,36 +503,43 @@ __templating_engine.registerHelper('ternary', function (condition, value_if_true
 // *	{{/times}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-__templating_engine.registerHelper('times', function (iterations, upperrange, block) {
+var helper = function () {}
 
-	// will store the final accumulated html
-	var accum = ''
+helper.prototype.register = function () {
 
-	// if upperrange is not provided
-	if (typeof upperrange !== 'number') {
-		block = upperrange
-	} else {
-		// if upperrange is provided, picks randomly from range
-		iterations = Math.round(Math.random() * (upperrange - iterations) + iterations)
-	}
+	enduro.templating_engine.registerHelper('times', function (iterations, upperrange, block) {
 
-	for (var i = 0; i < iterations; ++i) {
+		// will store the final accumulated html
+		var accum = ''
 
-		// Sets is_first variable to context
-		i == 0
-			? this.is_first = true
-			: this.is_first = false
+		// if upperrange is not provided
+		if (typeof upperrange !== 'number') {
+			block = upperrange
+		} else {
+			// if upperrange is provided, picks randomly from range
+			iterations = Math.round(Math.random() * (upperrange - iterations) + iterations)
+		}
 
-		// Sets index to context
-		this.times_index = i
+		for (var i = 0; i < iterations; ++i) {
 
-		// Renders block context and adds it to the accumulated context
-		accum += block.fn(this)
-	}
+			// Sets is_first variable to context
+			i == 0
+				? this.is_first = true
+				: this.is_first = false
 
-	// return accumulated html
-	return accum
-})
+			// Sets index to context
+			this.times_index = i
+
+			// Renders block context and adds it to the accumulated context
+			accum += block.fn(this)
+		}
+
+		// return accumulated html
+		return accum
+	})
+}
+
+module.exports = new helper()
 
 // * ———————————————————————————————————————————————————————— * //
 // * 	Within helper
@@ -438,9 +553,16 @@ __templating_engine.registerHelper('times', function (iterations, upperrange, bl
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-__templating_engine.registerHelper('within', function (array, key, options) {
-	return options.fn(array[key])
-})
+var helper = function () {}
+
+helper.prototype.register = function () {
+
+	enduro.templating_engine.registerHelper('within', function (array, key, options) {
+		return options.fn(array[key])
+	})
+}
+
+module.exports = new helper()
 
 
  }})
