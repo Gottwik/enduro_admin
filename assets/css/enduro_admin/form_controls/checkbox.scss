@@ -1,6 +1,6 @@
 .form-control.checkbox {
+	margin-bottom: 20px;
 	label {
-
 		margin: 0;
 
 		&:after {
@@ -9,6 +9,8 @@
 
 		> span {
 			position: static;
+			display: inline-block;
+			float: none;
 		}
 
 		input {

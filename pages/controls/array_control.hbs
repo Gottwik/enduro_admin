@@ -3,7 +3,7 @@
 
 	<div ng-include="'/admin/components/cms_utilities/expander_button.html'"></div>
 
-	<div class="row" ng-show="context_is_not_empty()">
+	<div class="row" ng-show="is_expanded_and_visible()">
 		<div class="container-title">
 			<h3 ng-if="!terminated_context.hidetitle">\{{object_name}}</h3>
 		</div>
@@ -42,7 +42,7 @@
 		</div>
 
 		<!-- templatitator options -->
-		<div class="templatitator-options-holder" ng-show="context_is_not_empty()">
+		<div class="templatitator-options-holder">
 			<div class="wedge-3x"></div>
 
 			<div class="col-md-3" ng-repeat="template in template_list" ng-class="{'hidden': value.length >= terminated_context.max}">

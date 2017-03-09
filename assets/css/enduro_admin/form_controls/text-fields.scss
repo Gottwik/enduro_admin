@@ -11,10 +11,11 @@
 
 		> span {
 			@include font-size(xs);
-			position: absolute;
-			top: -20px;
+			display: block;
+			margin-top: -20px;
 			margin-left: 1px;
 			font-weight: 500;
+			float: left;
 		}
 	}
 

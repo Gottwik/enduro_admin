@@ -2,4 +2,10 @@
 	width: 100%;
 	padding-right: ($grid-gutter-width / 2);
 	padding-left:  ($grid-gutter-width / 2);
+
+	&.inline {
+		display: inline-block;
+		float: left;
+		width: auto;
+	}
 }

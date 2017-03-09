@@ -1,8 +1,8 @@
-enduro_admin_app.factory('menu_cache', ['$cacheFactory', function ($cacheFactory) {
+enduro_admin_app.factory('menu_cache', function ($cacheFactory) {
 	return $cacheFactory('mainmenu_data')
-}])
+})
 
-enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 'menu_cache', '$q', 'user_service', function user_service ($http, url_config, $cookies, menu_cache, $q, user_service) {
+enduro_admin_app.factory('content_service', function user_service ($http, url_config, $cookies, menu_cache, $q, user_service, $rootScope) {
 	var content_service = {}
 
 	content_service.get_cms_list = function (username, password) {
@@ -39,14 +39,14 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 	}
 
 	content_service.get_globalized_options = function (globalizer_string) {
-		return $http.get(url_config.get_base_url() + 'get_globalizer_options', {params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string}})
+		return $http.get(url_config.get_base_url() + 'get_globalizer_options', {params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string, page_path: $rootScope.current_page}})
 			.then(function (res) {
 				return res.data
 			}, user_service.error)
 	}
 
 	content_service.get_globalized_context = function (globalizer_string) {
-		return $http.get(url_config.get_base_url() + 'get_globalized_context', {cache: true, params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string}})
+		return $http.get(url_config.get_base_url() + 'get_globalized_context', {cache: true, params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string, page_path: $rootScope.current_page}})
 			.then(function (res) {
 				return res.data
 			}, user_service.error)
@@ -94,4 +94,4 @@ enduro_admin_app.factory('content_service', ['$http', 'url_config', '$cookies', 
 	}
 
 	return content_service
-}])
+})

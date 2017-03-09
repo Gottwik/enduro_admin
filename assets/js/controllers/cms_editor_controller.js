@@ -6,7 +6,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 	function ($scope, $rootScope, $routeParams, content_service, culture_service, hotkeys) {
 
 		// get page specified in route
-		content_service.get_content($routeParams.page_path)
+		content_service.get_content($rootScope.current_page)
 			.then(function (res) {
 				$scope.deletable = res.deletable
 				// extend scope with the fetched context
@@ -76,7 +76,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		$scope.publish = function () {
 			$scope.publishing = true
 
-			content_service.save_content($routeParams.page_path, $scope.context)
+			content_service.save_content($rootScope.current_page, $scope.context)
 				.then(function () {
 					$scope.publishing = false
 				}, function () {
@@ -97,7 +97,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				$scope.tempwindow = window.open()
 			}
 
-			content_service.get_temp_page($routeParams.page_path, $scope.context)
+			content_service.get_temp_page($rootScope.current_page, $scope.context)
 				.then(function (temp_destination_path) {
 
 					$scope.temping = false
@@ -114,7 +114,7 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		// *	returns nothing
 		// * ———————————————————————————————————————————————————————— * //
 		$scope.delete_current_page = function () {
-			content_service.delete_page($routeParams.page_path)
+			content_service.delete_page($rootScope.current_page)
 				.then(function (res) {
 					console.log(res)
 				})

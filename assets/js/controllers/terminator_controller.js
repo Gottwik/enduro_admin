@@ -35,6 +35,10 @@ enduro_admin_app.controller('terminator_controller', ['$scope', 'format_service'
 			$scope.size = 'specified-width col-md-' + $scope.terminated_context.size
 		}
 
+		if ($scope.terminated_context.size == 'inline') {
+			$scope.size = 'inline'
+		}
+
 		// globalizer detection
 		if (typeof $scope.value === 'string' && $scope.value.substring(0, 2) == '@@') {
 			$scope.globalizer = $scope.value.substring(2)

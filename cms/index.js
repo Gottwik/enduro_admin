@@ -1,3 +1,4 @@
 {
-	text: 'text'
+	$animals_templatitator: '@@global.animal_types',
+	animals: [],
 }

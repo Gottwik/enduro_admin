@@ -10,8 +10,10 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'co
 	if ($scope.value) {
 		if ($scope.terminated_context && $scope.terminated_context.expander) {
 			$scope.context = {}
+			$scope.expanded = false
 		} else {
 			$scope.context = $scope.value
+			$scope.expanded = true
 		}
 	}
 
@@ -34,6 +36,7 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'co
 
 	// action when expander button is clicked
 	$scope.expand = function () {
+		$scope.expanded = !$scope.expanded
 		if ($scope.context_is_not_empty()) {
 			$scope.context = {}
 		} else {
@@ -56,9 +59,7 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'co
 
 	// deletes an item
 	$scope.deleteitem = function (key) {
-		console.log(key)
 		$scope.context.splice(key, 1)
-		console.log($scope.context)
 	}
 
 	// duplicate an item
@@ -91,6 +92,10 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'co
 	// helper function that checks if context of this object is empty
 	$scope.context_is_not_empty = function () {
 		return Object.keys($scope.context).length > 0
+	}
+
+	$scope.is_expanded_and_visible = function () {
+		return $scope.context_is_not_empty() || $scope.expanded
 	}
 
 }])
