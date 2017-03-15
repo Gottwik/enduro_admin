@@ -5,4 +5,4 @@ animal_types: {
 		name: '',
 		barks: false
 	},
-},
+}

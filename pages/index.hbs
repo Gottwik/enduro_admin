@@ -45,19 +45,19 @@
 		<script src="/admin/assets/js/app.js"></script>
 
 		{{#files '/assets/js/services'}}
-			<script src="/admin/assets/js/services{{this}}"></script>
+			<script src="/admin/assets/js/services{{relative_path}}"></script>
 		{{/files}}
 
 		{{#files '/assets/js/controllers'}}
-			<script src="/admin/assets/js/controllers{{this}}"></script>
+			<script src="/admin/assets/js/controllers{{relative_path}}"></script>
 		{{/files}}
 
 		{{#files '/assets/js/directives'}}
-			<script src="/admin/assets/js/directives{{this}}"></script>
+			<script src="/admin/assets/js/directives{{relative_path}}"></script>
 		{{/files}}
 
 		{{#files '/assets/js/utilities'}}
-			<script src="/admin/assets/js/utilities{{this}}"></script>
+			<script src="/admin/assets/js/utilities{{relative_path}}"></script>
 		{{/files}}
 
 		<script src="/admin/assets/vendor/tooltipster/dist/js/tooltipster.bundle.min.js"></script>

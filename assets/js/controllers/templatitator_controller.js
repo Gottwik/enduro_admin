@@ -17,7 +17,6 @@ enduro_admin_app.controller('templatitator_controller', ['$scope', 'content_serv
 	$scope.formated_globalizer = format_service.deglobalize($scope.terminated_context.templatitator)
 
 	$scope.add_template = function (context) {
-		console.log($scope.key)
 		$scope.context[$scope.key].push(angular.copy(context))
 	}
 

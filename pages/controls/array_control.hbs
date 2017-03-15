@@ -42,7 +42,7 @@
 		</div>
 
 		<!-- templatitator options -->
-		<div class="templatitator-options-holder">
+		<div class="templatitator-options-holder" ng-if="templatitator">
 			<div class="wedge-3x"></div>
 
 			<div class="col-md-3" ng-repeat="template in template_list" ng-class="{'hidden': value.length >= terminated_context.max}">

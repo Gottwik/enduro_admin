@@ -49,6 +49,7 @@ enduro_admin_app.controller('terminator_controller', ['$scope', 'format_service'
 		} else {
 			$scope.templatitator = false
 		}
+		console.log($scope.terminated_context, $scope.templatitator)
 
 	})
 
