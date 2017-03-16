@@ -6,9 +6,10 @@ enduro_admin_app = angular.module('enduro_admin', ['ngRoute', 'ngCookies', 'ngFi
 enduro_admin_app
 	.constant('url_config', {
 		get_base_url: function () {
-			return (window.location.href.indexOf('localhost') + 1)
-				?	'http://localhost:5000/admin_api/'
-				:	'/admin_api/'
+			if (!window.location.origin) {
+				window.location.origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? (':' + window.location.port) : '')
+			}
+			return window.location.origin + '/admin_api/'
 		},
 		get_api_url: function (api_endpoint) {
 			return this.get_base_url() + api_endpoint
