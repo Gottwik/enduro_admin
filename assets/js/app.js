@@ -6,7 +6,7 @@ enduro_admin_app = angular.module('enduro_admin', ['ngRoute', 'ngCookies', 'ngFi
 enduro_admin_app
 	.constant('url_config', {
 		get_base_url: function () {
-			
+
 			// checks for a special case when the admin runs from port 3000
 			// when developing the enduro_admin, all the api calls are redirected to port 5000
 			// otherwise will just use the regular /admin_api/ base
@@ -61,8 +61,5 @@ enduro_admin_app.run(function ($rootScope, $location, user_service, extension_se
 			})
 	})
 
-	$
-
 	extension_service.inject()
-
 })
