@@ -1,0 +1,14 @@
+<div class="form-control col-md-12" ng-controller="templatitator_controller">
+	<div ng-include="'/admin/assets/js/controls/array_control/index.html'"></div>
+
+	<div class="templatitator-options-holder" ng-show="context_is_not_empty()">
+		<div class="wedge-3x"></div>
+
+		<div class="row" ng-class="{'hidden': value.length >= terminated_context.max}">
+			<div class="col-md-3" ng-repeat="template in template_list">
+				<div class="templatitator-btn" ng-click="templatitator_change(template.value)"><i class="fa fa-plus"></i><span>{{template.formatted_label}}<span></div>
+			</div>
+		</div>
+	</div>
+
+</div>

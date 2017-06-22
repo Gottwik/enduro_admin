@@ -1,0 +1,58 @@
+<div class="array-control col-md-12" ng-controller="array_controller">
+	<div class="clearfix"></div>
+
+	<div ng-include="'/admin/components/cms_utilities/expander_button/index.html'"></div>
+
+	<div class="row" ng-show="is_expanded_and_visible()">
+		<div class="container-title">
+			<h3 ng-if="!terminated_context.hidetitle">{{object_name}}</h3>
+		</div>
+
+		<!-- repeat starts here -->
+		<div ng-repeat="(key, value) in context" class="js-array-item col-md-{{$parent.terminated_context.size || 4}}" ng-class="{'clearfix' : $index % (12 / (terminated_context.size || 4)) == 0}" en-draggable>
+
+			<div class="card">
+				<div class="tiny-controls">
+
+					<!-- delete an item -->
+					<i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="deleteitem(key)"></i>
+
+					<!-- move an item -->
+					<i class="fa fa-arrows array-move-control"></i>
+
+					<!-- duplicate an item -->
+					<i
+						class="fa fa-files-o tooltip"
+						ng-class="{'hidden': context.length >= terminated_context.max}"
+						ng-click="duplicate(key)"
+						ngtooltipster
+						title="Clone item"></i>
+				</div>
+
+				<div ng-include="'/admin/controls/object_control/index.html'" ng-init="no_label = true;" ng-controller="terminator_controller"></div>
+			</div>
+			<div class="half-wedge"></div>
+		</div>
+		<!-- repeat ends here -->
+
+		<!-- add button -->
+		<div class="js-array-item col-md-4" ng-if="!templatitator">
+			<div class="wedge"></div>
+			<button ng-click="additem()" class="small" ng-class="{'hidden': context.length >= terminated_context.max}"><i class="fa fa-plus"></i>Add</button>
+		</div>
+
+		<!-- templatitator options -->
+		<div class="templatitator-options-holder" ng-if="templatitator">
+			<div class="wedge-3x"></div>
+
+			<div class="col-md-3" ng-repeat="template in template_list" ng-class="{'hidden': value.length >= terminated_context.max}">
+				<div class="templatitator-btn" ng-click="add_template(template.value)">
+					<i class="fa fa-plus"></i>
+					<span>{{template.formatted_label}}<span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

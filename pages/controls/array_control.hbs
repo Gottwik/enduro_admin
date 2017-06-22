@@ -1,7 +1,7 @@
 <div class="array-control col-md-12" ng-controller="array_controller">
 	<div class="clearfix"></div>
 
-	<div ng-include="'/admin/components/cms_utilities/expander_button.html'"></div>
+	<div ng-include="'/admin/components/cms_utilities/expander_button/index.html'"></div>
 
 	<div class="row" ng-show="is_expanded_and_visible()">
 		<div class="container-title">
@@ -29,7 +29,7 @@
 						title="Clone item"></i>
 				</div>
 
-				<div ng-include="'/admin/controls/object_control.html'" ng-init="no_label = true;" ng-controller="terminator_controller"></div>
+				<div ng-include="'/admin/controls/object_control/index.html'" ng-init="no_label = true;" ng-controller="terminator_controller"></div>
 			</div>
 			<div class="half-wedge"></div>
 		</div>
