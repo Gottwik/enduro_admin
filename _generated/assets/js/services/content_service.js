@@ -39,14 +39,33 @@ enduro_admin_app.factory('content_service', function user_service ($http, url_co
 	}
 
 	content_service.get_globalized_options = function (globalizer_string) {
-		return $http.get(url_config.get_base_url() + 'get_globalizer_options', {params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string, page_path: $rootScope.current_page}})
+
+		const params = {
+			params: {
+				sid: $cookies.get('sid'),
+				globalizer_string: '@@' + globalizer_string,
+				page_path: $rootScope.current_page,
+			}
+		}
+
+		return $http.get(url_config.get_base_url() + 'get_globalizer_options', params)
 			.then(function (res) {
 				return res.data
 			}, user_service.error)
 	}
 
 	content_service.get_globalized_context = function (globalizer_string) {
-		return $http.get(url_config.get_base_url() + 'get_globalized_context', {cache: true, params: {sid: $cookies.get('sid'), globalizer_string: globalizer_string, page_path: $rootScope.current_page}})
+
+		const params = {
+			cache: true,
+			params: {
+				sid: $cookies.get('sid'),
+				globalizer_string: globalizer_string,
+				page_path: $rootScope.current_page,
+			}
+		}
+
+		return $http.get(url_config.get_base_url() + 'get_globalized_context', params)
 			.then(function (res) {
 				return res.data
 			}, user_service.error)

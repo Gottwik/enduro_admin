@@ -1,13 +1,10 @@
 // * ———————————————————————————————————————————————————————— * //
-// * 	image controller
+// * 	file control controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('image_controller', function ($scope, image_service, $sce, $element, $timeout) {
+enduro_admin_app.controller('file_control_controller', function ($scope, image_service, $sce, $element, $timeout) {
+	
 
-	$scope.loading = false
-
-	// upload on file select or drop
 	$scope.upload = function (file) {
-
 		if (!file) {
 			return
 		}
@@ -29,30 +26,25 @@ enduro_admin_app.controller('image_controller', function ($scope, image_service,
 		}, 250)
 	}
 
-	$scope.delete_image = function () {
-		$scope.context[$scope.terminatedkey] = ''
+	$scope.has_file = function () {
+		return $scope.context[$scope.terminatedkey]
 	}
 
-	$scope.video_source = $sce.trustAsResourceUrl($scope.context[$scope.terminatedkey])
-
-	$scope.play = function () {
-		video_element = $element.find('video').get(0)
-		if (video_element.paused) {
-			$element.find('video').get(0).play()
-			$scope.video_playing = true
+	$scope.get_file_name = function () {
+		if ($scope.context[$scope.terminatedkey]) {
+			return $scope.context[$scope.terminatedkey].split('/').slice(-1)[0]
 		} else {
-			$element.find('video').get(0).pause()
-			$scope.video_playing = false
+			return ''
 		}
+	}
+
+	$scope.delete_file = function () {
+		$scope.context[$scope.terminatedkey] = ''
 	}
 
 	// direct input of an url
 	$scope.direct_input = function () {
 		$element.toggleClass('direct-input-enabled')
-	}
-
-	$scope.get_filename = function () {
-		return $scope.context[$scope.terminatedkey].split('/').slice(-1)[0].split('_').slice(1).join('_')
 	}
 
 })

@@ -2,7 +2,7 @@
 
 	{{!-- page --}}
 	<div ng-if="page.page && !page.hidden" ng-controller="menupage_controller">
-		<div class="menupage" data-cmspage="\{{page.page_slug}}" ng-class="{'active': cmslist.active}" ng-click="pageclick()"><a href="#cms\{{page.fullpath}}"><i class="fa fa-file-o" ng-class="{'fa-file': cmslist.active}"></i>\{{page.name}}</a></div>
+		<div class="menupage" data-cmspage="\{{page.page_slug}}" ng-class="{'active': cmslist.active}" ng-click="pageclick()"><a href="#!/cms\{{page.fullpath}}"><i class="fa fa-file-o" ng-class="{'fa-file': cmslist.active}"></i>\{{page.name}}</a></div>
 	</div>
 
 	{{!-- folder --}}

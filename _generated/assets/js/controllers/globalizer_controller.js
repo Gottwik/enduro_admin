@@ -5,7 +5,7 @@ enduro_admin_app.controller('globalizer_controller', ['$scope', 'content_service
 
 	content_service.get_globalized_options($scope.globalizer)
 		.then(function (globalized_options) {
-			$scope.globalized_options = globalized_options.map((option) => {
+			$scope.globalized_options = globalized_options.map(function (option) {
 				return {
 					value: option,
 					label: format_service.deglobalize(option)

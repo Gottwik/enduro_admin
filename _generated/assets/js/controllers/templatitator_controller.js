@@ -5,7 +5,7 @@ enduro_admin_app.controller('templatitator_controller', ['$scope', 'content_serv
 
 	content_service.get_globalized_context($scope.templatitator)
 		.then(function (templates) {
-			$scope.template_list = Object.keys(templates).map((key) => {
+			$scope.template_list = Object.keys(templates).map(function (key) {
 				return {
 					value: templates[key],
 					label: key,

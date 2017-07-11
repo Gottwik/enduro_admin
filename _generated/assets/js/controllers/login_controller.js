@@ -1,7 +1,7 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	login controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', 'user_service', '$location', 'content_service', function ($scope, $rootScope, user_service, $location, content_service) {
+enduro_admin_app.controller('login_controller', function ($scope, $rootScope, user_service, $location, content_service) {
 
 	// will store failed attempts to provide feedback to user what to do if they forgot the password
 	$scope.failed_attempts = 0
@@ -56,4 +56,4 @@ enduro_admin_app.controller('login_controller', ['$scope', '$rootScope', 'user_s
 		$('.lost-password-assistance').show()
 	}
 
-}])
+})

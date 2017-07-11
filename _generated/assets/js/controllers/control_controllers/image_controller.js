@@ -51,4 +51,8 @@ enduro_admin_app.controller('image_controller', function ($scope, image_service,
 		$element.toggleClass('direct-input-enabled')
 	}
 
+	$scope.get_filename = function () {
+		return $scope.context[$scope.terminatedkey].split('/').slice(-1)[0].split('_').slice(1).join('_')
+	}
+
 })

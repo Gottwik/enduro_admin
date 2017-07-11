@@ -1,6 +1,7 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	array controller
 // * ———————————————————————————————————————————————————————— * //
+
 enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'content_service', function ($scope, format_service, content_service) {
 
 	// stores object name and capitalize and deslugs it
@@ -20,11 +21,11 @@ enduro_admin_app.controller('array_controller', ['$scope', 'format_service', 'co
 	if ($scope.templatitator) {
 		content_service.get_globalized_context($scope.templatitator)
 			.then(function (templates) {
-				$scope.template_list = Object.keys(templates).map((key) => {
+				$scope.template_list = Object.keys(templates).map(function (key) {
 					return {
 						value: templates[key],
 						label: key,
-						formatted_label: format_service.deslug(key)
+						formatted_label: format_service.deslug(key),
 					}
 				})
 			})
