@@ -1,4 +1,4 @@
-<div class="modal" en-modal ng-controller="addpage_controller">
+<div class="add_page_modal modal" en-modal ng-controller="addpage_controller">
 	<form class="modal-body" ng-submit="addpage()">
 		<div class="close-button" ng-click="close()"></div>
 
@@ -6,7 +6,7 @@
 			<div class="form-control col-md-12">
 				<label>
 					<span>Page name</span>
-					<input ng-model="new_pagename">
+					<input class="page_name" ng-model="new_pagename">
 				</label>
 			</div>
 

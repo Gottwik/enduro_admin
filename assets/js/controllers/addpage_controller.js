@@ -1,7 +1,10 @@
 // * ———————————————————————————————————————————————————————— * //
 // * 	addpage controller
 // * ———————————————————————————————————————————————————————— * //
-enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'content_service', 'format_service', '$location', 'modal_service', function ($scope, $rootScope, content_service, format_service, $location, modal_service) {
+enduro_admin_app.controller('addpage_controller', function ($scope, $rootScope, content_service, format_service, $location, modal_service) {
+
+	// add focus to page name input on opening the modal
+	$('.add_page_modal input.page_name').focus()
 
 	// * ———————————————————————————————————————————————————————— * //
 	// * 	addpage
@@ -36,7 +39,7 @@ enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'cont
 			newpage.hidden = false
 			cmslist[path[0]][new_pagename] = newpage
 
-			$location.path('cms/' + newpage.fullpath)
+			$location.path('cms' + newpage.fullpath)
 
 			$rootScope.cmslist = cmslist
 
@@ -56,4 +59,4 @@ enduro_admin_app.controller('addpage_controller', ['$scope', '$rootScope', 'cont
 		return {}
 	}
 
-}])
+})

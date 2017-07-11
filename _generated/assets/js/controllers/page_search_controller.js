@@ -65,7 +65,6 @@ enduro_admin_app.controller('page_search_controller', ['$scope', '$rootScope', '
 
 	function filter_by_distance () {
 		if (fuse) {
-			console.log(fuse, $scope.pagesearch_string)
 			$scope.page_search_results = fuse.search($scope.pagesearch_string)
 		}
 	}
