@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="test_app">
+	<head>
+		<title>enduro.js - admin</title>
+
+		<link rel="stylesheet" href="/admin/assets/css/main.css">
+		<link rel="stylesheet" href="/_prebuilt/_settings.css">
+		<link href='https://fonts.googleapis.com/css?family=Lato:700,400,300,100' rel='stylesheet' type='text/css'>
+
+		<script src="/admin/assets/vendor/jquery/dist/jquery.min.js"></script>
+
+		<script src="/admin/assets/vendor/angular/angular.js"></script>
+		<script src="/admin/assets/vendor/angular-hotkeys/build/hotkeys.js"></script>
+		<script src="/admin/assets/vendor/angular-route/angular-route.js"></script>
+		<script src="/admin/assets/vendor/angular-cookies/angular-cookies.js"></script>
+		<script src="/admin/assets/vendor/fuse.js/src/fuse.min.js"></script>
+		<script src="/admin/assets/vendor/ng-file-upload/ng-file-upload.min.js"></script>
+
+		<script>
+			var enduro_admin_app = angular.module('test_app', ['ngRoute'], function ($rootScopeProvider) {
+				$rootScopeProvider.digestTtl(15)
+			})
+
+			enduro_admin_app.config(['$routeProvider', function ($routeProvider) {
+				$routeProvider
+					.when('/', {
+						templateUrl: '/admin/test/index.html'
+					})
+			}])
+		</script>
+
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+			<script src="/admin/assets/js/services[object Object]"></script>
+
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+			<script src="/admin/assets/js/controllers[object Object]"></script>
+
+			<script src="/admin/assets/js/directives[object Object]"></script>
+			<script src="/admin/assets/js/directives[object Object]"></script>
+			<script src="/admin/assets/js/directives[object Object]"></script>
+			<script src="/admin/assets/js/directives[object Object]"></script>
+			<script src="/admin/assets/js/directives[object Object]"></script>
+			<script src="/admin/assets/js/directives[object Object]"></script>
+			<script src="/admin/assets/js/directives[object Object]"></script>
+
+
+	</head>
+	<body>
+		<div ng-view></div>
+	</body>
+</html>

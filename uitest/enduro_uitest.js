@@ -1,24 +1,34 @@
 // vendor dependencies
-var enduro = require('enduro')
-var rimraf = require('rimraf')
-var path = require('path')
+const rimraf = require('rimraf')
+const path = require('path')
 
-// local dependencies
+const admin_test_project_path = 'uitest_testproject'
 
-enduro.silent()
+require('enduro').init()
+	.then(() => {
+		enduro.actions.silent()
+		start_ui_tests()
+	})
 
-var admin_test_project_path = 'uitest_testproject'
+function start_ui_tests () {
+	// delete the folder with the test project, just in case it exists
+	rimraf(path.join(process.cwd(), admin_test_project_path), function () {
 
-rimraf(path.join(process.cwd(), admin_test_project_path), function () {
-	enduro.run(['create', admin_test_project_path, 'test'])
-		.then(() => {
-			global.CMD_FOLDER = path.join(process.cwd(), admin_test_project_path)
-			enduro.run(['start'])
-				.then(() => {
-					run_mocha_casper()
-				})
-		})
-})
+		// create new test project
+		enduro.actions.create(admin_test_project_path, 'test')
+			.then(() => {
+				
+				// cd into the new test project
+				enduro.project_path = path.join(process.cwd(), admin_test_project_path)
+				
+				// start enduro
+				enduro.actions.start()
+					.then(() => {
+						run_mocha_casper()
+					})
+			})
+	})
+}
 
 function run_mocha_casper () {
 
@@ -28,7 +38,6 @@ function run_mocha_casper () {
 	// starts the mocha-casperjs
 	const spawn = require('child_process').spawn
 	const mocha_casper = spawn(mocha_casper_path, ['uitest/test/*', '--viewport-width=1900 --viewport-height=1080 --bail'])
-	// const mocha_casper = spawn(__dirname + '/../node_modules/mocha-casperjs/bin/mocha-casperjs', ['uitest/test/*', '--viewport-width=1500'])
 
 	// listens to data - console.log from the casper
 	mocha_casper.stdout.on('data', function (data) {

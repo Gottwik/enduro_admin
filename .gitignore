@@ -3,7 +3,10 @@
 /assets/css/sprites
 /enduro_secret.json
 /juicebox/**/*
-/_src/t/*
-/_src/assets/img/uploaded
+/_generated/t/*
+/_generated/assets/img/uploaded
 /assets/img/uploaded
 /uitest_testproject
+tmp_*
+/remote
+_generated/remote/

@@ -1,0 +1,35 @@
+.full-background {
+	background-image:url('/assets/img/pattern.png')
+}
+
+	.login-card #polygon {
+		fill: #fff !important;
+	}
+
+	.login-card #e {
+		fill: #000 !important;
+	}
+
+	.login-card #lettering path {
+		fill: #fff !important;
+		stroke: #fff;
+		stroke-width: 4px;
+	}
+
+	.login-card #lettering {
+	}
+
+	.login-card .login-logo {
+	}
+
+	.login-card .login-logo:before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		opacity: .5;
+		position: absolute;
+		z-index: -1;
+		-webkit-filter: blur(30px);
+		filter: blur(30px);
+	}

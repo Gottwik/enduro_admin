@@ -5,7 +5,7 @@
 		<!-- thumbnail -->
 		<img ng-bind="current_culture" ngf-thumbnail="context[terminatedkey]">
 
-		<div class="img-dropper" ng-class="{'no-image': !context[terminatedkey]}" ngf-drop="upload($files)" ng-model="context[terminatedkey]" ngf-drag-over-class="'dragover'"  tabindex="0">
+		<div class="img-dropper" ng-class="{'no-image': !context[terminatedkey]}" ngf-drop="upload($files)" ng-model="context[terminatedkey]" ngf-drag-over-class="'dragover'" tabindex="0">
 			<div>
 				<i class="fa fa-picture-o" aria-hidden="true"></i>
 				<span>Paste or drop files here</span>
@@ -18,11 +18,12 @@
 			<i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="delete_image()"></i>
 		</div>
 
-		<div class="img-progress" ng-class="{'loading': loading}"></div>
+		<div class="upload_progress" ng-class="{'loading': loading}"></div>
 
 		<div class="direct-input">
-			<div class="">
-				<input type="text" ng-model="context[terminatedkey]">
+			<div class="screen" ng-click="direct_input()"></div>
+			<div>
+				<input type="text" ng-model="context[terminatedkey]" placeholder="paste url here">
 				<button class="small" ng-click="direct_input()">Set</button>
 			</div>
 		</div>

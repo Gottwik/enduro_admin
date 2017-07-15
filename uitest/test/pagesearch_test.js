@@ -10,8 +10,8 @@ describe('Searching for a page', function () {
 		casper.then(function () {
 			casper.click('.page-search-results .result')
 		})
-		casper.then(function () {
-			this.capture('uitest/test.png', { top: 0, left: 0, width: 1920, height: 1080 })
-		})
+		// casper.then(function () {
+		// 	this.capture('uitest/test.png', { top: 0, left: 0, width: 1920, height: 1080 })
+		// })
 	})
 })
