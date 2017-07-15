@@ -1,0 +1,35 @@
+<div class="img-controller file_control \{{size}}" ng-controller="image_controller">
+	{{>control_name}}
+	<div class="img-wrapper">
+
+		<div class="img-dropper file-dropper no-image" ngf-drop="upload($files)" ngf-drag-over-class="'dragover'" tabindex="0">
+			<div>
+				
+				<i class="fa fa-file" aria-hidden="true" ng-show="!context[terminatedkey]"></i>
+				<span ng-show="!context[terminatedkey]">Drop file here</span>
+
+				<i class="fa fa-check" aria-hidden="true" ng-show="context[terminatedkey]"></i>
+				<span ng-show="context[terminatedkey]">\{{get_filename()}}</span>
+
+			</div>
+		</div>
+
+		<!-- file name -->
+
+		<div class="tiny-controls">
+			<i class="fa fa-link" ng-class="" ng-click="direct_input()"></i>
+			<i class="fa fa-refresh" ngf-select="upload($file)" ></i>
+			<i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="delete_image()"></i>
+		</div>
+
+		<div class="upload_progress" ng-class="{'loading': loading}"></div>
+
+		<div class="direct-input small">
+			<div class="screen" ng-click="direct_input()"></div>
+			<div>
+				<input type="text" ng-model="context[terminatedkey]" placeholder="paste url here">
+				<button class="small" ng-click="direct_input()">Set</button>
+			</div>
+		</div>
+	</div>
+</div>

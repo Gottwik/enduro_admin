@@ -1,18 +1,24 @@
+$tiny_controls_radius: 4px;
+
 .tiny-controls {
 	position: absolute;
 	top: 10px;
 	right: 10px;
 	background-color: $primary-color;
-	border-bottom-left-radius: 4px;
+	border-bottom-left-radius: $tiny_controls_radius;
 	z-index: 1;
 
 	i {
 		color: $white;
-		padding: 3px 6px;
+		padding: 4px 6px;
 		cursor: pointer;
 
 		&:hover {
 			background-color: darken($primary-color, 20%);
+		}
+
+		&:first-child {
+			border-bottom-left-radius: $tiny_controls_radius;
 		}
 	}
 }

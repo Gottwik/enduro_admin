@@ -1,0 +1,15 @@
+.object-container:not(.no-frame) {
+	@include container-background();
+	@include latte-shadow();
+	border: 1px solid rgba(#333, .15);
+	padding: 45px 25px 10px;
+	margin: 30px 0 10px;
+	float: left;
+	width: 100%;
+	position: relative;
+	margin-top: 16px;
+
+	@include media-breakpoint-down(sm) {
+		padding: 10px 10px 0;
+	}
+}

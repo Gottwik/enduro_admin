@@ -1,0 +1,31 @@
+{
+  "name": "kiskabricks_wedgecss",
+  "version": "1.0.0",
+  "homepage": "https://github.com/kiskadigitalmedia/kiskabricks_wedgecss",
+  "authors": [
+    "gottwik <gottwik@gmail.com>"
+  ],
+  "description": "Creates horizontal whitespace",
+  "main": "wedge.scss",
+  "moduleType": [],
+  "keywords": [
+    "layout"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "8bdd0e02103b77d5ac3ff01a3fac40cb5ec568d6"
+  },
+  "_source": "https://github.com/kiskadigitalmedia/kiskabricks_wedgecss.git",
+  "_target": "*",
+  "_originalSource": "kiskabricks_wedgecss"
+}

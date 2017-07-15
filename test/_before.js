@@ -1,9 +1,9 @@
 var glob = require('glob')
 
-var jsdom = require('jsdom').jsdom
+var jsdom = require('jsdom').JSDOM
 
-global.document = jsdom('<html><head></head><body></body></html>')
-global.window = global.document.parentWindow
+global.window = new jsdom('<html><head></head><body></body></html>').window
+global.document = window.document
 global.navigator = window.navigator = {}
 global.Node = window.Node
 
@@ -24,7 +24,6 @@ global.Mousetrap = require('../assets/vendor/mousetrap/mousetrap')
 require('../assets/vendor/angular-hotkeys/build/hotkeys')
 require('../assets/vendor/angular-route/angular-route')
 require('../assets/vendor/angular-cookies/angular-cookies')
-require('../assets/vendor/angular-vertilize/angular-vertilize')
 require('../assets/vendor/fuse.js/src/fuse.min')
 require('../assets/vendor/ng-file-upload/ng-file-upload.min.js')
 

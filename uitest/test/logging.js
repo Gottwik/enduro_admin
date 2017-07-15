@@ -10,6 +10,6 @@ before(function () {
 	})
 
 	casper.on('resource.error', function (msg, trace) {
-		// this.echo('Res.Error: ' + JSON.stringify(msg))
+		this.echo('Res.Error: ' + JSON.stringify(msg))
 	})
 })

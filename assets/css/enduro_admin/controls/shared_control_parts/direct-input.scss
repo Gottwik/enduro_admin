@@ -1,0 +1,50 @@
+.direct-input {
+	@include cover();
+	display: none;
+	z-index: 99;
+	padding: 10px;
+	font-size: 15px;
+
+	.screen {
+		@include cover();
+		background-color: rgba($black, .4);
+		box-shadow: inset 0 0 40px 1px rgba($black, .6);
+	}
+
+	input {
+		width: calc(100% - 20px);
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	button {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.direct-input-enabled & {
+		display: block;
+	}
+
+	// modifiers
+	&.small {
+
+		input {
+			width: calc(100% - 100px);
+			top: auto;
+			bottom: 0;
+		}
+
+		button {
+			width: 70px;
+			top: auto;
+			bottom: 3px;
+			right: 10px;
+			left: auto;
+			transform: none;
+		}
+	}
+}
