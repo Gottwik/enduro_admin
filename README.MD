@@ -1,8 +1,11 @@
 # Enduro
 
-[![npm version](https://badge.fury.io/js/enduro_admin.svg)](https://badge.fury.io/js/enduro_admin)
 
-This is a admin interface for [enduro.js](https://github.com/Gottwik/Enduro).
+[![Join the chat at https://gitter.im/Enduro-js/Lobby](https://badges.gitter.im/Enduro-js/Lobby.svg)](https://gitter.im/Enduro-js/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![npm version](https://badge.fury.io/js/enduro_admin.svg)](https://badge.fury.io/js/enduro_admin)
+
+This is the admin interface for [enduro.js](https://github.com/Gottwik/Enduro).
+
+**Other repositories:** [Enduro](https://github.com/Gottwik/Enduro) • [samples](https://github.com/Gottwik/enduro_samples) • Enduro admin • [endurojs.com site](https://github.com/Gottwik/enduro_website)
 
 ![image](http://i.imgur.com/M8vGA92.png)
 
