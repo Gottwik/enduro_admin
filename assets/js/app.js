@@ -23,8 +23,8 @@ enduro_admin_app
 	})
 
 // routing configuration
-enduro_admin_app.config(['$routeProvider',
-	function ($routeProvider) {
+enduro_admin_app.config(
+	function ($routeProvider, $compileProvider) {
 
 		$routeProvider
 			.when('/login', {
@@ -40,7 +40,10 @@ enduro_admin_app.config(['$routeProvider',
 				controller: 'pagesplit_controller',
 			})
 			.otherwise({ redirectTo: '/' })
-	}]
+
+		// store compileprovider
+		enduro_admin_app.compileProvider = $compileProvider
+	}
 )
 
 enduro_admin_app.run(function ($rootScope, $location, user_service, extension_service) {

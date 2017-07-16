@@ -12,10 +12,12 @@
 				<div ng-if="!terminated_context.hidden">
 					<div ng-if="globalizer" ng-include="'/admin/controls/globalizer_control/index.html'"></div>
 
-					<div ng-if="!globalizer && terminated_context.type" ng-include="'/admin/controls/' + terminated_context.type + '_control/index.html'"></div>
+					<div ng-if="!globalizer && terminated_context.customtype" ng-include="'/custom_types/' + terminated_context.customtype"></div>
+
+					<div ng-if="!globalizer && terminated_context.type && !terminated_context.customtype" ng-include="'/admin/controls/' + terminated_context.type + '_control/index.html'"></div>
 
 					<!-- default, non-defined controls -->
-					<div ng-if="!globalizer && !terminated_context.type">
+					<div ng-if="!globalizer && !terminated_context.type && !terminated_context.customtype">
 						<div ng-if="isString(value) || isNumber(value)" ng-include="'/admin/controls/text_control/index.html'"></div>
 						<div ng-if="isObject(value)" class="form-control {{size}}" ng-include="'/admin/controls/object_control/index.html'"></div>
 						<div ng-if="isArray(value)" ng-include="'/admin/controls/array_control/index.html'"></div>

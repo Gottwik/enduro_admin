@@ -2,7 +2,6 @@ button {
 	border: 0;
 }
 
-button,
 .btn {
 	@include font-size(sm);
 	@include button-hover();
