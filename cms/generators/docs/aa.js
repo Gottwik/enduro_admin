@@ -1,7 +1,7 @@
 {
 	test_array: [
 		{
-			label: '1'
+			label: '2'
 		},
 		{
 			label: '2'
@@ -17,7 +17,7 @@
 		},
 		{
 			label: '6'
-		},
+		}
 	],
 	$test_array2_expander: true,
 	test_array2: [
@@ -38,6 +38,6 @@
 		},
 		{
 			label: '6'
-		},
+		}
 	]
 }

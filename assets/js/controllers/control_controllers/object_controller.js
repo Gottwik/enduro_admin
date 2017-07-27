@@ -17,6 +17,11 @@ enduro_admin_app.controller('object_controller', function ($scope, format_servic
 		}
 	}
 
+	// hide meta Object
+	if ($scope.key == 'meta') {
+		$scope.terminated_context.hidden = true
+	}
+
 	// action when expander button is clicked
 	$scope.expand = function () {
 		if ($scope.context_is_not_empty()) {

@@ -1,4 +1,4 @@
 {
-	$greeting_type: 'wysiwyg',
-	greeting: 'aaa',
+	greeting: '5',
+	superlative: 'nice'
 }
