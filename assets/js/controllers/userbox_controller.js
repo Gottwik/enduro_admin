@@ -10,8 +10,15 @@ enduro_admin_app.controller('userbox_controller', function ($scope, user_service
 			})
 	}
 
-	$scope.forcepull = function () {
-		juice_service.forcepull()
+	$scope.push = function () {
+		juice_service.push()
+			.then(function () {
+				$location.path('/cms/index')
+			})
+	}
+
+	$scope.pull = function () {
+		juice_service.pull()
 			.then(function () {
 				$location.path('/cms/index')
 			})

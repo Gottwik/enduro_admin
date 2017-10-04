@@ -46,7 +46,7 @@ enduro_admin_app.config(
 	}
 )
 
-enduro_admin_app.run(function ($rootScope, $location, user_service, extension_service) {
+enduro_admin_app.run(function ($rootScope, $location, user_service, extension_service, content_service) {
 
 	$rootScope._ = _
 
@@ -65,4 +65,19 @@ enduro_admin_app.run(function ($rootScope, $location, user_service, extension_se
 	})
 
 	extension_service.inject()
+
+	// fetch enduro settings
+	$rootScope.settings = {}
+	$rootScope.settings.juicebox_enabled = true
+	$rootScope.settings.has_admins = true
+	content_service.get_application_settings()
+		.then(function (settings) {
+			$rootScope.settings = settings.data
+		})
+
+	// $rootScope.socket = io()
+
+	// $rootScope.socket.on('news', (data) => {
+	// 	console.log('got news')
+	// })
 })

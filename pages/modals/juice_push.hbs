@@ -26,8 +26,8 @@
 				<span ng-repeat="tab in _.range(file.level * 4)">&nbsp;</span>
 				<i class="fa fa-folder-o" ng-if="file.type1 == 'directory' || file.type2 == 'directory'"></i>
 				<i class="fa fa-file-o" ng-if="file.type1 != 'directory' && file.type2 != 'directory'"></i>
-				<span class="name">&nbsp;{{file.name}}</span>
-				<span class="bubble" ng-class="{'purple': file.status == 'juice_newer' || file.status == 'juice_only', 'green': file.status == 'local_newer' || file.status == 'local_only'}" ng-if="file.status != 'equal' && file.type != 'directory'">{{file.status}}</span>
+				<span class="name">&nbsp;\{{file.name}}</span>
+				<span class="bubble" ng-class="{'purple': file.status == 'juice_newer' || file.status == 'juice_only', 'green': file.status == 'local_newer' || file.status == 'local_only'}" ng-if="file.status != 'equal' && file.type != 'directory'">\{{file.status}}</span>
 			</div>
 		</div>
 

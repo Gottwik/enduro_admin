@@ -79,9 +79,17 @@
 
 		<div class="userbox" ng-controller="userbox_controller">
 			<div class="userbox-bar">
-				<a ng-click="forcepull()" ngtooltipster title="Manual reload content"><i class="fa fa-refresh"></i></a>
-				<a ng-click="logout()" ngtooltipster title="Account settings"><i class="fa fa-user"></i></a>
+				<a ng-click="push()" ngtooltipster title="Backup content" ng-if="settings.juicebox_enabled">
+					<i class="fa fa-cloud"></i>
+					<div class="bubble" ng-show="outstanding_changes">{{outstanding_changes}}</div>
+				</a>
+				<a ngtooltipster title="Enable juicebox to back up your content" ng-if="!settings.juicebox_enabled" class="disabled"><i class="fa fa-cloud"></i></a>
+
+				<a ng-click="pull()" ngtooltipster title="See if there is newer content in the cloud" ng-if="settings.juicebox_enabled"><i class="fa fa-refresh"></i></a>
+				<a ngtooltipster title="Enable juicebox to back up your content" ng-if="!settings.juicebox_enabled" class="disabled"><i class="fa fa-refresh"></i></a>
+
 				<a href="#/cms/.settings" ngtooltipster title="Page settings"><i class="fa fa-cog"></i></a>
+
 				<a ng-click="logout()" ngtooltipster title="Logout"><i class="fa fa-power-off"></i></a>
 			</div>
 		</div>

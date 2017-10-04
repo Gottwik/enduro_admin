@@ -6,15 +6,6 @@ enduro_admin_app.controller('login_controller', function ($scope, $rootScope, us
 	// will store failed attempts to provide feedback to user what to do if they forgot the password
 	$scope.failed_attempts = 0
 
-	// detects if juicebox(versioning for cms at aws) to provide feedback to user if it is not enables
-	$scope.settings = {dummy: 'dummy'}
-	$scope.settings.juicebox_enabled = true
-	$scope.settings.has_admins = true
-	content_service.get_application_settings()
-		.then(function (settings) {
-			$scope.settings = settings.data
-		})
-
 	// user submits the login form
 	$scope.submit = function () {
 		user_service.login_by_password($scope.enduro_username, $scope.enduro_password)

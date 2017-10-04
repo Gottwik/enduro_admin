@@ -76,6 +76,8 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		$scope.publish = function () {
 			$scope.publishing = true
 
+			$rootScope.outstanding_changes = ++$rootScope.outstanding_changes || 1
+
 			content_service.save_content($rootScope.current_page, $scope.context)
 				.then(function () {
 					$scope.publishing = false

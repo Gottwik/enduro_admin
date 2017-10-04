@@ -1,4 +1,4 @@
 {
-	greeting: '5',
+	greeting: '15',
 	superlative: 'nice'
 }
