@@ -13,6 +13,8 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 				$scope = angular.extend($scope, res)
 			}, function () {})
 
+		content_service.update_outstanding_changes()
+
 		// gets all available cultures
 		culture_service.get_cultures()
 			.then(function (res) {
@@ -76,12 +78,12 @@ enduro_admin_app.controller('cms-editor-controller', ['$scope', '$rootScope', '$
 		$scope.publish = function () {
 			$scope.publishing = true
 
-			$rootScope.outstanding_changes = ++$rootScope.outstanding_changes || 1
-
 			content_service.save_content($rootScope.current_page, $scope.context)
 				.then(function () {
+					content_service.update_outstanding_changes()
 					$scope.publishing = false
 				}, function () {
+					console.log('something went wrong with saving the data')
 					$scope.publishing = false
 				})
 		}

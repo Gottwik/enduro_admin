@@ -75,9 +75,8 @@ enduro_admin_app.factory('juice_service', function juice_service ($http, url_con
 			.then(function () {
 
 				// close the modal after 1 second
-				modal_service.close()
-				$rootScope.outstanding_changes = 0
-
+				// modal_service.close()
+				$rootScope.outstanding_changes = []
 				$rootScope.diff_result = push_response.data.diff_result
 				if (push_response.data) {
 					return push_response.data

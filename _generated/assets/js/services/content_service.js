@@ -86,8 +86,22 @@ enduro_admin_app.factory('content_service', function user_service ($http, url_co
 			}, user_service.error)
 	}
 
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	delete pages
+	// * ———————————————————————————————————————————————————————— * //
 	content_service.delete_page = function (pagename) {
 		return $http.get(url_config.get_base_url() + 'delete_page', {params: {sid: $cookies.get('sid'), pagename: pagename}})
+	}
+
+	// * ———————————————————————————————————————————————————————— * //
+	// * 	get outstanding changes
+	// * ———————————————————————————————————————————————————————— * //
+	content_service.update_outstanding_changes = function () {
+		return $http.get(url_config.get_api_url('get_outstanding_changes'), { params: { sid: $cookies.get('sid') } })
+			.then(function (res) {
+				console.log(res.data)
+				$rootScope.outstanding_changes = res.data
+			})
 	}
 
 	// * ———————————————————————————————————————————————————————— * //

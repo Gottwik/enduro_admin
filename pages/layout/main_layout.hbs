@@ -17,7 +17,7 @@
 				{{!-- push / cloud save button --}}
 				<a ng-click="push()" ngtooltipster title="Backup content" ng-if="settings.juicebox_enabled">
 					<i class="fa fa-cloud"></i>
-					<div class="bubble" ng-show="outstanding_changes">\{{outstanding_changes}}</div>
+					<div class="bubble" ng-show="outstanding_changes.differences">\{{outstanding_changes.differences}}</div>
 				</a>
 				<a ngtooltipster title="Enable juicebox to back up your content" ng-if="!settings.juicebox_enabled" class="disabled"><i class="fa fa-cloud"></i></a>
 
