@@ -27,6 +27,7 @@ enduro_admin_app.factory('content_service', function user_service ($http, url_co
 	content_service.get_content = function (page_path) {
 		return $http.get(url_config.get_base_url() + 'get_cms', {params: {sid: $cookies.get('sid'), filename: page_path}})
 			.then(function (res) {
+				console.log(res.data)
 				return res.data
 			}, user_service.error)
 	}
@@ -99,8 +100,9 @@ enduro_admin_app.factory('content_service', function user_service ($http, url_co
 	content_service.update_outstanding_changes = function () {
 		return $http.get(url_config.get_api_url('get_outstanding_changes'), { params: { sid: $cookies.get('sid') } })
 			.then(function (res) {
-				console.log(res.data)
 				$rootScope.outstanding_changes = res.data
+			}, function (err) {
+				console.log(err)
 			})
 	}
 
