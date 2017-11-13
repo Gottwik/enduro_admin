@@ -13,7 +13,7 @@ define([],function() { return function(enduro.templating_engine) {
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 	enduro.templating_engine.registerHelper('add', function () {
@@ -46,11 +46,11 @@ module.exports = new helper()
 // *		{{class 'gradient_bottom'}} // will render gradient-bottom
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 	enduro.templating_engine.registerHelper('class', function () {
-		var context = this
+		const context = this
 
 		// if no argument is provided renders empty string
 		if (arguments.length <= 1) {
@@ -79,7 +79,7 @@ module.exports = new helper()
 // *	{{Compare age 20 'this dude is exactly 20 years old' 'he's not 20 years old}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -102,7 +102,7 @@ module.exports = new helper()
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -129,7 +129,7 @@ module.exports = new helper()
 // *	{{divisible @index 2 'even' 'odd'}} // outputs even if @index % 2 == 0
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -157,11 +157,11 @@ module.exports = new helper()
 // *		<p>Image: {{this}}</p>
 // *	{{/files}}
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 // vendor dependency
-var glob = require('glob')
-var path = require('path')
+const glob = require('glob')
+const path = require('path')
 
 helper.prototype.register = function () {
 
@@ -170,16 +170,16 @@ helper.prototype.register = function () {
 		// add path to enduro project to make sure we won't be matching something else in the files' path
 		path_to_folder = path.join(enduro.project_path, path_to_folder)
 
-		var path_to_all_files_in_folder = path.join(path_to_folder, '**', '*.*')
+		const path_to_all_files_in_folder = path.join(path_to_folder, '**', '*.*')
 
 		// get all files with path
-		var files = glob.sync(path_to_all_files_in_folder)
+		const files = glob.sync(path_to_all_files_in_folder)
 
 		// get multiple properties from a absolute path
-		var processed_output_html = files.map((file) => {
+		const processed_output_html = files.map((file) => {
 
 			// stores relative path to folder
-			var relative_path = file.replace(new RegExp('.*' + path_to_folder), '')
+			const relative_path = file.replace(new RegExp('.*' + path_to_folder), '')
 
 			// returns object
 			return {
@@ -210,10 +210,10 @@ module.exports = new helper()
 // *		<p>Image: {{this}}</p>
 // *	{{/filter}}
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 // vendor dependency
-var _ = require('lodash')
+const _ = require('lodash')
 
 helper.prototype.register = function () {
 
@@ -238,7 +238,7 @@ module.exports = new helper()
 // *			<p>First person's age is: {{age}}</p>
 // *		{{/first}}
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -254,7 +254,7 @@ module.exports = new helper()
 // *    Will split array into chunks of specified size
 // *    taken from https://funkjedi.com/technology/412-every-nth-item-in-handlebars/
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -264,11 +264,11 @@ helper.prototype.register = function () {
 			return ''
 		}
 
-		var out = ''
-		var subcontext = []
-		var i = 0
+		let out = ''
+		let subcontext = []
+		let i = 0
 
-		for (var key in context) {
+		for (let key in context) {
 			if (i > 0 && i % every === 0) {
 				out += options.fn(subcontext)
 				subcontext = []
@@ -291,7 +291,7 @@ module.exports = new helper()
 // *		{{htmlescape 'www.example.com?p=escape spaces here'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -312,17 +312,17 @@ module.exports = new helper()
 // *	{{/list}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
 	enduro.templating_engine.registerHelper('list', function () {
 
 		// block is the last argument
-		var block = arguments[arguments.length - 1]
+		const block = arguments[arguments.length - 1]
 
-		var accum = ''
-		for (var i = 0; i < arguments.length - 1; i++) {
+		let accum = ''
+		for (let i = 0; i < arguments.length - 1; i++) {
 			accum += block.fn(arguments[i])
 		}
 
@@ -346,7 +346,7 @@ module.exports = new helper()
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -366,7 +366,7 @@ helper.prototype.register = function () {
 		length = Math.round(Math.random() * (upperrange - length) + length)
 
 		// Calvin and Hobbes is the best!
-		var dummy = 'Calvin and Hobbes is a daily comic strip by American cartoonist Bill Watterson that was syndicated from November 18 1985 to December 31 1995 Commonly cited as the last great newspaper comic Calvin and Hobbes has evinced broad and enduring popularity influence and academic interest Calvin and Hobbes follows the humorous antics of Calvin a precocious mischievous and adventurous six-year-old boy and Hobbes his sardonic stuffed tiger The pair is named after John Calvin 16th-century French Reformation theologian and Thomas Hobbes a 17th-century English political philosopher Set in the contemporary suburban United States the strip depicts Calvin\'s frequent flights of fancy and his friendship with Hobbes It also examines Calvin\'s relationships with family and classmates especially the love hate relationship between him and his classmate Susie Derkins Hobbes dual nature is a defining motif for the strip to Calvin Hobbes is a live anthropomorphic tiger all the other characters see Hobbes as an inanimate stuffed toy Though the series does not mention specific political figures or current events it does explore broad issues like environmentalism public education philosophical quandaries and the flaws of opinion polls At the height of its popularity Calvin and Hobbes was featured in over 2,400 newspapers worldwide In 2010 reruns of the strip appeared in more than 50 countries and nearly 45 million copies of the Calvin and Hobbes books had been sold'
+		let dummy = 'Calvin and Hobbes is a daily comic strip by American cartoonist Bill Watterson that was syndicated from November 18 1985 to December 31 1995 Commonly cited as the last great newspaper comic Calvin and Hobbes has evinced broad and enduring popularity influence and academic interest Calvin and Hobbes follows the humorous antics of Calvin a precocious mischievous and adventurous six-year-old boy and Hobbes his sardonic stuffed tiger The pair is named after John Calvin 16th-century French Reformation theologian and Thomas Hobbes a 17th-century English political philosopher Set in the contemporary suburban United States the strip depicts Calvin\'s frequent flights of fancy and his friendship with Hobbes It also examines Calvin\'s relationships with family and classmates especially the love hate relationship between him and his classmate Susie Derkins Hobbes dual nature is a defining motif for the strip to Calvin Hobbes is a live anthropomorphic tiger all the other characters see Hobbes as an inanimate stuffed toy Though the series does not mention specific political figures or current events it does explore broad issues like environmentalism public education philosophical quandaries and the flaws of opinion polls At the height of its popularity Calvin and Hobbes was featured in over 2,400 newspapers worldwide In 2010 reruns of the strip appeared in more than 50 countries and nearly 45 million copies of the Calvin and Hobbes books had been sold'
 
 		// Randomize string
 		dummy = dummy
@@ -395,7 +395,7 @@ module.exports = new helper()
 // *	{{multiply 2 2 2}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -421,7 +421,7 @@ module.exports = new helper()
 // *	{{partial 'partial name'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -433,7 +433,7 @@ helper.prototype.register = function () {
 		}
 
 		// Get the partial with the given name. This is a string.
-		var partial = enduro.templating_engine.partials[name]
+		const partial = enduro.templating_engine.partials[name]
 
 		// Return empty string if the partial is not defined
 		if (!partial) return ''
@@ -460,11 +460,11 @@ module.exports = new helper()
 // *	will return this-link
 // * ———————————————————————————————————————————————————————— * //
 
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
-	var format_service = require(enduro.enduro_path + '/libs/services/format_service')
+	const format_service = require(enduro.enduro_path + '/libs/services/format_service')
 
 	enduro.templating_engine.registerHelper('slug', function (text) {
 
@@ -488,15 +488,15 @@ module.exports = new helper()
 // *	returns last value as default
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
 	enduro.templating_engine.registerHelper('switch', function () {
 
 		// create a list out of arguments
-		var arguments_list = []
-		for (var i in arguments) {
+		let arguments_list = []
+		for (let i in arguments) {
 			arguments_list.push(arguments[i])
 		}
 
@@ -525,7 +525,7 @@ module.exports = new helper()
 // *	{{ternary this 'was true' 'was false'}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
@@ -554,14 +554,14 @@ module.exports = new helper()
 // *	{{/times}}
 // *
 // * ———————————————————————————————————————————————————————— * //
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 
 	enduro.templating_engine.registerHelper('times', function (iterations, upperrange, block) {
 
 		// will store the final accumulated html
-		var accum = ''
+		let accum = ''
 
 		// if upperrange is not provided
 		if (typeof upperrange !== 'number') {
@@ -571,7 +571,7 @@ helper.prototype.register = function () {
 			iterations = Math.round(Math.random() * (upperrange - iterations) + iterations)
 		}
 
-		for (var i = 0; i < iterations; ++i) {
+		for (let i = 0; i < iterations; ++i) {
 
 			// Sets is_first variable to context
 			i == 0
@@ -604,7 +604,7 @@ module.exports = new helper()
 // *
 // * ———————————————————————————————————————————————————————— * //
 
-var helper = function () {}
+const helper = function () {}
 
 helper.prototype.register = function () {
 

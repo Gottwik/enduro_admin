@@ -17,6 +17,7 @@
 		<div ng-if="context[terminatedkey]" class="tiny-controls">
 			<i class="fa fa-pause" ng-click="play()" ng-show="video_playing"></i>
 			<i class="fa fa-play" ng-click="play()" ng-hide="video_playing"></i>
+			<i class="fa fa-link" ng-class="" ng-click="direct_input()"></i>
 			<i class="fa fa-refresh" ngf-select="upload($file)" ng-model="context[terminatedkey]"></i>
 			<i class="fa fa-trash" ng-class="{'hidden': context.length <= terminated_context.min}" ng-click="delete_image()"></i>
 		</div>
@@ -25,6 +26,14 @@
 			<i class="fa fa-plus"></i>
 		</div>
 
-		<div class="upload_progress" style="width: \{{100 - progress}}%"></div>
+		<div class="upload_progress" ng-class="{'loading': loading}"></div>
+
+		<div class="direct-input">
+			<div class="screen" ng-click="direct_input()"></div>
+			<div>
+				<input type="text" ng-model="context[terminatedkey]" placeholder="paste url here">
+				<button class="btn small" ng-click="direct_input()">Set</button>
+			</div>
+		</div>
 	</div>
 </div>

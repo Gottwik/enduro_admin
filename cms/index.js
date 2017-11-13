@@ -1,4 +1,4 @@
 {
-	greeting: '15',
-	superlative: 'nice'
+	$greeting_type: 'video',
+	greeting: '',
 }
