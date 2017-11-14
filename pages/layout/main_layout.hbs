@@ -14,7 +14,7 @@
 
 		<div class="sidebar_juicebox_updates" ng-controller="juicebox_updates_controller" ng-if="settings.juicebox_enabled" ng-class="{updated_files_showing: show_updated_files}">
 			<ul>
-				<li ng-repeat="updated_file in outstanding_changes.diffSet" ng-if="updated_file.type == 'file' && updated_file.status == 'local_newer'">
+				<li ng-repeat="updated_file in outstanding_changes.diffSet" ng-if="updated_file.type == 'file' && updated_file.status != 'equal'">
 					<span>\{{updated_file.name}}</span>
 					<div class="diff_bubble">\{{calculate_time_diff(updated_file)}}</div>
 				</li>

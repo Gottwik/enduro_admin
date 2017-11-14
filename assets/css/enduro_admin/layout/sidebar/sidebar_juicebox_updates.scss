@@ -1,9 +1,12 @@
 .sidebar_juicebox_updates {
+    @include container-background();
+	@include shadow();
 	position: absolute;
 	padding: 20px;
 	top: 100%;
 	transition: transform $standard-transition;
 	width: 100%;
+	width: 150%;
 
 	li {
 		list-style-type: none;
@@ -17,6 +20,7 @@
 			float: right;
 			position: relative;
 			top: 3px;
+
 		}
 	}
 
