@@ -1,0 +1,26 @@
+.sidebar_juicebox_updates {
+	position: absolute;
+	padding: 20px;
+	top: 100%;
+	transition: transform $standard-transition;
+	width: 100%;
+
+	li {
+		list-style-type: none;
+
+		.diff_bubble {
+			@include rounded-corners();
+			@include font-size(xs);
+			background-color: $primary-color;
+			color: $white;
+			padding: 1px 5px;
+			float: right;
+			position: relative;
+			top: 3px;
+		}
+	}
+
+	&.updated_files_showing {
+		transform: translateY(calc(-100% - #{$userbox-height}))
+	}
+}
