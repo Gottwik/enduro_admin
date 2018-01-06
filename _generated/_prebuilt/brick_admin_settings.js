@@ -1,0 +1,1 @@
+var brick_admin_settings = {}
